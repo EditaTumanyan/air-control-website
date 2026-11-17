@@ -53,9 +53,7 @@ export default class Footer extends DCLogic {
       socials: [
         { name: 'Facebook', href: 'https://www.facebook.com/share/19jo4Xdg5S/', d: 'M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V9H6.5v3.5H9V21h3.5v-8.5H15l.5-3.5h-3V7a1 1 0 0 1 1-1H15z' },
         { name: 'Instagram', href: 'https://www.instagram.com/air_control_ac_service_/', d: 'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4z M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z M17.5 6.5h.01' },
-        { name: 'TikTok', href: 'https://www.tiktok.com/@air.control4', d: 'M14 3v11a4 4 0 1 1-4-4 M14 3c0 3 2.5 5 6 5' },
-        { name: 'Viber', href: 'viber://chat?number=%2B37491105887', d: 'M12 3a8.5 8.5 0 0 0-7.2 13L4 21l5-1.3A8.5 8.5 0 1 0 12 3z' },
-        { name: 'WhatsApp', href: 'https://wa.me/37491105887', d: 'M3 21l1.7-5A8.5 8.5 0 1 1 8 19.6L3 21z' }
+        { name: 'TikTok', href: 'https://www.tiktok.com/@air.control4', d: 'M14 3v11a4 4 0 1 1-4-4 M14 3c0 3 2.5 5 6 5' }
       ]
     };
   }
@@ -179,7 +177,7 @@ export default class Footer extends DCLogic {
               {"© 2026 Air Control. "}{V.t?.rights}
             </span>
             <span style={{ display : "flex", gap : "24px" }}>
-              <a href="#" className="ft-link" style={{ color : "#9FB4C7" }}>
+              <a href="/privacy/" className="ft-link" style={{ color : "#9FB4C7" }}>
                 {V.t?.privacy}
               </a>
             </span>
