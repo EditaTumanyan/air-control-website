@@ -6,7 +6,7 @@ export const PHONES = [
 ];
 
 const T = {
-  hy: { title: 'Հեռախոս · WhatsApp · Viber', sub: 'Երկու համարն էլ հասանելի են զանգի և չատի համար', call: 'Զանգ' },
+  hy: { title: 'Հեռախոս · WhatsApp · Viber', sub: 'Երկու համարներն էլ հասանելի են և զանգի, և չատի համար', call: 'Զանգ' },
   ru: { title: 'Телефон · WhatsApp · Viber', sub: 'Оба номера доступны для звонков и чатов', call: 'Позвонить' }
 };
 
