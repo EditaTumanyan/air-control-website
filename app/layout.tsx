@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: 'Օդորակիչի պրոֆեսիոնալ լվացում ընդամենը 15 000 ֏ + ֆրեոնի լիցքավորում և ախտորոշում՝ ՆՎԵՐ։ Երևան և մարզեր, ամեն օր 09:00–24:00։ Զանգ՝ +374 41 55 99 10, +374 91 10 58 87',
     images: OG_IMAGES
   },
-  twitter: { card: 'summary_large_image', images: ['/og.jpg'] },
+  twitter: { card: 'summary_large_image', images: ['/og-hy.jpg'] },
   alternates: { canonical: '/' }
 };
 

@@ -45,6 +45,6 @@ export function pageMeta(slug: string, lang: 'hy' | 'ru'): Metadata {
       description: home ? HOME_OG[lang].description : description,
       images: lang === 'ru' ? OG_IMAGES_RU : OG_IMAGES
     },
-    twitter: { card: 'summary_large_image', images: [lang === 'ru' ? '/og-ru.jpg' : '/og.jpg'] }
+    twitter: { card: 'summary_large_image', images: [lang === 'ru' ? '/og-ru.jpg' : '/og-hy.jpg'] }
   };
 }
