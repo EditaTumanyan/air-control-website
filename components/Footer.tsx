@@ -6,7 +6,7 @@ import { DCLogic, css, muteVideo } from '../lib/dc';
 import Feedback from './Feedback';
 import { path } from '../lib/i18n';
 
-const STYLES = "body{margin:0}\n@media (max-width:760px){.ft-cta{padding:32px 22px !important;border-radius:28px !important}.ft-cta-t{font-size:28px !important}}";
+const STYLES = "body{margin:0}\n@media (max-width:760px){.ft-cta{padding:32px 22px !important;border-radius:28px !important}.ft-cta-t{font-size:28px !important}}\n.call-fab{position:fixed;right:28px;bottom:28px;z-index:70;width:64px;height:64px;border-radius:50%;background:#F28A2E;display:flex;align-items:center;justify-content:center;box-shadow:0 18px 36px -12px rgba(242,138,46,.8)}.call-fab .ping{position:absolute;inset:0;border-radius:50%;background:#F28A2E;opacity:.5;animation:cfping 2s cubic-bezier(0,0,.2,1) infinite}@keyframes cfping{75%,100%{transform:scale(1.7);opacity:0}}@media (max-width:760px){.call-fab{right:16px;bottom:16px;width:58px;height:58px}}";
 
 export default class Footer extends DCLogic {
   componentDidMount() {
@@ -280,6 +280,12 @@ export default class Footer extends DCLogic {
           </>
         ) : null}
       </footer>
+        <a href="tel:+37441559910" className="call-fab" aria-label={this.props.lang === 'ru' ? 'Позвонить' : 'Զանգել'}>
+          <span className="ping" aria-hidden="true" />
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0B2236" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ position : "relative" }}>
+            <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" />
+          </svg>
+        </a>
       </>
     );
   }

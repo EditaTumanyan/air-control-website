@@ -43,13 +43,13 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="hy">
+    <html lang="hy" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Armenian:wght@400;500;600;700;800&family=Playfair+Display:wght@800;900&display=swap" />
         {/* Small phones: keep long Armenian headings inside the screen (overrides page styles) */}
-        <style>{'@media (max-width:440px){html .h1x{font-size:clamp(26px,7.8vw,34px) !important;overflow-wrap:break-word}html .h2x{font-size:clamp(22px,7.2vw,30px) !important;overflow-wrap:break-word}}'}</style>
+        <style>{'@media (max-width:440px){html .h1x{font-size:clamp(26px,7.8vw,34px) !important;overflow-wrap:break-word}html .h2x{font-size:clamp(22px,7.2vw,30px) !important;overflow-wrap:break-word}}@media (max-width:760px){html .hd-sub{font-size:8px !important;letter-spacing:0 !important}html .hd-topbar>a{padding:8px 0}html .hd-topbar [role=group] button{min-height:36px !important}html footer a[href^=tel]{padding-top:8px !important;padding-bottom:8px !important}html footer .ft-link{padding-top:8px !important;padding-bottom:8px !important}}@media (max-width:360px){html .hd-row{padding-left:14px !important;padding-right:14px !important;gap:10px !important}}@media (max-width:380px){html .btn-o,html .btn-w,html .btn-b,html .btn-wa{white-space:normal !important;text-align:center;font-size:15px !important;padding-left:14px !important;padding-right:14px !important}}'}</style>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body style={{ margin: 0 }}>{children}</body>

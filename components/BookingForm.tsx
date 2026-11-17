@@ -220,7 +220,7 @@ export default class BookingForm extends DCLogic {
               ) : null}
               <label style={{ display : "flex", gap : "12px", alignItems : "flex-start", fontSize : "14px", color : "#4A5F73", lineHeight : "1.5", cursor : "pointer" }}>
                 <input type="checkbox" required style={{ width : "20px", height : "20px", margin : "1px 0 0", accentColor : "#0A6FB0", flex : "none" }} />
-                {V.t?.consent}<a href={this.props.lang === "ru" ? "/ru/privacy/" : "/privacy/"} target="_blank" rel="noopener" style={{ color : "#0A6FB0", textDecoration : "underline" }}>{V.t?.consentLink}</a>
+                <span>{V.t?.consent}<a href={this.props.lang === "ru" ? "/ru/privacy/" : "/privacy/"} target="_blank" rel="noopener" style={{ color : "#0A6FB0", textDecoration : "underline" }}>{V.t?.consentLink}</a></span>
               </label>
               <button type="submit" className="btn-o" style={{ width : "100%", padding : "19px 28px", fontSize : "17px" }}>
                 {V.t?.submit}{" "}

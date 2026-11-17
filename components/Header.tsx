@@ -112,7 +112,7 @@ export default class Header extends DCLogic {
           </div>
         </div>
         <div style={{ background : "rgba(255,255,255,.86)", backdropFilter : "saturate(1.6) blur(18px)", WebkitBackdropFilter : "saturate(1.6) blur(18px)", borderBottom : "1px solid rgba(11,34,54,.08)" }}>
-          <div style={{ maxWidth : "1280px", margin : "0 auto", padding : "12px 24px", display : "flex", alignItems : "center", gap : "16px" }}>
+          <div className="hd-row" style={{ maxWidth : "1280px", margin : "0 auto", padding : "12px 24px", display : "flex", alignItems : "center", gap : "16px" }}>
             <a href={P("/")} aria-label="Air Control" style={{ display : "flex", alignItems : "center", gap : "12px", textDecoration : "none", flex : "none" }}>
               <svg className="hd-mark" aria-hidden="true" width="52" height="52" viewBox="0 0 64 64">
                 <g className="spin">
