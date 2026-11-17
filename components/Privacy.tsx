@@ -5,9 +5,14 @@ import Header from './Header';
 import Footer from './Footer';
 import { STYLES } from './aboutStyles';
 
-const UPDATED = '17 նոյեմբերի 2026';
+type Section = { h: string; p?: string[]; li?: string[]; after?: string[] };
 
-const SECTIONS: { h: string; p?: string[]; li?: string[]; after?: string[] }[] = [
+const UI = {
+  hy: { title: 'Գաղտնիության քաղաքականություն', updated: 'Վերջին թարմացում՝ 17 նոյեմբերի 2026' },
+  ru: { title: 'Политика конфиденциальности', updated: 'Последнее обновление: 17 ноября 2026' }
+};
+
+const SECTIONS: Section[] = [
   {
     h: '1. Ով է մշակում ձեր տվյալները',
     p: [
@@ -55,20 +60,71 @@ const SECTIONS: { h: string; p?: string[]; li?: string[]; after?: string[] }[] =
   }
 ];
 
-export default function Privacy() {
+const SECTIONS_RU: Section[] = [
+  {
+    h: '1. Кто обрабатывает ваши данные',
+    p: [
+      'Air Control — центр обслуживания кондиционеров, работающий в Ереване и прилегающих областях. Эта политика описывает, какие данные мы получаем через сайт aircontrol.am, зачем и как их используем.',
+      'Контакты: +374 41 55 99 10, +374 91 10 58 87, air_control_ac_service@mail.ru'
+    ]
+  },
+  {
+    h: '2. Какие данные мы собираем',
+    p: ['Мы получаем только те данные, которые вы сами указываете в формах на сайте:'],
+    li: [
+      'Форма заявки: имя, номер телефона, вид услуги, адрес или район, описание проблемы, а для бизнес-заявки — название компании и количество кондиционеров.',
+      'Прикреплённые файлы: фото или видео, если вы решили их прикрепить.',
+      'Форма жалоб и предложений: сообщение, оценка, по желанию — имя, телефон, дата и место выполнения работы. Предложение или благодарность можно оставить анонимно.',
+      'Адрес страницы, с которой отправлена заявка.'
+    ]
+  },
+  {
+    h: '3. Для чего мы их используем',
+    li: [
+      'Чтобы связаться с вами, уточнить заявку и согласовать визит мастера.',
+      'Для предварительной оценки работы (фото/видео).',
+      'Чтобы отвечать на жалобы и улучшать качество обслуживания.'
+    ],
+    after: ['Мы не используем ваши данные для рекламных рассылок и не продаём их третьим лицам.']
+  },
+  {
+    h: '4. Файлы cookie',
+    p: [
+      'Сайт не использует рекламные или аналитические cookie. В локальной памяти браузера может храниться только техническая отметка (например, что вы закрыли окно спецпредложения), которая не позволяет вас идентифицировать.'
+    ]
+  },
+  {
+    h: '5. Как долго мы храним данные',
+    p: [
+      'Мы храним данные столько, сколько необходимо для выполнения заявки и обслуживания в течение гарантийного срока, после чего удаляем их.'
+    ]
+  },
+  {
+    h: '6. Контакты',
+    after: [
+      'По любым вопросам или запросам, связанным с данными, звоните по номерам +374 41 55 99 10 или +374 91 10 58 87 либо пишите на air_control_ac_service@mail.ru.',
+      'Эта политика может обновляться; актуальная версия всегда доступна на этой странице.'
+    ]
+  }
+];
+
+export default function Privacy({ lang = 'hy' }: { lang?: string }) {
+  const ru = lang === 'ru';
+  const t = ru ? UI.ru : UI.hy;
+  const sections = ru ? SECTIONS_RU : SECTIONS;
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       <div style={{ fontFamily: "'Manrope', 'Noto Sans Armenian', system-ui, sans-serif", color: '#0B2236', background: '#F4F8FC', overflowX: 'clip' }}>
         <div style={{ position: 'sticky', top: 0, zIndex: 60 }}>
-          <Header active="" lang="hy" />
+          <Header active="" lang={lang} />
         </div>
         <main style={{ padding: '64px 24px 88px' }}>
           <article style={{ maxWidth: '820px', margin: '0 auto', background: '#fff', border: '1px solid #E1ECF5', borderRadius: '28px', padding: 'clamp(24px, 5vw, 56px)' }}>
             <div style={{ fontSize: '14px', fontWeight: 800, letterSpacing: '.12em', textTransform: 'uppercase', color: '#B85A0E', marginBottom: '12px' }}>Air Control</div>
-            <h1 style={{ margin: '0 0 10px', fontSize: 'clamp(26px, 7vw, 42px)', lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 800, overflowWrap: 'break-word' }}>Գաղտնիության քաղաքականություն</h1>
-            <p style={{ margin: '0 0 32px', color: '#7A8C9C', fontSize: '15px' }}>Վերջին թարմացում՝ {UPDATED}</p>
-            {SECTIONS.map((s) => (
+            <h1 style={{ margin: '0 0 10px', fontSize: 'clamp(26px, 7vw, 42px)', lineHeight: 1.15, letterSpacing: '-0.02em', fontWeight: 800, overflowWrap: 'break-word' }}>{t.title}</h1>
+            <p style={{ margin: '0 0 32px', color: '#7A8C9C', fontSize: '15px' }}>{t.updated}</p>
+            {sections.map((s) => (
               <section key={s.h} style={{ marginTop: '28px' }}>
                 <h2 style={{ fontSize: '21px', fontWeight: 800, margin: '0 0 10px' }}>{s.h}</h2>
                 {(s.p || []).map((t) => (
@@ -86,7 +142,7 @@ export default function Privacy() {
             ))}
           </article>
         </main>
-        <Footer lang="hy" />
+        <Footer lang={lang} />
       </div>
     </>
   );

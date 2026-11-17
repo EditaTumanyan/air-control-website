@@ -3,6 +3,8 @@
 // Problems — generated from the Air Control design. Edit the texts and layout here.
 import React from 'react';
 import { DCLogic, css, muteVideo } from '../lib/dc';
+import { tr, path } from '../lib/i18n';
+import { RU } from '../lib/ru/Problems';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -10,6 +12,8 @@ const STYLES = "body{margin:0}\na{color:#0A6FB0}a:hover{color:#08568A}\n*,*::bef
 
 export default class Problems extends DCLogic {
   renderVals() {
+    const L = tr(this.props.lang, RU);
+    const P = (p: string) => path(this.props.lang, p);
     const s = this.state || {};
     const q = s.q || '';
     const cat = s.cat || 'all';
@@ -22,22 +26,22 @@ export default class Problems extends DCLogic {
       noise: 'M4 9v6h4l5 4V5L8 9H4z M17 9a4 4 0 0 1 0 6 M19.5 6.5a8 8 0 0 1 0 11',
       elec: 'M13 2L4 14h7l-1 8 9-12h-7z'
     };
-    const catNames = { cool: 'Սառեցում', heat: 'Ջեռուցում', water: 'Ջուր և սառույց', air: 'Հոտ և օդ', noise: 'Աղմուկ', elec: 'Էլեկտրոնիկա' };
-    const lv = ['Կարող եք ստուգել ինքներդ', 'Պետք է վարպետ'];
+    const catNames = { cool: L("Սառեցում"), heat: L("Ջեռուցում"), water: L("Ջուր և սառույց"), air: L("Հոտ և օդ"), noise: L("Աղմուկ"), elec: L("Էլեկտրոնիկա") };
+    const lv = [L("Կարող եք ստուգել ինքներդ"), L("Պետք է վարպետ")];
     const all = [
-      ['cool','Օդորակիչը չի սառեցնում','Ֆրեոնի արտահոսք, կեղտոտ ֆիլտրեր կամ ռադիատոր, կոմպրեսորի կամ կոնդենսատորի անսարքություն։','Ստուգեք, որ միացված է սառեցման ռեժիմը, և լվացեք ֆիլտրերը։ Եթե 15 րոպեից չի օգնում՝ կանչեք վարպետին։','8 000 – 25 000 ֏',1],
-      ['cool','Սառեցնում է թույլ','Կեղտոտ ռադիատոր, ֆրեոնի պակաս, սենյակի համար փոքր հզորություն։','Փակեք պատուհանները, մաքրեք ֆիլտրերը, ստուգեք ջերմաստիճանը վահանակում։','12 000 – 15 000 ֏',0],
-      ['heat','Չի տաքացնում','Արտաքին բլոկի սառցակալում, 4-ուղի փականի անսարքություն, ֆրեոնի պակաս։ −15°C-ից ցածր սովորական մոդելները կորցնում են արդյունավետությունը։','Համոզվեք, որ միացված է ջեռուցման ռեժիմը, և սպասեք 5–10 րոպե․ համակարգը նախ տաքանում է։','10 000 – 30 000 ֏',1],
-      ['heat','Արտաքին բլոկը սառցակալել է','Ձմեռային ռեժիմում դա նորմալ է կարճ ժամանակով․ երկար սառցակալումը՝ սենսորի կամ ֆրեոնի խնդիր։','Մի մաքրեք սառույցը սուր առարկաներով։ Սպասեք ավտոմատ հալեցման ցիկլին (մինչև 10 րոպե)։','5 000 – 15 000 ֏',0],
-      ['water','Ջուր է կաթում ներքին բլոկից','Խցանված դրենաժ, մոնտաժի ժամանակ սխալ թեքություն, սառցակալած ռադիատոր։','Անջատեք օդորակիչը և տեղադրեք տարա։ Դրենաժի մաքրումը տևում է 30–40 րոպե։','7 000 – 12 000 ֏',1],
-      ['water','Սառույց է գոյանում խողովակներին','Ֆրեոնի պակաս, կեղտոտ ֆիլտրեր, օդափոխիչի թույլ աշխատանք։','Անջատեք 1–2 ժամով, որ սառույցը հալվի, և մաքրեք ֆիլտրերը։','12 000 – 25 000 ֏',1],
-      ['air','Տհաճ հոտ է գալիս','Բորբոս և բակտերիաներ ռադիատորի և օդափոխիչի վրա, կեղտոտ դրենաժ։','Լվացեք ֆիլտրերը։ Խորը ախտահանում անհրաժեշտ է տարին 1–2 անգամ։','12 000 – 20 000 ֏',0],
-      ['air','Փոշի կամ սև կետեր են դուրս գալիս','Կեղտոտ տուրբինա և բորբոս օդափոխիչի շեղբերին։','Մի օգտագործեք մինչև մաքրումը, հատկապես երեխաների սենյակում։','20 000 ֏',1],
-      ['noise','Աղմկում կամ թրթռում է','Թուլացած ամրակներ, օդափոխիչի անհավասարակշռություն, կոմպրեսորի մաշվածություն։','Ստուգեք, արդյոք ինչ-որ բան չի դիպչում արտաքին բլոկին։ Մետաղական ձայնի դեպքում անմիջապես անջատեք։','5 000 – 20 000 ֏',1],
-      ['noise','Ճտճտում է միանալիս','Պլաստմասսայի ջերմային ընդարձակում, սովորաբար վտանգավոր չէ։','Եթե ձայնը կրկնվում է աշխատանքի ընթացքում, ստուգեք ամրակները։','—',0],
-      ['elec','Ինքն իրեն անջատվում է','Գերտաքացում, սենսորի կամ էլեկտրոնիկայի անսարքություն, լարման տատանումներ։','Մաքրեք ֆիլտրերը և ստուգեք վահանակի թայմերը։','8 000 – 20 000 ֏',1],
-      ['elec','Չի արձագանքում վահանակին','Մարտկոցներ, ընդունիչ սենսոր, կառավարման սալիկ։','Փոխեք մարտկոցները և փորձեք միացնել բլոկի կոճակով։','0 – 15 000 ֏',0],
-      ['elec','Էկրանին սխալի կոդ է','Կոդը ցույց է տալիս կոնկրետ անսարքություն՝ սենսոր, բլոկների միջև կապ, ֆրեոնի պակաս։','Օգտվեք կոդերի որոնիչից ստորև կամ ուղարկեք լուսանկար WhatsApp-ով։','5 000 + ֏',1]
+      ['cool',L("Օդորակիչը չի սառեցնում"),L("Ֆրեոնի արտահոսք, կեղտոտ ֆիլտրեր կամ ռադիատոր, կոմպրեսորի կամ կոնդենսատորի անսարքություն։"),L("Ստուգեք, որ միացված է սառեցման ռեժիմը, և լվացեք ֆիլտրերը։ Եթե 15 րոպեից չի օգնում՝ կանչեք վարպետին։"),'8 000 – 25 000 ֏',1],
+      ['cool',L("Սառեցնում է թույլ"),L("Կեղտոտ ռադիատոր, ֆրեոնի պակաս, սենյակի համար փոքր հզորություն։"),L("Փակեք պատուհանները, մաքրեք ֆիլտրերը, ստուգեք ջերմաստիճանը վահանակում։"),'12 000 – 15 000 ֏',0],
+      ['heat',L("Չի տաքացնում"),L("Արտաքին բլոկի սառցակալում, 4-ուղի փականի անսարքություն, ֆրեոնի պակաս։ −15°C-ից ցածր սովորական մոդելները կորցնում են արդյունավետությունը։"),L("Համոզվեք, որ միացված է ջեռուցման ռեժիմը, և սպասեք 5–10 րոպե․ համակարգը նախ տաքանում է։"),'10 000 – 30 000 ֏',1],
+      ['heat',L("Արտաքին բլոկը սառցակալել է"),L("Ձմեռային ռեժիմում դա նորմալ է կարճ ժամանակով․ երկար սառցակալումը՝ սենսորի կամ ֆրեոնի խնդիր։"),L("Մի մաքրեք սառույցը սուր առարկաներով։ Սպասեք ավտոմատ հալեցման ցիկլին (մինչև 10 րոպե)։"),'5 000 – 15 000 ֏',0],
+      ['water',L("Ջուր է կաթում ներքին բլոկից"),L("Խցանված դրենաժ, մոնտաժի ժամանակ սխալ թեքություն, սառցակալած ռադիատոր։"),L("Անջատեք օդորակիչը և տեղադրեք տարա։ Դրենաժի մաքրումը տևում է 30–40 րոպե։"),'7 000 – 12 000 ֏',1],
+      ['water',L("Սառույց է գոյանում խողովակներին"),L("Ֆրեոնի պակաս, կեղտոտ ֆիլտրեր, օդափոխիչի թույլ աշխատանք։"),L("Անջատեք 1–2 ժամով, որ սառույցը հալվի, և մաքրեք ֆիլտրերը։"),'12 000 – 25 000 ֏',1],
+      ['air',L("Տհաճ հոտ է գալիս"),L("Բորբոս և բակտերիաներ ռադիատորի և օդափոխիչի վրա, կեղտոտ դրենաժ։"),L("Լվացեք ֆիլտրերը։ Խորը ախտահանում անհրաժեշտ է տարին 1–2 անգամ։"),'12 000 – 20 000 ֏',0],
+      ['air',L("Փոշի կամ սև կետեր են դուրս գալիս"),L("Կեղտոտ տուրբինա և բորբոս օդափոխիչի շեղբերին։"),L("Մի օգտագործեք մինչև մաքրումը, հատկապես երեխաների սենյակում։"),'20 000 ֏',1],
+      ['noise',L("Աղմկում կամ թրթռում է"),L("Թուլացած ամրակներ, օդափոխիչի անհավասարակշռություն, կոմպրեսորի մաշվածություն։"),L("Ստուգեք, արդյոք ինչ-որ բան չի դիպչում արտաքին բլոկին։ Մետաղական ձայնի դեպքում անմիջապես անջատեք։"),'5 000 – 20 000 ֏',1],
+      ['noise',L("Ճտճտում է միանալիս"),L("Պլաստմասսայի ջերմային ընդարձակում, սովորաբար վտանգավոր չէ։"),L("Եթե ձայնը կրկնվում է աշխատանքի ընթացքում, ստուգեք ամրակները։"),'—',0],
+      ['elec',L("Ինքն իրեն անջատվում է"),L("Գերտաքացում, սենսորի կամ էլեկտրոնիկայի անսարքություն, լարման տատանումներ։"),L("Մաքրեք ֆիլտրերը և ստուգեք վահանակի թայմերը։"),'8 000 – 20 000 ֏',1],
+      ['elec',L("Չի արձագանքում վահանակին"),L("Մարտկոցներ, ընդունիչ սենսոր, կառավարման սալիկ։"),L("Փոխեք մարտկոցները և փորձեք միացնել բլոկի կոճակով։"),'0 – 15 000 ֏',0],
+      ['elec',L("Էկրանին սխալի կոդ է"),L("Կոդը ցույց է տալիս կոնկրետ անսարքություն՝ սենսոր, բլոկների միջև կապ, ֆրեոնի պակաս։"),L("Օգտվեք կոդերի որոնիչից ստորև կամ ուղարկեք լուսանկար WhatsApp-ով։"),'5 000 + ֏',1]
     ];
     const ql = q.trim().toLowerCase();
     const filtered = all.map((r, i) => ({ r, i })).filter(x => (cat === 'all' || x.r[0] === cat) && (!ql || (x.r[1] + ' ' + x.r[2]).toLowerCase().includes(ql)));
@@ -45,58 +49,58 @@ export default class Problems extends DCLogic {
       const o = i === open;
       return { q: r[1], c: r[2], d: r[3], price: r[4], ic: F[r[0]], catLabel: catNames[r[0]], level: lv[r[5]], open: o, rot: o ? 'rotate(180deg)' : 'rotate(0deg)', border: o ? '#9FC3E0' : '#E1ECF5', icBg: o ? '#0A6FB0' : '#EAF4FB', icFg: o ? '#fff' : '#0A6FB0', toggle: () => this.setState({ open: o ? -1 : i }) };
     });
-    const catDefs = [['all', 'Բոլորը']].concat(Object.keys(catNames).map(k => [k, catNames[k]]));
+    const catDefs = [['all', L("Բոլորը")]].concat(Object.keys(catNames).map(k => [k, catNames[k]]));
     const cats = catDefs.map(c => { const on = c[0] === cat; return { label: c[1], on, pick: () => this.setState({ cat: c[0] }), style: 'min-height: 44px; padding: 0 18px; border-radius: 999px; font-family: inherit; font-size: 15px; font-weight: 800; cursor: pointer; ' + (on ? 'background: #0B2236; color: #fff; border: 1.5px solid #0B2236' : 'background: #fff; color: #0B2236; border: 1.5px solid #D5E2EE') }; });
 
     const DB = {
       gree: { name: 'Gree', codes: {
-        E6: ['Կապի խափանում բլոկների միջև', 'Ներքին և արտաքին բլոկները չեն «տեսնում» միմյանց․ ստուգվում է միացման մալուխը և կառավարման սալիկները։'],
-        H6: ['Ներքին օդափոխիչի շարժիչ', 'Օդափոխիչի շարժիչը չի տալիս ազդանշան․ հնարավոր է շարժիչի կամ սալիկի անսարքություն։'],
-        F0: ['Ֆրեոնի պակաս կամ արտահոսք', 'Անհրաժեշտ է արտահոսքի որոնում, զոդում և լիցքավորում ըստ նորմայի։'],
-        E5: ['Գերհոսանքից պաշտպանություն', 'Կոմպրեսորը ծանրաբեռնված է կամ լարումը անկայուն է։'],
-        E1: ['Բարձր ճնշման պաշտպանություն', 'Հաճախ պատճառը կեղտոտ արտաքին ռադիատորն է, չաշխատող արտաքին օդափոխիչը կամ ֆրեոնի ավելցուկը։']
+        E6: [L("Կապի խափանում բլոկների միջև"), L("Ներքին և արտաքին բլոկները չեն «տեսնում» միմյանց․ ստուգվում է միացման մալուխը և կառավարման սալիկները։")],
+        H6: [L("Ներքին օդափոխիչի շարժիչ"), L("Օդափոխիչի շարժիչը չի տալիս ազդանշան․ հնարավոր է շարժիչի կամ սալիկի անսարքություն։")],
+        F0: [L("Ֆրեոնի պակաս կամ արտահոսք"), L("Անհրաժեշտ է արտահոսքի որոնում, զոդում և լիցքավորում ըստ նորմայի։")],
+        E5: [L("Գերհոսանքից պաշտպանություն"), L("Կոմպրեսորը ծանրաբեռնված է կամ լարումը անկայուն է։")],
+        E1: [L("Բարձր ճնշման պաշտպանություն"), L("Հաճախ պատճառը կեղտոտ արտաքին ռադիատորն է, չաշխատող արտաքին օդափոխիչը կամ ֆրեոնի ավելցուկը։")]
       } },
       midea: { name: 'Midea', codes: {
-        E1: ['Կապի խափանում բլոկների միջև', 'Ստուգվում է միացման մալուխը, հոսանքի սնուցումը և կառավարման սալիկները։'],
-        E3: ['Ներքին օդափոխիչի արագության խափանում', 'Օդափոխիչի շարժիչը չի պտտվում ճիշտ արագությամբ․ ստուգվում են շարժիչը, կոնդենսատորը և սալիկը։'],
-        E4: ['Սենյակի ջերմաստիճանի սենսոր', 'Ներքին բլոկի ջերմաստիճանի սենսորը կտրված է կամ կարճ միացում ունի․ սովորաբար փոխարինվում է սենսորը։'],
-        EC: ['Ֆրեոնի արտահոսք', 'Համակարգը հայտնաբերել է ֆրեոնի պակաս․ անհրաժեշտ է արտահոսքի որոնում և լիցքավորում։'],
-        P1: ['Բարձր կամ ցածր լարում', 'Ցանցի լարումը նորմայից դուրս է․ խորհուրդ է տրվում լարման կայունացուցիչ։']
+        E1: [L("Կապի խափանում բլոկների միջև"), L("Ստուգվում է միացման մալուխը, հոսանքի սնուցումը և կառավարման սալիկները։")],
+        E3: [L("Ներքին օդափոխիչի արագության խափանում"), L("Օդափոխիչի շարժիչը չի պտտվում ճիշտ արագությամբ․ ստուգվում են շարժիչը, կոնդենսատորը և սալիկը։")],
+        E4: [L("Սենյակի ջերմաստիճանի սենսոր"), L("Ներքին բլոկի ջերմաստիճանի սենսորը կտրված է կամ կարճ միացում ունի․ սովորաբար փոխարինվում է սենսորը։")],
+        EC: [L("Ֆրեոնի արտահոսք"), L("Համակարգը հայտնաբերել է ֆրեոնի պակաս․ անհրաժեշտ է արտահոսքի որոնում և լիցքավորում։")],
+        P1: [L("Բարձր կամ ցածր լարում"), L("Ցանցի լարումը նորմայից դուրս է․ խորհուրդ է տրվում լարման կայունացուցիչ։")]
       } },
       daikin: { name: 'Daikin', codes: {
-        U4: ['Կապի խափանում բլոկների միջև', 'Ներքին և արտաքին բլոկների միջև ազդանշան չկա․ ստուգվում են մալուխը, սնուցումը և սալիկները։'],
-        U0: ['Ֆրեոնի պակաս', 'Համակարգում ֆրեոնը քիչ է․ անհրաժեշտ է արտահոսքի որոնում և լիցքավորում։'],
-        A6: ['Ներքին օդափոխիչի շարժիչ', 'Ներքին բլոկի օդափոխիչը կանգնած է կամ խցանված․ ստուգվում են շարժիչը և սալիկը։'],
-        E6: ['Կոմպրեսորի գործարկման խափանում', 'Կոմպրեսորը չի գործարկվում կամ արգելափակված է․ պատճառը կարող է լինել լարումը, սալիկը կամ կոմպրեսորը։'],
-        E7: ['Արտաքին օդափոխիչի շարժիչ', 'Արտաքին բլոկի օդափոխիչը չի պտտվում․ ստուգվում են շարժիչը և կառավարման սալիկը։']
+        U4: [L("Կապի խափանում բլոկների միջև"), L("Ներքին և արտաքին բլոկների միջև ազդանշան չկա․ ստուգվում են մալուխը, սնուցումը և սալիկները։")],
+        U0: [L("Ֆրեոնի պակաս"), L("Համակարգում ֆրեոնը քիչ է․ անհրաժեշտ է արտահոսքի որոնում և լիցքավորում։")],
+        A6: [L("Ներքին օդափոխիչի շարժիչ"), L("Ներքին բլոկի օդափոխիչը կանգնած է կամ խցանված․ ստուգվում են շարժիչը և սալիկը։")],
+        E6: [L("Կոմպրեսորի գործարկման խափանում"), L("Կոմպրեսորը չի գործարկվում կամ արգելափակված է․ պատճառը կարող է լինել լարումը, սալիկը կամ կոմպրեսորը։")],
+        E7: [L("Արտաքին օդափոխիչի շարժիչ"), L("Արտաքին բլոկի օդափոխիչը չի պտտվում․ ստուգվում են շարժիչը և կառավարման սալիկը։")]
       } },
       lg: { name: 'LG', codes: {
-        CH01: ['Սենյակի ջերմաստիճանի սենսոր', 'Ներքին բլոկի օդի սենսորը անսարք է կամ անջատված․ սովորաբար փոխարինվում է սենսորը։'],
-        CH05: ['Կապի խափանում բլոկների միջև', 'Ներքին և արտաքին բլոկները չեն կապվում․ ստուգվում են մալուխը, միացումները և սալիկները։'],
-        CH10: ['Ներքին օդափոխիչի շարժիչ', 'Ներքին BLDC օդափոխիչը արգելափակված է կամ անսարք․ ստուգվում են շարժիչը և սալիկը։'],
-        CH21: ['Ինվերտորի գերհոսանք (DC Peak)', 'Կոմպրեսորի կամ ինվերտորային սալիկի գերհոսանք․ հաճախ կապված է լարման անկայունության հետ։'],
-        CH38: ['Ֆրեոնի պակաս', 'Համակարգը հայտնաբերել է ֆրեոնի պակաս․ անհրաժեշտ է արտահոսքի որոնում և լիցքավորում։']
+        CH01: [L("Սենյակի ջերմաստիճանի սենսոր"), L("Ներքին բլոկի օդի սենսորը անսարք է կամ անջատված․ սովորաբար փոխարինվում է սենսորը։")],
+        CH05: [L("Կապի խափանում բլոկների միջև"), L("Ներքին և արտաքին բլոկները չեն կապվում․ ստուգվում են մալուխը, միացումները և սալիկները։")],
+        CH10: [L("Ներքին օդափոխիչի շարժիչ"), L("Ներքին BLDC օդափոխիչը արգելափակված է կամ անսարք․ ստուգվում են շարժիչը և սալիկը։")],
+        CH21: [L("Ինվերտորի գերհոսանք (DC Peak)"), L("Կոմպրեսորի կամ ինվերտորային սալիկի գերհոսանք․ հաճախ կապված է լարման անկայունության հետ։")],
+        CH38: [L("Ֆրեոնի պակաս"), L("Համակարգը հայտնաբերել է ֆրեոնի պակաս․ անհրաժեշտ է արտահոսքի որոնում և լիցքավորում։")]
       } },
       samsung: { name: 'Samsung', codes: {
-        E101: ['Կապի խափանում բլոկների միջև', 'Ներքին և արտաքին բլոկները չեն կապվում․ ստուգվում են մալուխը և կառավարման սալիկները։'],
-        E121: ['Սենյակի ջերմաստիճանի սենսոր', 'Ներքին բլոկի ջերմաստիճանի սենսորը անսարք է․ սովորաբար փոխարինվում է սենսորը։'],
-        E154: ['Ներքին օդափոխիչի շարժիչ', 'Ներքին օդափոխիչը չի պտտվում կամ արագությունը սխալ է․ ստուգվում են շարժիչը և սալիկը։'],
-        E458: ['Արտաքին օդափոխիչի շարժիչ', 'Արտաքին բլոկի օդափոխիչը անսարք է․ ստուգվում են շարժիչը և միացումները։'],
-        E554: ['Ֆրեոնի արտահոսք', 'Համակարգում ֆրեոնը քիչ է․ անհրաժեշտ է արտահոսքի որոնում, զոդում և լիցքավորում։']
+        E101: [L("Կապի խափանում բլոկների միջև"), L("Ներքին և արտաքին բլոկները չեն կապվում․ ստուգվում են մալուխը և կառավարման սալիկները։")],
+        E121: [L("Սենյակի ջերմաստիճանի սենսոր"), L("Ներքին բլոկի ջերմաստիճանի սենսորը անսարք է․ սովորաբար փոխարինվում է սենսորը։")],
+        E154: [L("Ներքին օդափոխիչի շարժիչ"), L("Ներքին օդափոխիչը չի պտտվում կամ արագությունը սխալ է․ ստուգվում են շարժիչը և սալիկը։")],
+        E458: [L("Արտաքին օդափոխիչի շարժիչ"), L("Արտաքին բլոկի օդափոխիչը անսարք է․ ստուգվում են շարժիչը և միացումները։")],
+        E554: [L("Ֆրեոնի արտահոսք"), L("Համակարգում ֆրեոնը քիչ է․ անհրաժեշտ է արտահոսքի որոնում, զոդում և լիցքավորում։")]
       } },
       mitsubishi: { name: 'Mitsubishi', codes: {
-        E6: ['Կապի խափանում բլոկների միջև', 'Ներքին և արտաքին բլոկների միջև ազդանշան չկա․ ստուգվում են մալուխը, սնուցումը և սալիկները։'],
-        P1: ['Օդի ջերմաստիճանի սենսոր', 'Ներքին բլոկի օդի սենսորը անսարք է կամ անջատված․ սովորաբար փոխարինվում է սենսորը։'],
-        P8: ['Խողովակի ջերմաստիճանի շեղում', 'Ներքին ռադիատորը չի հասնում պետք եղած ջերմաստիճանին․ հաճախ պատճառը ֆրեոնի պակասն է։'],
-        U0: ['Կոմպրեսորի գերտաքացում / ֆրեոնի պակաս', 'Կոմպրեսորից դուրս եկող գազը չափից տաք է․ սովորաբար ֆրեոնը քիչ է։'],
-        U1: ['Բարձր ճնշման պաշտպանություն', 'Կեղտոտ արտաքին ռադիատոր, չաշխատող օդափոխիչ կամ ֆրեոնի ավելցուկ։']
+        E6: [L("Կապի խափանում բլոկների միջև"), L("Ներքին և արտաքին բլոկների միջև ազդանշան չկա․ ստուգվում են մալուխը, սնուցումը և սալիկները։")],
+        P1: [L("Օդի ջերմաստիճանի սենսոր"), L("Ներքին բլոկի օդի սենսորը անսարք է կամ անջատված․ սովորաբար փոխարինվում է սենսորը։")],
+        P8: [L("Խողովակի ջերմաստիճանի շեղում"), L("Ներքին ռադիատորը չի հասնում պետք եղած ջերմաստիճանին․ հաճախ պատճառը ֆրեոնի պակասն է։")],
+        U0: [L("Կոմպրեսորի գերտաքացում / ֆրեոնի պակաս"), L("Կոմպրեսորից դուրս եկող գազը չափից տաք է․ սովորաբար ֆրեոնը քիչ է։")],
+        U1: [L("Բարձր ճնշման պաշտպանություն"), L("Կեղտոտ արտաքին ռադիատոր, չաշխատող օդափոխիչ կամ ֆրեոնի ավելցուկ։")]
       } },
       hisense: { name: 'Hisense', codes: {
-        E1: ['Սենյակի ջերմաստիճանի սենսոր', 'Ներքին բլոկի օդի սենսորը անսարք է կամ անջատված․ սովորաբար փոխարինվում է սենսորը։'],
-        E2: ['Ռադիատորի ջերմաստիճանի սենսոր', 'Ներքին ռադիատորի (խողովակի) սենսորը անսարք է․ ստուգվում և փոխարինվում է սենսորը։'],
-        E4: ['Ներքին օդափոխիչի շարժիչ', 'Ներքին օդափոխիչը չի պտտվում կամ ազդանշան չի տալիս․ ստուգվում են շարժիչը և սալիկը։'],
-        E5: ['Կապի խափանում բլոկների միջև', 'Ներքին և արտաքին բլոկները չեն կապվում․ ստուգվում են մալուխը, սնուցումը և սալիկները։'],
-        E6: ['Արտաքին բլոկի անսարքություն', 'Արտաքին բլոկը հայտնում է սխալ (կոմպրեսոր, օդափոխիչ կամ սալիկ)․ անհրաժեշտ է վարպետի ախտորոշում։']
+        E1: [L("Սենյակի ջերմաստիճանի սենսոր"), L("Ներքին բլոկի օդի սենսորը անսարք է կամ անջատված․ սովորաբար փոխարինվում է սենսորը։")],
+        E2: [L("Ռադիատորի ջերմաստիճանի սենսոր"), L("Ներքին ռադիատորի (խողովակի) սենսորը անսարք է․ ստուգվում և փոխարինվում է սենսորը։")],
+        E4: [L("Ներքին օդափոխիչի շարժիչ"), L("Ներքին օդափոխիչը չի պտտվում կամ ազդանշան չի տալիս․ ստուգվում են շարժիչը և սալիկը։")],
+        E5: [L("Կապի խափանում բլոկների միջև"), L("Ներքին և արտաքին բլոկները չեն կապվում․ ստուգվում են մալուխը, սնուցումը և սալիկները։")],
+        E6: [L("Արտաքին բլոկի անսարքություն"), L("Արտաքին բլոկը հայտնում է սխալ (կոմպրեսոր, օդափոխիչ կամ սալիկ)․ անհրաժեշտ է վարպետի ախտորոշում։")]
       } }
     };
     const brand = s.brand || 'gree';
@@ -107,41 +111,43 @@ export default class Problems extends DCLogic {
     const qk = Object.keys(B.codes).length ? Object.keys(B.codes) : ['E1', 'E6', 'F0', 'H6'];
     return {
       q, onQ: (e) => this.setState({ q: e.target.value, open: -1 }),
-      found: filtered.length + ' խնդիր',
+      found: this.props.lang === 'ru' ? (n => n + ' ' + (n % 10 === 1 && n % 100 !== 11 ? 'проблема' : [2, 3, 4].includes(n % 10) && ![12, 13, 14].includes(n % 100) ? 'проблемы' : 'проблем'))(filtered.length) : filtered.length + L(" խնդիր"),
       cats, items, empty: items.length === 0,
       brands, code: s.code ?? 'E6', codeShown: code || '—', brandName: B.name,
       onCode: (e) => this.setState({ code: e.target.value }),
       quick: qk.map(c => ({ c, pick: () => this.setState({ code: c }) })),
-      resTitle: hit ? hit[0] : 'Այս կոդը դեռ բազայում չէ',
-      resText: hit ? hit[1] : 'Ուղարկեք էկրանի լուսանկարը WhatsApp-ով, և վարպետը 10 րոպեում կասի պատճառը և մոտավոր գինը։'
+      resTitle: hit ? hit[0] : L("Այս կոդը դեռ բազայում չէ"),
+      resText: hit ? hit[1] : L("Ուղարկեք էկրանի լուսանկարը WhatsApp-ով, և վարպետը 10 րոպեում կասի պատճառը և մոտավոր գինը։")
     };
   }
 
   render() {
+    const L = tr(this.props.lang, RU);
+    const P = (p: string) => path(this.props.lang, p);
     const V: any = this.renderVals() || {};
     return (
       <>
         <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       <div style={{ fontFamily : "'Manrope', 'Noto Sans Armenian', system-ui, sans-serif", color : "#0B2236", background : "#F4F8FC", overflowX : "clip" }}>
         <div style={{ position : "sticky", top : "0", zIndex : "60" }}>
-          <Header active="problems" lang="hy" />
+          <Header active="problems" lang={this.props.lang ?? 'hy'} />
         </div>
         <section style={{ padding : "64px 24px 40px", position : "relative", overflow : "hidden" }}>
           <div aria-hidden="true" style={{ position : "absolute", inset : "0", backgroundImage : "radial-gradient(rgba(11,34,54,.09) 1.2px, transparent 1.2px)", backgroundSize : "26px 26px", maskImage : "linear-gradient(180deg, #000, transparent 90%)", WebkitMaskImage : "linear-gradient(180deg, #000, transparent 90%)" }} />
           <div style={{ maxWidth : "900px", margin : "0 auto", textAlign : "center", position : "relative" }}>
             <span className="rise" style={{ display : "inline-flex", alignItems : "center", gap : "10px", background : "#fff", border : "1px solid #DCE8F2", borderRadius : "999px", padding : "8px 16px", fontWeight : "700", fontSize : "14px" }}>
               <span className="pulse-dot" style={{ width : "8px", height : "8px", borderRadius : "50%", background : "#F28A2E" }} />
-              {"Ինքնաախտորոշման ուղեցույց"}
+              {L("Ինքնաախտորոշման ուղեցույց")}
             </span>
             <h1 className="rise d1 h1x" style={{ margin : "22px 0 16px", fontSize : "62px", lineHeight : "1.05", letterSpacing : "-0.035em", fontWeight : "800" }}>
-              {"Ինչ է պատահել "}
+              {L("Ինչ է պատահել ")}
               <span style={{ color : "#0A6FB0" }}>
-                {"օդորակիչին"}
+                {L("օդորակիչին")}
               </span>
               {"։"}
             </h1>
             <p className="rise d2" style={{ margin : "0 auto 34px", fontSize : "19px", lineHeight : "1.6", color : "#3F566B", maxWidth : "640px" }}>
-              {"Գտեք ձեր խնդիրը, հասկացեք պատճառը և իմացեք՝ ինչ կարող եք անել ինքներդ, իսկ երբ է պետք վարպետ։"}
+              {L("Գտեք ձեր խնդիրը, հասկացեք պատճառը և իմացեք՝ ինչ կարող եք անել ինքներդ, իսկ երբ է պետք վարպետ։")}
             </p>
             <label className="rise d3 search" style={{ display : "flex", alignItems : "center", gap : "14px", background : "#fff", border : "1.5px solid #D5E2EE", borderRadius : "22px", padding : "8px 8px 8px 22px", maxWidth : "680px", margin : "0 auto", boxShadow : "0 24px 48px -28px rgba(11,34,54,.45)", transition : "box-shadow .25s, border-color .25s" }}>
               <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A6FB0" strokeWidth="2.2" strokeLinecap="round">
@@ -149,9 +155,9 @@ export default class Problems extends DCLogic {
                 <path d="M20 20l-4-4" />
               </svg>
               <span style={{ position : "absolute", width : "1px", height : "1px", overflow : "hidden", clip : "rect(0 0 0 0)" }}>
-                {"Որոնել խնդիրը"}
+                {L("Որոնել խնդիրը")}
               </span>
-              <input type="search" value={V.q} onChange={V.onQ} placeholder="Օր․՝ չի սառեցնում, ջուր է կաթում, հոտ…" style={{ flex : "1", minWidth : "0", border : "0", outline : "none", fontFamily : "inherit", fontSize : "17px", height : "52px", background : "transparent", color : "#0B2236" }} />
+              <input type="search" value={V.q} onChange={V.onQ} placeholder={L("Օր․՝ չի սառեցնում, ջուր է կաթում, հոտ…")} style={{ flex : "1", minWidth : "0", border : "0", outline : "none", fontFamily : "inherit", fontSize : "17px", height : "52px", background : "transparent", color : "#0B2236" }} />
               <span style={{ background : "#0B2236", color : "#fff", borderRadius : "16px", padding : "14px 18px", fontWeight : "800", fontSize : "14px", whiteSpace : "nowrap" }}>
                 {V.found}
               </span>
@@ -160,7 +166,7 @@ export default class Problems extends DCLogic {
         </section>
         <section style={{ padding : "8px 24px 72px" }}>
           <div style={{ maxWidth : "1100px", margin : "0 auto" }}>
-            <div role="group" aria-label="Կատեգորիա" style={{ display : "flex", flexWrap : "wrap", gap : "10px", justifyContent : "center", marginBottom : "28px" }}>
+            <div role="group" aria-label={L("Կատեգորիա")} style={{ display : "flex", flexWrap : "wrap", gap : "10px", justifyContent : "center", marginBottom : "28px" }}>
               {(V.cats ?? []).map((c: any, $i7: number) => (
                 <React.Fragment key={$i7}>
                   <button type="button" className="chip" onClick={c?.pick} aria-pressed={c?.on} style={css(c?.style)}>
@@ -169,7 +175,7 @@ export default class Problems extends DCLogic {
                 </React.Fragment>
               ))}
             </div>
-            <a href="/contacts/#offer" className="ann-shine lift" style={{ display : "flex", flexWrap : "wrap", alignItems : "center", gap : "16px", background : "#FFF1E4", border : "1.5px solid #F6C9A0", borderRadius : "22px", padding : "16px 20px", textDecoration : "none", color : "#0B2236", marginBottom : "22px" }}>
+            <a href={P("/contacts/#offer")} className="ann-shine lift" style={{ display : "flex", flexWrap : "wrap", alignItems : "center", gap : "16px", background : "#FFF1E4", border : "1.5px solid #F6C9A0", borderRadius : "22px", padding : "16px 20px", textDecoration : "none", color : "#0B2236", marginBottom : "22px" }}>
               <span className="ann-gift" style={{ width : "50px", height : "50px", borderRadius : "15px", background : "#F28A2E", color : "#0B2236", display : "inline-flex", alignItems : "center", justifyContent : "center", flex : "none" }}>
                 <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 8h18v4H3z M5 12v9h14v-9 M12 8v13 M12 8c-2-4-6-4-6-1.5S10 8 12 8z M12 8c2-4 6-4 6-1.5S14 8 12 8z" />
@@ -177,10 +183,10 @@ export default class Problems extends DCLogic {
               </span>
               <span style={{ flex : "1 1 320px", minWidth : "0" }}>
                 <span style={{ display : "block", fontSize : "12px", fontWeight : "800", letterSpacing : ".08em", textTransform : "uppercase", color : "#B85A0E" }}>
-                  {"Շատ խնդիրներ լուծվում են լվացումով · Հատուկ առաջարկ"}
+                  {L("Շատ խնդիրներ լուծվում են լվացումով · Հատուկ առաջարկ")}
                 </span>
                 <span style={{ display : "block", fontWeight : "800", fontSize : "17px", lineHeight : "1.4" }}>
-                  {"Լվացում (ներսի և դրսի բլոկ) ընդամենը 15 000 ֏ + ֆրեոնի լիցքավորում և ախտորոշում՝ նվեր"}
+                  {L("Լվացում (ներսի և դրսի բլոկ) ընդամենը 15 000 ֏ + ֆրեոնի լիցքավորում և ախտորոշում՝ նվեր")}
                 </span>
               </span>
               <span style={{ display : "inline-flex", alignItems : "baseline", gap : "10px", whiteSpace : "nowrap" }}>
@@ -192,7 +198,7 @@ export default class Problems extends DCLogic {
                 </span>
               </span>
               <span className="btn-o" style={{ padding : "12px 20px", fontSize : "15px" }}>
-                {"Պատվիրել"}
+                {L("Պատվիրել")}
               </span>
             </a>
             <div style={{ display : "flex", flexDirection : "column", gap : "12px" }}>
@@ -222,7 +228,7 @@ export default class Problems extends DCLogic {
                         <div className="bub ans" style={{ padding : "0 22px 22px 84px", display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(240px, 1fr))", gap : "14px" }}>
                           <div style={{ background : "#F4F8FC", borderRadius : "16px", padding : "16px 18px" }}>
                             <div style={{ fontSize : "12px", fontWeight : "800", letterSpacing : ".08em", textTransform : "uppercase", color : "#0A6FB0", marginBottom : "8px" }}>
-                              {"Հնարավոր պատճառներ"}
+                              {L("Հնարավոր պատճառներ")}
                             </div>
                             <div style={{ lineHeight : "1.55", color : "#3F566B" }}>
                               {f?.c}
@@ -230,7 +236,7 @@ export default class Problems extends DCLogic {
                           </div>
                           <div style={{ background : "#FFF4EA", borderRadius : "16px", padding : "16px 18px" }}>
                             <div style={{ fontSize : "12px", fontWeight : "800", letterSpacing : ".08em", textTransform : "uppercase", color : "#B85A0E", marginBottom : "8px" }}>
-                              {"Ինչ անել հիմա"}
+                              {L("Ինչ անել հիմա")}
                             </div>
                             <div style={{ lineHeight : "1.55", color : "#3F566B" }}>
                               {f?.d}
@@ -238,13 +244,13 @@ export default class Problems extends DCLogic {
                           </div>
                           <div style={{ gridColumn : "1 / -1", display : "flex", flexWrap : "wrap", gap : "12px", alignItems : "center", justifyContent : "space-between", background : "#0B2236", color : "#fff", borderRadius : "16px", padding : "14px 18px" }}>
                             <span style={{ fontWeight : "700" }}>
-                              {"Վերանորոգման մոտավոր գինը՝ "}
+                              {L("Վերանորոգման մոտավոր գինը՝ ")}
                               <span style={{ color : "#F6A75F" }}>
                                 {f?.price}
                               </span>
                             </span>
-                            <a href="/contacts/" className="btn-o" style={{ padding : "11px 18px", fontSize : "14px" }}>
-                              {"Կանչել վարպետին"}
+                            <a href={P("/contacts/")} className="btn-o" style={{ padding : "11px 18px", fontSize : "14px" }}>
+                              {L("Կանչել վարպետին")}
                             </a>
                           </div>
                         </div>
@@ -257,13 +263,13 @@ export default class Problems extends DCLogic {
                 <>
                   <div style={{ textAlign : "center", background : "#fff", border : "1.5px dashed #C3D6E6", borderRadius : "22px", padding : "40px" }}>
                     <div style={{ fontWeight : "800", fontSize : "20px", marginBottom : "8px" }}>
-                      {"Չգտանք նման խնդիր"}
+                      {L("Չգտանք նման խնդիր")}
                     </div>
                     <div style={{ color : "#4A5F73", marginBottom : "18px" }}>
-                      {"Ուղարկեք լուսանկար կամ տեսանյութ, և վարպետը կպատասխանի 10 րոպեում։"}
+                      {L("Ուղարկեք լուսանկար կամ տեսանյութ, և վարպետը կպատասխանի 10 րոպեում։")}
                     </div>
                     <a href="https://wa.me/37491105887" className="btn-wa">
-                      {"Գրել WhatsApp-ով"}
+                      {L("Գրել WhatsApp-ով")}
                     </a>
                   </div>
                 </>
@@ -275,15 +281,15 @@ export default class Problems extends DCLogic {
           <div style={{ maxWidth : "1280px", margin : "0 auto", display : "flex", flexWrap : "wrap", gap : "48px", alignItems : "center" }}>
             <div className="rv" style={{ flex : "1 1 420px", minWidth : "0" }}>
               <div style={{ fontSize : "14px", fontWeight : "800", letterSpacing : ".12em", textTransform : "uppercase", color : "#B85A0E", marginBottom : "12px" }}>
-                {"Սխալի կոդեր"}
+                {L("Սխալի կոդեր")}
               </div>
               <h2 className="h2x" style={{ margin : "0 0 14px", fontSize : "46px", lineHeight : "1.1", letterSpacing : "-0.03em", fontWeight : "800" }}>
-                {"Ի՞նչ է նշանակում կոդը էկրանին"}
+                {L("Ի՞նչ է նշանակում կոդը էկրանին")}
               </h2>
               <p style={{ margin : "0 0 26px", color : "#4A5F73", fontSize : "17px", lineHeight : "1.6" }}>
-                {"Ընտրեք բրենդը և մուտքագրեք կոդը։ Նույն կոդը տարբեր բրենդների մոտ կարող է տարբեր նշանակություն ունենալ։"}
+                {L("Ընտրեք բրենդը և մուտքագրեք կոդը։ Նույն կոդը տարբեր բրենդների մոտ կարող է տարբեր նշանակություն ունենալ։")}
               </p>
-              <div role="group" aria-label="Բրենդ" style={{ display : "flex", flexWrap : "wrap", gap : "8px", marginBottom : "18px" }}>
+              <div role="group" aria-label={L("Բրենդ")} style={{ display : "flex", flexWrap : "wrap", gap : "8px", marginBottom : "18px" }}>
                 {(V.brands ?? []).map((b: any, $i8: number) => (
                   <React.Fragment key={$i8}>
                     <button type="button" className="chip" onClick={b?.pick} aria-pressed={b?.on} style={css(b?.style)}>
@@ -293,9 +299,9 @@ export default class Problems extends DCLogic {
                 ))}
               </div>
               <label htmlFor="code" style={{ display : "block", fontWeight : "700", fontSize : "14px", marginBottom : "8px" }}>
-                {"Սխալի կոդ"}
+                {L("Սխալի կոդ")}
               </label>
-              <input id="code" value={V.code} onChange={V.onCode} placeholder="Օր․՝ E6" maxLength="4" style={{ width : "100%", maxWidth : "280px", height : "60px", border : "1.5px solid #D5E2EE", borderRadius : "16px", padding : "0 18px", fontFamily : "inherit", fontSize : "24px", fontWeight : "800", letterSpacing : ".1em", textTransform : "uppercase", background : "#F7FAFD", color : "#0B2236" }} />
+              <input id="code" value={V.code} onChange={V.onCode} placeholder={L("Օր․՝ E6")} maxLength="4" style={{ width : "100%", maxWidth : "280px", height : "60px", border : "1.5px solid #D5E2EE", borderRadius : "16px", padding : "0 18px", fontFamily : "inherit", fontSize : "24px", fontWeight : "800", letterSpacing : ".1em", textTransform : "uppercase", background : "#F7FAFD", color : "#0B2236" }} />
               <div style={{ display : "flex", flexWrap : "wrap", gap : "8px", marginTop : "14px" }}>
                 {(V.quick ?? []).map((k: any, $i8: number) => (
                   <React.Fragment key={$i8}>
@@ -331,8 +337,8 @@ export default class Problems extends DCLogic {
                     {V.resText}
                   </div>
                   <div style={{ display : "flex", flexWrap : "wrap", gap : "10px", marginTop : "22px" }}>
-                    <a href="/contacts/" className="btn-o" style={{ padding : "13px 20px", fontSize : "15px" }}>
-                      {"Կանչել վարպետին"}
+                    <a href={P("/contacts/")} className="btn-o" style={{ padding : "13px 20px", fontSize : "15px" }}>
+                      {L("Կանչել վարպետին")}
                     </a>
                   </div>
                 </div>
@@ -349,29 +355,29 @@ export default class Problems extends DCLogic {
             </span>
             <div style={{ flex : "1 1 420px" }}>
               <div style={{ fontSize : "28px", fontWeight : "800", letterSpacing : "-0.02em", marginBottom : "10px" }}>
-                {"Անմիջապես անջատեք օդորակիչը հոսանքից, եթե՝"}
+                {L("Անմիջապես անջատեք օդորակիչը հոսանքից, եթե՝")}
               </div>
               <div style={{ display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(240px, 1fr))", gap : "8px 24px", color : "#3F566B", fontWeight : "600" }}>
                 <span>
-                  {"• զգում եք այրվածքի կամ պլաստմասսայի հոտ"}
+                  {L("• զգում եք այրվածքի կամ պլաստմասսայի հոտ")}
                 </span>
                 <span>
-                  {"• նկատում եք ծուխ կամ կայծեր"}
+                  {L("• նկատում եք ծուխ կամ կայծեր")}
                 </span>
                 <span>
-                  {"• լսվում են ուժեղ մետաղական ձայներ կամ թրթռոց"}
+                  {L("• լսվում են ուժեղ մետաղական ձայներ կամ թրթռոց")}
                 </span>
                 <span>
-                  {"• ջուրը կաթում է էլեկտրական հանգույցների կամ վարդակի վրա"}
+                  {L("• ջուրը կաթում է էլեկտրական հանգույցների կամ վարդակի վրա")}
                 </span>
               </div>
             </div>
             <a href="tel:+37441559910" className="btn-o" style={{ flex : "none" }}>
-              {"Շտապ կանչ"}
+              {L("Շտապ կանչ")}
             </a>
           </div>
         </section>
-        <Footer lang="hy" />
+        <Footer lang={this.props.lang ?? 'hy'} />
       </div>
       </>
     );

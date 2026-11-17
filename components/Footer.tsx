@@ -4,8 +4,9 @@
 import React from 'react';
 import { DCLogic, css, muteVideo } from '../lib/dc';
 import Feedback from './Feedback';
+import { path } from '../lib/i18n';
 
-const STYLES = "body{margin:0}";
+const STYLES = "body{margin:0}\n@media (max-width:760px){.ft-cta{padding:32px 22px !important;border-radius:28px !important}.ft-cta-t{font-size:28px !important}}";
 
 export default class Footer extends DCLogic {
   componentDidMount() {
@@ -49,7 +50,7 @@ export default class Footer extends DCLogic {
       minimize: () => { try { sessionStorage.setItem('ac_offer_min', '1'); } catch (e) {} this.setState({ min: true }); },
       pillClick: (e) => { if (!mobile) { e.preventDefault(); try { sessionStorage.removeItem('ac_offer_min'); } catch (er) {} this.setState({ min: false }); } },
       t,
-      coLinks: t.co.map(c => ({ label: c[0], href: c[1] })),
+      coLinks: t.co.map(c => ({ label: c[0], href: path(lang, c[1]) })),
       socials: [
         { name: 'Facebook', href: 'https://www.facebook.com/share/19jo4Xdg5S/', d: 'M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V9H6.5v3.5H9V21h3.5v-8.5H15l.5-3.5h-3V7a1 1 0 0 1 1-1H15z' },
         { name: 'Instagram', href: 'https://www.instagram.com/air_control_ac_service_/', d: 'M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4z M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z M17.5 6.5h.01' },
@@ -60,17 +61,18 @@ export default class Footer extends DCLogic {
 
   render() {
     const V: any = this.renderVals() || {};
+    const P = (p: string) => path(this.props.lang ?? 'hy', p);
     return (
       <>
         <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       <footer style={{ width : "100%", fontFamily : "'Manrope', 'Noto Sans Armenian', system-ui, sans-serif", color : "#C2D3E2", background : "#0B2236", padding : "0 24px", position : "relative", overflow : "hidden" }}>
         <div style={{ maxWidth : "1280px", margin : "0 auto", position : "relative", top : "0", paddingTop : "72px" }}>
-          <div style={{ background : "#0A6FB0", borderRadius : "36px", padding : "48px 56px", display : "flex", flexWrap : "wrap", gap : "28px", alignItems : "center", justifyContent : "space-between", position : "relative", overflow : "hidden" }}>
+          <div className="ft-cta" style={{ background : "#0A6FB0", borderRadius : "36px", padding : "48px 56px", display : "flex", flexWrap : "wrap", gap : "28px", alignItems : "center", justifyContent : "space-between", position : "relative", overflow : "hidden" }}>
             <svg aria-hidden="true" viewBox="0 0 24 24" className="spin" style={{ position : "absolute", right : "26%", top : "-60px", width : "260px", height : "260px", opacity : ".14", animationDuration : "60s" }} fill="none" stroke="#fff" strokeWidth="1" strokeLinecap="round">
               <path d="M12 2v20M4.9 7l14.2 10M4.9 17L19.1 7M9 4l3 2 3-2M9 20l3-2 3 2" />
             </svg>
             <div style={{ position : "relative", maxWidth : "640px" }}>
-              <div style={{ fontSize : "38px", lineHeight : "1.12", fontWeight : "800", letterSpacing : "-0.03em", color : "#fff" }}>
+              <div className="ft-cta-t" style={{ fontSize : "38px", lineHeight : "1.12", fontWeight : "800", letterSpacing : "-0.03em", color : "#fff", overflowWrap : "break-word" }}>
                 {V.t?.ctaTitle}
               </div>
               <div style={{ fontSize : "17px", color : "#D9EAF7", marginTop : "10px" }}>
@@ -78,7 +80,7 @@ export default class Footer extends DCLogic {
               </div>
             </div>
             <div style={{ position : "relative", display : "flex", flexWrap : "wrap", gap : "12px" }}>
-              <a href="/contacts/" className="btn-o">
+              <a href={P("/contacts/")} className="btn-o">
                 {V.t?.cta}
               </a>
               <a href="tel:+37441559910" className="btn-w btn-ghost">
@@ -88,7 +90,7 @@ export default class Footer extends DCLogic {
           </div>
           <div style={{ display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(210px, 1fr))", gap : "40px", padding : "64px 0 48px" }}>
             <div>
-              <a href="/" aria-label="Air Control" style={{ textDecoration : "none", display : "inline-flex", flexDirection : "column", lineHeight : "1" }}>
+              <a href={P("/")} aria-label="Air Control" style={{ textDecoration : "none", display : "inline-flex", flexDirection : "column", lineHeight : "1" }}>
                 <span style={{ fontFamily : "'Playfair Display', Georgia, serif", fontWeight : "900", fontSize : "32px" }}>
                   <span style={{ color : "#4BA8E8" }}>
                     {"Air"}
@@ -99,7 +101,7 @@ export default class Footer extends DCLogic {
                   </span>
                 </span>
                 <span style={{ fontFamily : "'Noto Sans Armenian', sans-serif", fontSize : "10px", letterSpacing : ".12em", color : "#9FC3E0", marginTop : "8px" }}>
-                  {"ՕԴՈՐԱԿԻՉՆԵՐԻ ՍՊԱՍԱՐԿՄԱՆ ԿԵՆՏՐՈՆ"}
+                  {this.props.lang === "ru" ? "ЦЕНТР ОБСЛУЖИВАНИЯ КОНДИЦИОНЕРОВ" : "ՕԴՈՐԱԿԻՉՆԵՐԻ ՍՊԱՍԱՐԿՄԱՆ ԿԵՆՏՐՈՆ"}
                 </span>
               </a>
               <p style={{ margin : "20px 0 22px", lineHeight : "1.6", fontSize : "15px" }}>
@@ -123,7 +125,7 @@ export default class Footer extends DCLogic {
               </div>
               {(V.t?.svcLinks ?? []).map((l: any, $i7: number) => (
                 <React.Fragment key={$i7}>
-                  <a href="/services/" className="ft-link" style={{ display : "block", color : "#C2D3E2", padding : "6px 0", fontSize : "15px" }}>
+                  <a href={P("/services/")} className="ft-link" style={{ display : "block", color : "#C2D3E2", padding : "6px 0", fontSize : "15px" }}>
                     {l}
                   </a>
                 </React.Fragment>
@@ -177,7 +179,7 @@ export default class Footer extends DCLogic {
               {"© 2026 Air Control. "}{V.t?.rights}
             </span>
             <span style={{ display : "flex", gap : "24px" }}>
-              <a href="/privacy/" className="ft-link" style={{ color : "#9FB4C7" }}>
+              <a href={P("/privacy/")} className="ft-link" style={{ color : "#9FB4C7" }}>
                 {V.t?.privacy}
               </a>
             </span>
@@ -231,7 +233,7 @@ export default class Footer extends DCLogic {
                   {V.t?.ofG2}
                 </span>
               </div>
-              <a href="/contacts/#offer" className="btn-o" style={{ width : "100%", padding : "14px 20px", fontSize : "15px" }}>
+              <a href={P("/contacts/#offer")} className="btn-o" style={{ width : "100%", padding : "14px 20px", fontSize : "15px" }}>
                 {V.t?.ofCta}
               </a>
             </div>
@@ -239,7 +241,7 @@ export default class Footer extends DCLogic {
         ) : null}
         {V.showPill ? (
           <>
-            <a href="/contacts/#offer" onClick={V.pillClick} className="ofc-pill" style={{ position : "fixed", left : "20px", bottom : "20px", zIndex : "80", display : "inline-flex", alignItems : "center", gap : "10px", background : "#F28A2E", color : "#0B2236", textDecoration : "none", borderRadius : "999px", padding : "8px 18px 8px 8px", fontWeight : "800", fontSize : "15px", boxShadow : "0 18px 36px -12px rgba(242,138,46,.8)" }}>
+            <a href={P("/contacts/#offer")} onClick={V.pillClick} className="ofc-pill" style={{ position : "fixed", left : "20px", bottom : "20px", zIndex : "80", display : "inline-flex", alignItems : "center", gap : "10px", background : "#F28A2E", color : "#0B2236", textDecoration : "none", borderRadius : "999px", padding : "8px 18px 8px 8px", fontWeight : "800", fontSize : "15px", boxShadow : "0 18px 36px -12px rgba(242,138,46,.8)" }}>
               <span style={{ position : "relative", width : "38px", height : "38px", borderRadius : "50%", background : "#0B2236", color : "#F28A2E", display : "inline-flex", alignItems : "center", justifyContent : "center", flex : "none" }}>
                 <span className="ofc-ping" aria-hidden="true" style={{ position : "absolute", inset : "0", borderRadius : "50%", background : "#0B2236", opacity : ".35" }} />
                 <span className="ann-gift" style={{ position : "relative", display : "inline-flex" }}>
@@ -272,7 +274,7 @@ export default class Footer extends DCLogic {
                     </svg>
                   </button>
                 </div>
-                <Feedback defaultType={V.fbType} plain={true} />
+                <Feedback lang={this.props.lang ?? 'hy'} defaultType={V.fbType} plain={true} />
               </div>
             </div>
           </>

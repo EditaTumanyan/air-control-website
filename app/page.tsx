@@ -1,7 +1,7 @@
-import type { Metadata } from 'next';
 import Main from '../components/Main';
+import { pageMeta } from '../lib/meta';
 
-export const metadata: Metadata = { alternates: { canonical: '/' } };
+export const metadata = pageMeta('', 'hy');
 
 export default function Page() {
   return <Main />;

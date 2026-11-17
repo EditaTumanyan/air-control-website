@@ -7,6 +7,7 @@ import Header from './Header';
 import PhonesCard from './PhonesCard';
 import BookingForm from './BookingForm';
 import Footer from './Footer';
+import { path } from '../lib/i18n';
 
 const STYLES = "body{margin:0}\na{color:#0A6FB0}a:hover{color:#08568A}\n*,*::before,*::after{box-sizing:border-box}\nhtml{scroll-behavior:smooth}\n::selection{background:#F28A2E;color:#0B2236}\n:focus-visible{outline:3px solid #F28A2E;outline-offset:3px}\n.hd-nav a{position:relative;text-decoration:none;color:#0B2236;padding:10px 4px;font-weight:600;font-size:15px;transition:color .2s;white-space:nowrap}\n.hd-nav a::after{content:\"\";position:absolute;left:4px;right:4px;bottom:3px;height:2px;border-radius:2px;background:#F28A2E;transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.8,.2,1)}\n.hd-nav a:hover{color:#0A6FB0}.hd-nav a:hover::after,.hd-nav a.on::after{transform:scaleX(1)}\n.hd-burger{display:none !important}.hd-phone{display:none !important}\n@media (max-width:1200px){.hd-nav{display:none !important}.hd-burger{display:inline-flex !important}.hd-phone{display:inline-flex !important}}\n@media (max-width:760px){.hd-phone{display:none !important}.hd-word{font-size:22px !important}.hd-sub{font-size:7px !important;letter-spacing:.05em !important}.hd-mark{width:42px;height:42px}.hd-urgent{display:none !important}.hd-top-left{display:none !important}.hd-cta{display:none !important}.hd-phone-txt{display:none}}\n.ft-link{text-decoration:none;transition:color .2s}.ft-link:hover{color:#fff !important}\n.btn-o,.btn-w,.btn-b,.btn-wa{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-weight:800;text-decoration:none;border:0;border-radius:999px;padding:17px 28px;font-size:16px;cursor:pointer;position:relative;overflow:hidden;font-family:inherit;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,background .3s}\n.btn-o{background:#F28A2E;color:#0B2236 !important}\n.btn-b{background:#0A6FB0;color:#fff !important}\n.btn-w{background:#fff;color:#0B2236 !important;box-shadow:inset 0 0 0 1.5px #D3E2EF}\n.btn-wa{background:#25D366;color:#0B2236 !important}\n.btn-o::before,.btn-b::before,.btn-wa::before{content:\"\";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.5) 50%,transparent 70%);transform:translateX(-120%);transition:transform .8s}\n.btn-o:hover,.btn-b:hover,.btn-w:hover,.btn-wa:hover{transform:translateY(-3px)}\n.btn-o:hover{box-shadow:0 16px 32px -12px rgba(242,138,46,.8)}\n.btn-b:hover{box-shadow:0 16px 32px -12px rgba(10,111,176,.7)}\n.btn-wa:hover{box-shadow:0 16px 32px -12px rgba(37,211,102,.8)}\n.btn-o:hover::before,.btn-b:hover::before,.btn-wa:hover::before{transform:translateX(120%)}\n.lift{transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s,border-color .4s}\n.lift:hover{transform:translateY(-8px);box-shadow:0 30px 60px -30px rgba(11,34,54,.4)}\n.svc .svc-ic{transition:background .35s,color .35s,transform .5s cubic-bezier(.2,.8,.2,1)}\n.svc:hover .svc-ic{background:#0A6FB0 !important;color:#fff !important;transform:rotate(-8deg) scale(1.06)}\n.svc .svc-go{transition:background .3s,color .3s,transform .3s}\n.svc:hover .svc-go{background:#F28A2E !important;color:#0B2236 !important;transform:rotate(-45deg)}\n.spin{transform-box:fill-box;transform-origin:center;animation:spin 10s linear infinite}\n.spin-r{transform-box:fill-box;transform-origin:center;animation:spin 7s linear infinite reverse}\n@keyframes spin{to{transform:rotate(360deg)}}\n.pulse-dot{animation:pulse 1.8s ease-in-out infinite}\n@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(242,138,46,.7)}50%{box-shadow:0 0 0 7px rgba(242,138,46,0)}}\n.flow{stroke-dasharray:34 16;animation:flow 1.4s linear infinite}\n@keyframes flow{to{stroke-dashoffset:-100}}\n.sunr{transform-box:view-box;transform-origin:76px 205px;animation:sunr 4s ease-in-out infinite}\n@keyframes sunr{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.08);opacity:.75}}\n.breathe{transform-box:fill-box;transform-origin:center;animation:breathe 3.5s ease-in-out infinite}\n@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}\n.blink{animation:blink 2.4s ease-in-out infinite}\n@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}\n.floaty{animation:floaty 6s ease-in-out infinite}\n.floaty2{animation:floaty 7s ease-in-out -2s infinite}\n@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}\n.blob{animation:blob 18s ease-in-out infinite alternate}\n@keyframes blob{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-60px,40px) scale(1.12)}}\n.rise{animation:rise .9s cubic-bezier(.2,.8,.2,1) both}\n.d1{animation-delay:.08s}.d2{animation-delay:.18s}.d3{animation-delay:.3s}.d4{animation-delay:.44s}\n@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}\n.draw{stroke-dasharray:420;stroke-dashoffset:420;animation:draw 1.4s .7s cubic-bezier(.6,0,.2,1) forwards}\n@keyframes draw{to{stroke-dashoffset:0}}\n.marq{animation:marq 38s linear infinite}\n@keyframes marq{to{transform:translateX(-50%)}}\n.prog{animation:prog 3.5s ease-in-out infinite}\n@keyframes prog{0%{width:18%}100%{width:86%}}\n.twinkle{transform-box:fill-box;transform-origin:center;animation:twinkle 2.2s ease-in-out infinite}\n@keyframes twinkle{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:1;transform:scale(1)}}\n.bub{animation:bub .6s cubic-bezier(.2,.8,.2,1) both}\n.b1{animation-delay:.4s}.b2{animation-delay:1.2s}.b3{animation-delay:2.1s}.b4{animation-delay:3s}\n@keyframes bub{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}\n.typing span{display:inline-block;width:7px;height:7px;border-radius:50%;background:#7A8C9C;margin:0 2px;animation:typ 1.2s infinite}\n.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}\n@keyframes typ{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-5px);opacity:1}}\n.dash{stroke-dasharray:8 10;animation:flow 2.4s linear infinite}\n.ping{animation:ping 2s cubic-bezier(0,0,.2,1) infinite}\n@keyframes ping{75%,100%{transform:scale(1.7);opacity:0}}\n.chev{transition:transform .35s cubic-bezier(.2,.8,.2,1)}\n.faq-q{transition:background .25s}\n.faq-q:hover{background:#F2F8FD !important}\n.rng{-webkit-appearance:none;appearance:none;height:10px;border-radius:999px;outline:none;cursor:pointer}\n.rng::-webkit-slider-thumb{-webkit-appearance:none;width:30px;height:30px;border-radius:50%;background:#fff;border:7px solid #F28A2E;box-shadow:0 6px 16px -4px rgba(11,34,54,.45);cursor:grab}\n.rng::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:7px solid #F28A2E;cursor:grab}\n.bf input:not([type=checkbox]):not([type=file]),.bf select,.bf textarea{transition:border-color .2s,box-shadow .2s,background .2s}\n.bf input:focus,.bf select:focus,.bf textarea:focus{border-color:#0A6FB0 !important;box-shadow:0 0 0 4px rgba(10,111,176,.15);background:#fff !important;outline:none}\n.chip{transition:background .2s,color .2s,border-color .2s,transform .2s}\n.chip:hover{transform:translateY(-2px)}\n.check-draw{stroke-dasharray:60;stroke-dashoffset:60;animation:draw .8s .2s ease forwards}\n.mbar{display:none !important}\n.fab{display:flex}\n@media (max-width:760px){.mbar{display:flex !important}.fab{display:none !important}.hero-art{transform:scale(.82);transform-origin:top center;margin-bottom:-90px}.h1x{font-size:40px !important}.sec{padding-top:64px !important;padding-bottom:64px !important}.h2x{font-size:32px !important}.promo-pct{font-size:64px !important}.padm{padding:32px 22px !important;border-radius:28px !important}}\n@supports (animation-timeline:view()){.rv{animation:rv both cubic-bezier(.2,.8,.2,1);animation-timeline:view();animation-range:entry 0% entry 55%}}\n@keyframes rv{from{opacity:0;transform:translateY(48px)}to{opacity:1;transform:none}}\n.gift-ic{animation:wig 2.6s ease-in-out infinite}@keyframes wig{0%,60%,100%{transform:rotate(0) scale(1)}10%{transform:rotate(-14deg) scale(1.08)}20%{transform:rotate(12deg) scale(1.08)}30%{transform:rotate(-8deg)}40%{transform:rotate(4deg)}}\n.gift-badge{animation:gpulse 1.8s ease-in-out infinite}@keyframes gpulse{0%,100%{box-shadow:0 0 0 0 rgba(184,90,14,.5)}50%{box-shadow:0 0 0 7px rgba(184,90,14,0)}}\n.gift-card::after{content:\"\";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(242,138,46,.14) 50%,transparent 65%);transform:translateX(-120%);animation:gshine 4.5s ease-in-out infinite;pointer-events:none}@keyframes gshine{0%,55%{transform:translateX(-120%)}100%{transform:translateX(120%)}}\n.xout{position:relative;display:inline-block}.xout::after{content:\"\";position:absolute;left:-6px;right:-6px;top:52%;height:3px;border-radius:3px;background:#D9480F;transform:rotate(-10deg) scaleX(0);transform-origin:left center;animation:xdraw 4s ease-in-out infinite}@keyframes xdraw{0%,12%{transform:rotate(-10deg) scaleX(0)}32%,100%{transform:rotate(-10deg) scaleX(1)}}\n.ann-shine{position:relative;overflow:hidden}.ann-shine::after{content:\"\";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.5) 50%,transparent 70%);transform:translateX(-100%);animation:annshine 5s ease-in-out infinite;pointer-events:none}@keyframes annshine{0%,55%{transform:translateX(-100%)}100%{transform:translateX(100%)}}.ann:hover{background:#F59A45 !important}\n.ann-gift{animation:annwig 2.6s ease-in-out infinite}@keyframes annwig{0%,60%,100%{transform:rotate(0) scale(1)}10%{transform:rotate(-14deg) scale(1.1)}20%{transform:rotate(12deg) scale(1.1)}30%{transform:rotate(-8deg)}40%{transform:rotate(4deg)}}\n.ann-short{display:none}@media (max-width:760px){.ann-long{display:none !important}.ann-short{display:inline !important}.ofc-pill{bottom:96px !important;left:12px !important}}\n.ofc,.ofc-pill{animation:ofcin .6s cubic-bezier(.2,.8,.2,1) both}@keyframes ofcin{from{opacity:0;transform:translateY(30px) scale(.95)}to{opacity:1;transform:none}}\n.ofc-ping{animation:ofping 2s cubic-bezier(0,0,.2,1) infinite}@keyframes ofping{75%,100%{transform:scale(1.7);opacity:0}}\n.xo2{position:relative;display:inline-block}.xo2::after{content:\"\";position:absolute;left:-5px;right:-5px;top:52%;height:3px;border-radius:3px;background:#D9480F;transform:rotate(-10deg) scaleX(0);transform-origin:left center;animation:xo2 4s ease-in-out infinite}@keyframes xo2{0%,12%{transform:rotate(-10deg) scaleX(0)}32%,100%{transform:rotate(-10deg) scaleX(1)}}\n.nomo *,.nomo *::before,.nomo *::after{animation:none !important}\n.revmarq{animation:marq 40s linear infinite}.revwrap:hover .revmarq{animation-play-state:paused}\n.revcard{transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}.revcard:hover{transform:translateY(-6px);box-shadow:0 30px 60px -30px rgba(11,34,54,.4)}\n@media (max-width:760px){.revcard{flex-basis:300px !important;width:300px !important}.stats4{grid-template-columns:repeat(2,minmax(0,1fr)) !important;row-gap:22px !important}.stats4 .st-n{font-size:22px !important}}\n@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}}\n.btn-w.btn-ghost{background:transparent !important;color:#fff !important;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5) !important}.btn-w.btn-ghost:hover{background:rgba(255,255,255,.12) !important}\n.fb input:focus,.fb textarea:focus{border-color:#0A6FB0 !important;box-shadow:0 0 0 4px rgba(10,111,176,.15);outline:none}\n.fb-in{animation:fbin .45s cubic-bezier(.2,.8,.2,1) both}@keyframes fbin{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}\n.fb-check{stroke-dasharray:60;stroke-dashoffset:60;animation:fbck .8s .2s ease forwards}@keyframes fbck{to{stroke-dashoffset:0}}\n.fb-chip{transition:background .2s,color .2s,transform .2s}.fb-chip:hover{transform:translateY(-2px)}\n.fb-star{transition:transform .2s}.fb-star:hover{transform:scale(1.15)}\n.fb-btn{transition:transform .3s,box-shadow .3s}.fb-btn:hover{transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(10,111,176,.7)}\n.fbm{animation:fbfade .3s ease both}@keyframes fbfade{from{opacity:0}to{opacity:1}}\n.fbm-card{animation:fbpop .45s cubic-bezier(.2,.8,.2,1) both}@keyframes fbpop{from{opacity:0;transform:translateY(30px) scale(.96)}to{opacity:1;transform:none}}\n.ft-btn{background:none;border:0;padding:6px 0;cursor:pointer;font-family:inherit;text-align:left;transition:color .2s}.ft-btn:hover{color:#fff !important}\n.vcard{transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}.vcard:hover{transform:translateY(-8px);box-shadow:0 34px 60px -30px rgba(11,34,54,.6)}\n.vcard .vplay{transition:transform .35s cubic-bezier(.2,.8,.2,1)}.vcard:hover .vplay{transform:scale(1.12)}\n.vcard .vbg{transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}.vcard:hover .vbg{transform:scale(1.15) rotate(-6deg)}\n.vping{animation:vping 2.2s cubic-bezier(0,0,.2,1) infinite}@keyframes vping{75%,100%{transform:scale(1.8);opacity:0}}\n.vflow{stroke-dasharray:22 12;animation:vflow 1.6s linear infinite}@keyframes vflow{to{stroke-dashoffset:-68}}";
 
@@ -152,13 +153,14 @@ export default class Main extends DCLogic {
     };
   }
   componentDidMount() {
-    if (new URLSearchParams(window.location.search).get('lang') === 'ru') this.setState({ lang: 'ru' });
+    // Old links like /?lang=ru now live at /ru/
+    if (this.props.lang !== 'ru' && new URLSearchParams(window.location.search).get('lang') === 'ru') window.location.replace('/ru/' + window.location.hash);
   }
 
   renderVals() {
     const s = this.state || {};
     const D = this.dict();
-    const lang = s.lang || 'hy';
+    const lang = this.props.lang || 'hy';
     const L = D[lang];
     const season = this.props.season ?? 'special';
     const motion = this.props.motion ?? true;
@@ -219,12 +221,13 @@ export default class Main extends DCLogic {
 
   render() {
     const V: any = this.renderVals() || {};
+    const P = (p: string) => path(this.props.lang ?? 'hy', p);
     return (
       <>
         <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       <div className={V.rootCls} style={{ fontFamily : "'Manrope', 'Noto Sans Armenian', system-ui, sans-serif", color : "#0B2236", background : "#F4F8FC", overflowX : "clip", minHeight : "100vh" }}>
         <div style={{ position : "sticky", top : "0", zIndex : "60" }}>
-          <Header active="home" lang={V.lang} onLang={V.setLang} />
+          <Header active="home" lang={V.lang} />
         </div>
         <section style={{ position : "relative", overflow : "hidden", padding : "64px 24px 88px" }}>
           <div aria-hidden="true" className="blob" style={{ position : "absolute", width : "720px", height : "720px", right : "-160px", top : "-220px", borderRadius : "50%", background : "radial-gradient(circle, rgba(169,211,239,.75) 0%, rgba(169,211,239,0) 68%)" }} />
@@ -287,7 +290,7 @@ export default class Main extends DCLogic {
             <div className="hero-art rise d2" style={{ flex : "1 1 500px", minWidth : "0", position : "relative", height : "540px" }}>
               <div aria-hidden="true" style={{ position : "absolute", left : "50%", top : "50%", width : "470px", height : "470px", margin : "-235px 0 0 -235px", borderRadius : "50%", background : "#E3F0FA", boxShadow : "inset 0 0 0 1px #D2E5F4" }} />
               <div aria-hidden="true" className="spin" style={{ position : "absolute", left : "50%", top : "50%", width : "540px", height : "540px", margin : "-270px 0 0 -270px", borderRadius : "50%", border : "1.5px dashed #B9D5EA", animationDuration : "60s" }} />
-              <svg role="img" aria-label="Օդորակիչ՝ արևով և ձյան փաթիլով" viewBox="0 0 560 460" style={{ position : "absolute", left : "50%", top : "50%", width : "520px", maxWidth : "100%", transform : "translate(-50%, -50%)" }}>
+              <svg role="img" aria-label={V.lang === "ru" ? "Кондиционер с солнцем и снежинкой" : "Օդորակիչ՝ արևով և ձյան փաթիլով"} viewBox="0 0 560 460" style={{ position : "absolute", left : "50%", top : "50%", width : "520px", maxWidth : "100%", transform : "translate(-50%, -50%)" }}>
                 <g className="spin">
                   <circle cx="262" cy="70" r="30" fill="none" stroke="#0B7CC4" strokeWidth="14" strokeDasharray="10.5 8.35" />
                   <circle cx="262" cy="70" r="24" fill="#0B7CC4" />
@@ -515,7 +518,7 @@ export default class Main extends DCLogic {
                   {V.t?.worksSub}
                 </p>
               </div>
-              <a href="/works/" className="btn-w">
+              <a href={P("/works/")} className="btn-w">
                 {V.t?.worksAll}{" "}
                 <span aria-hidden="true">
                   {"→"}
@@ -538,7 +541,7 @@ export default class Main extends DCLogic {
                   {V.t?.featS}
                 </p>
                 <div style={{ display : "flex", flexWrap : "wrap", gap : "12px" }}>
-                  <a href="/works/" className="btn-o">
+                  <a href={P("/works/")} className="btn-o">
                     {V.t?.featCta}{" "}
                     <span aria-hidden="true">
                       {"→"}
@@ -571,7 +574,7 @@ export default class Main extends DCLogic {
               </h2>
             </div>
             <div style={{ display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(320px, 1fr))", gap : "24px" }}>
-              <a href="/services/" className="lift rv" style={{ display : "block", textDecoration : "none", color : "#0B2236", background : "#fff", border : "1px solid #E1ECF5", borderRadius : "32px", padding : "40px", position : "relative", overflow : "hidden" }}>
+              <a href={P("/services/")} className="lift rv" style={{ display : "block", textDecoration : "none", color : "#0B2236", background : "#fff", border : "1px solid #E1ECF5", borderRadius : "32px", padding : "40px", position : "relative", overflow : "hidden" }}>
                 <div aria-hidden="true" style={{ position : "absolute", right : "-40px", top : "-40px", width : "220px", height : "220px", borderRadius : "50%", background : "#EAF4FB" }} />
                 <div style={{ position : "relative" }}>
                   <span style={{ width : "64px", height : "64px", borderRadius : "20px", background : "#0A6FB0", display : "inline-flex", alignItems : "center", justifyContent : "center" }}>
@@ -607,7 +610,7 @@ export default class Main extends DCLogic {
                   </div>
                 </div>
               </a>
-              <a href="/business/" className="lift rv" style={{ display : "block", textDecoration : "none", color : "#fff", background : "#0B2236", borderRadius : "32px", padding : "40px", position : "relative", overflow : "hidden" }}>
+              <a href={P("/business/")} className="lift rv" style={{ display : "block", textDecoration : "none", color : "#fff", background : "#0B2236", borderRadius : "32px", padding : "40px", position : "relative", overflow : "hidden" }}>
                 <svg aria-hidden="true" viewBox="0 0 200 200" className="spin" style={{ position : "absolute", right : "-50px", top : "-50px", width : "240px", height : "240px", opacity : ".14", animationDuration : "40s" }}>
                   <circle cx="100" cy="100" r="70" fill="none" stroke="#F28A2E" strokeWidth="30" strokeDasharray="24 19" />
                 </svg>
@@ -663,7 +666,7 @@ export default class Main extends DCLogic {
                   {V.t?.svcSub}
                 </p>
               </div>
-              <a href="/services/" className="btn-w">
+              <a href={P("/services/")} className="btn-w">
                 {V.t?.svcAll}{" "}
                 <span aria-hidden="true">
                   {"→"}
@@ -673,7 +676,7 @@ export default class Main extends DCLogic {
             <div style={{ display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(270px, 1fr))", gap : "20px" }}>
               {(V.svcs ?? []).map((s: any, $i7: number) => (
                 <React.Fragment key={$i7}>
-                  <a href="/contacts/" className="svc lift rv" style={{ display : "flex", flexDirection : "column", textDecoration : "none", color : "#0B2236", background : "#fff", border : "1px solid #E1ECF5", borderRadius : "26px", padding : "28px" }}>
+                  <a href={P("/contacts/")} className="svc lift rv" style={{ display : "flex", flexDirection : "column", textDecoration : "none", color : "#0B2236", background : "#fff", border : "1px solid #E1ECF5", borderRadius : "26px", padding : "28px" }}>
                     <span className="svc-ic" style={{ width : "58px", height : "58px", borderRadius : "18px", background : "#EAF4FB", color : "#0A6FB0", display : "inline-flex", alignItems : "center", justifyContent : "center" }}>
                       <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                         <path d={s?.icon} />
@@ -960,7 +963,7 @@ export default class Main extends DCLogic {
                   </a>
                 </div>
               </div>
-              <a href="/problems/" style={{ display : "inline-block", marginTop : "22px", fontWeight : "800", textDecoration : "none" }}>
+              <a href={P("/problems/")} style={{ display : "inline-block", marginTop : "22px", fontWeight : "800", textDecoration : "none" }}>
                 {V.t?.faqAll}{" →"}
               </a>
             </div>

@@ -3,6 +3,8 @@
 // About — generated from the Air Control design. Edit the texts and layout here.
 import React from 'react';
 import { DCLogic, css, muteVideo } from '../lib/dc';
+import { tr, path } from '../lib/i18n';
+import { RU } from '../lib/ru/About';
 import Header from './Header';
 import Footer from './Footer';
 import { STYLES } from './aboutStyles';
@@ -20,52 +22,56 @@ export default class About extends DCLogic {
   }
   componentWillUnmount() { cancelAnimationFrame(this._raf); }
   renderVals() {
+    const L = tr(this.props.lang, RU);
+    const P = (p: string) => path(this.props.lang, p);
     const st = this.state || {};
     const k = st.k ?? 1;
     const e = 1 - Math.pow(1 - k, 3);
     const n = (v) => String(Math.round(v * e)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-    const words = ['Ազնիվ գին', 'Մաքուր աշխատանք', 'Որակի երաշխիք', 'Երևան և հարակից մարզեր', 'Ճշտապահություն', 'Պատասխանատվություն', 'Վճարում՝ աշխատանքից հետո'];
+    const words = [L("Ազնիվ գին"), L("Մաքուր աշխատանք"), L("Որակի երաշխիք"), L("Երևան և հարակից մարզեր"), L("Ճշտապահություն"), L("Պատասխանատվություն"), L("Վճարում՝ աշխատանքից հետո")];
     return {
-      c1: n(10), c2: n(8500) + '+', c4: 'Երաշխիք',
+      c1: n(10), c2: n(8500) + '+', c4: L("Երաշխիք"),
       ticker: words.concat(words),
       values: [
-        { t: 'Ազնիվ գին', d: 'Գինը հայտնում ենք նախքան աշխատանքը, առանց թաքնված վճարների։', ic: 'M12 2v20 M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6' },
-        { t: 'Մաքրություն', d: 'Աշխատում ենք մաքուր և կոկիկ՝ պահպանելով տարածքի մաքրությունը։', ic: 'M12 3c3 4 5 6.5 5 9a5 5 0 0 1-10 0c0-2.5 2-5 5-9z' },
-        { t: 'Պրոֆեսիոնալիզմ', d: 'Բարձր պրոֆեսիոնալիզմ, տարիների փորձ ու պատասխանատու մոտեցում։', ic: 'M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12z M8.5 14L7 22l5-3 5 3-1.5-8' },
-        { t: 'Պատասխանատվություն', d: 'Անհատական մոտեցում յուրաքանչյուր խնդրին։', ic: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z M9 12l2 2 4-4' }
+        { t: L("Ազնիվ գին"), d: L("Գինը հայտնում ենք նախքան աշխատանքը, առանց թաքնված վճարների։"), ic: 'M12 2v20 M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6' },
+        { t: L("Մաքրություն"), d: L("Աշխատում ենք մաքուր և կոկիկ՝ պահպանելով տարածքի մաքրությունը։"), ic: 'M12 3c3 4 5 6.5 5 9a5 5 0 0 1-10 0c0-2.5 2-5 5-9z' },
+        { t: L("Պրոֆեսիոնալիզմ"), d: L("Բարձր պրոֆեսիոնալիզմ, տարիների փորձ ու պատասխանատու մոտեցում։"), ic: 'M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12z M8.5 14L7 22l5-3 5 3-1.5-8' },
+        { t: L("Պատասխանատվություն"), d: L("Անհատական մոտեցում յուրաքանչյուր խնդրին։"), ic: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z M9 12l2 2 4-4' }
       ],
       visit: [
-        { n: '01', t: 'Զանգ և համաձայնեցում', d: 'Ճշտում ենք խնդիրը և համաձայնեցնում այցի օրը։' },
-        { n: '02', t: 'Ախտորոշում', d: 'Վարպետը ստուգում է օդորակիչը և ասում ճշգրիտ գինը նախքան աշխատանքը։' },
-        { n: '03', t: 'Ձեր տան պաշտպանություն', d: 'Բախիլներ, ծածկոցներ և փոշեկուլ՝ կահույքն ու հատակը մաքուր մնալու համար։' },
-        { n: '04', t: 'Աշխատանք', d: 'Պրոֆեսիոնալ գործիքներով և ըստ արտադրողի նորմերի։' },
-        { n: '05', t: 'Ստուգում ձեր ներկայությամբ', d: 'Միացնում ենք և ցույց տալիս, որ ամեն ինչ աշխատում է։' },
-        { n: '06', t: 'Մաքրություն և վճարում', d: 'Թողնում ենք մաքուր, իսկ դուք վճարում եք արդյունքից հետո։' }
+        { n: '01', t: L("Զանգ և համաձայնեցում"), d: L("Ճշտում ենք խնդիրը և համաձայնեցնում այցի օրը։") },
+        { n: '02', t: L("Ախտորոշում"), d: L("Վարպետը ստուգում է օդորակիչը և ասում ճշգրիտ գինը նախքան աշխատանքը։") },
+        { n: '03', t: L("Ձեր տան պաշտպանություն"), d: L("Բախիլներ, ծածկոցներ և փոշեկուլ՝ կահույքն ու հատակը մաքուր մնալու համար։") },
+        { n: '04', t: L("Աշխատանք"), d: L("Պրոֆեսիոնալ գործիքներով և ըստ արտադրողի նորմերի։") },
+        { n: '05', t: L("Ստուգում ձեր ներկայությամբ"), d: L("Միացնում ենք և ցույց տալիս, որ ամեն ինչ աշխատում է։") },
+        { n: '06', t: L("Մաքրություն և վճարում"), d: L("Թողնում ենք մաքուր, իսկ դուք վճարում եք արդյունքից հետո։") }
       ],
       timeline: [
-        { y: '2014', t: 'Սկիզբ', d: 'Երկու վարպետ, մեկ ավտոմեքենա և առաջին 100 հաճախորդները Երևանում։' },
-        { y: '2017', t: 'Առաջին բիզնես հաճախորդները', d: 'Սկսեցինք պլանային սպասարկում գրասենյակների և ռեստորանների համար։' },
-        { y: '2020', t: 'Հարակից մարզեր', d: 'Ընդլայնեցինք սպասարկման տարածքը՝ ներառելով Երևանին հարակից մարզերը։' },
-        { y: '2023', t: 'VRF/VRV համակարգեր', d: 'Թիմը վերապատրաստվեց խոշոր կոմերցիոն համակարգերի սպասարկման համար։' },
-        { y: '2026', t: 'Նոր Air Control', d: 'Նոր կայք, առցանց գրանցում և գնահատում լուսանկարով։' }
+        { y: '2014', t: L("Սկիզբ"), d: L("Երկու վարպետ, մեկ ավտոմեքենա և առաջին 100 հաճախորդները Երևանում։") },
+        { y: '2017', t: L("Առաջին բիզնես հաճախորդները"), d: L("Սկսեցինք պլանային սպասարկում գրասենյակների և ռեստորանների համար։") },
+        { y: '2020', t: L("Հարակից մարզեր"), d: L("Ընդլայնեցինք սպասարկման տարածքը՝ ներառելով Երևանին հարակից մարզերը։") },
+        { y: '2023', t: L("VRF/VRV համակարգեր"), d: L("Թիմը վերապատրաստվեց խոշոր կոմերցիոն համակարգերի սպասարկման համար։") },
+        { y: '2026', t: L("Նոր Air Control"), d: L("Նոր կայք, առցանց գրանցում և գնահատում լուսանկարով։") }
       ],
       team: [
-        { n: '[Անուն Ազգանուն]', r: 'Հիմնադիր, գլխավոր ինժեներ', i: 'Ա', c: '#0A6FB0' },
-        { n: '[Անուն Ազգանուն]', r: 'Ավագ վարպետ', i: 'Վ', c: '#0B2236' },
-        { n: '[Անուն Ազգանուն]', r: 'Բիզնես հաճախորդների մենեջեր', i: 'Մ', c: '#B85A0E' },
-        { n: '[Անուն Ազգանուն]', r: 'Դիսպետչեր', i: 'Դ', c: '#1F7A4D' }
+        { n: L("[Անուն Ազգանուն]"), r: L("Հիմնադիր, գլխավոր ինժեներ"), i: L("Ա"), c: '#0A6FB0' },
+        { n: L("[Անուն Ազգանուն]"), r: L("Ավագ վարպետ"), i: L("Վ"), c: '#0B2236' },
+        { n: L("[Անուն Ազգանուն]"), r: L("Բիզնես հաճախորդների մենեջեր"), i: L("Մ"), c: '#B85A0E' },
+        { n: L("[Անուն Ազգանուն]"), r: L("Դիսպետչեր"), i: L("Դ"), c: '#1F7A4D' }
       ]
     };
   }
 
   render() {
+    const L = tr(this.props.lang, RU);
+    const P = (p: string) => path(this.props.lang, p);
     const V: any = this.renderVals() || {};
     return (
       <>
         <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       <div style={{ fontFamily : "'Manrope', 'Noto Sans Armenian', system-ui, sans-serif", color : "#0B2236", background : "#F4F8FC", overflowX : "clip" }}>
         <div style={{ position : "sticky", top : "0", zIndex : "60" }}>
-          <Header active="about" lang="hy" />
+          <Header active="about" lang={this.props.lang ?? 'hy'} />
         </div>
         <section style={{ padding : "72px 24px 88px", position : "relative", overflow : "hidden" }}>
           <div aria-hidden="true" className="blob" style={{ position : "absolute", width : "680px", height : "680px", right : "-180px", top : "-240px", borderRadius : "50%", background : "radial-gradient(circle, rgba(169,211,239,.8), rgba(169,211,239,0) 68%)" }} />
@@ -73,23 +79,23 @@ export default class About extends DCLogic {
           <div style={{ maxWidth : "1280px", margin : "0 auto", display : "flex", flexWrap : "wrap", gap : "56px", alignItems : "center", position : "relative" }}>
             <div style={{ flex : "1 1 540px", minWidth : "0" }}>
               <div className="rise" style={{ fontSize : "14px", fontWeight : "800", letterSpacing : ".12em", textTransform : "uppercase", color : "#B85A0E" }}>
-                {"Մեր մասին"}
+                {L("Մեր մասին")}
               </div>
               <h1 className="rise d1 h1x" style={{ margin : "18px 0 22px", fontSize : "64px", lineHeight : "1.05", letterSpacing : "-0.035em", fontWeight : "800" }}>
-                {"Մենք պատասխանատու ենք ձեր տան "}
+                {L("Մենք պատասխանատու ենք ձեր տան ")}
                 <span style={{ position : "relative", display : "inline-block", color : "#0A6FB0" }}>
-                  {"կլիմայի"}
+                  {L("կլիմայի")}
                   <svg aria-hidden="true" viewBox="0 0 300 20" preserveAspectRatio="none" style={{ position : "absolute", left : "0", bottom : "-10px", width : "100%", height : "18px" }}>
                     <path className="draw" d="M4 14 C 70 4, 150 4, 296 12" fill="none" stroke="#F28A2E" strokeWidth="6" strokeLinecap="round" />
                   </svg>
                 </span>
-                {" համար"}
+                {L(" համար")}
               </h1>
               <p className="rise d2" style={{ margin : "0 0 18px", fontSize : "19px", lineHeight : "1.65", color : "#3F566B" }}>
-                {"Մեր թիմը միավորում է գիտելիքն ու փորձը՝ յուրաքանչյուր հաճախորդին լավագույն և հուսալի արդյունքն ապահովելու համար։"}
+                {L("Մեր թիմը միավորում է գիտելիքն ու փորձը՝ յուրաքանչյուր հաճախորդին լավագույն և հուսալի արդյունքն ապահովելու համար։")}
               </p>
               <p className="rise d2" style={{ margin : "0", fontSize : "19px", lineHeight : "1.65", color : "#3F566B" }}>
-                {"Մեր առաջնահերթությունը հաճախորդների վստահությունն է, անհատական մոտեցումը և երկարատև համագործակցությունը։"}
+                {L("Մեր առաջնահերթությունը հաճախորդների վստահությունն է, անհատական մոտեցումը և երկարատև համագործակցությունը։")}
               </p>
             </div>
             <div className="rise d2" style={{ flex : "1 1 440px", minWidth : "0", position : "relative" }}>
@@ -110,7 +116,7 @@ export default class About extends DCLogic {
                     {V.c1}
                   </div>
                   <div style={{ color : "#D9EAF7" }}>
-                    {"տարի ոլորտում"}
+                    {L("տարի ոլորտում")}
                   </div>
                 </div>
                 <div className="float-b" style={{ background : "#fff", border : "1px solid #E1ECF5", marginTop : "40px", display : "flex", flexDirection : "column", justifyContent : "flex-end", borderRadius : "28px", padding : "28px", minHeight : "190px", position : "relative", overflow : "hidden" }}>
@@ -118,12 +124,12 @@ export default class About extends DCLogic {
                     {V.c2}
                   </div>
                   <div style={{ color : "#4A5F73" }}>
-                    {"սպասարկված օդորակիչ"}
+                    {L("սպասարկված օդորակիչ")}
                   </div>
                 </div>
                 <div className="float-b" style={{ background : "#fff", border : "1px solid #E1ECF5", animationDelay : "-2s", display : "flex", flexDirection : "column", justifyContent : "flex-end", borderRadius : "28px", padding : "28px", minHeight : "190px", position : "relative", overflow : "hidden" }}>
                   <div className="c4v" style={{ fontSize : "34px", lineHeight : "1.1", fontWeight : "800", letterSpacing : "-0.02em" }}>
-                    {"Փորձառու վարպետներ"}
+                    {L("Փորձառու վարպետներ")}
                   </div>
                 </div>
                 <div className="float-a" style={{ background : "#F28A2E", color : "#0B2236", marginTop : "40px", animationDelay : "-3s", display : "flex", flexDirection : "column", justifyContent : "flex-end", borderRadius : "28px", padding : "28px", minHeight : "190px", position : "relative", overflow : "hidden" }}>
@@ -131,14 +137,14 @@ export default class About extends DCLogic {
                     {V.c4}
                   </div>
                   <div>
-                    {"մեր կատարած աշխատանքին"}
+                    {L("մեր կատարած աշխատանքին")}
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <div aria-label="Մեր սկզբունքները" style={{ background : "#0B2236", color : "#fff", padding : "22px 0", overflow : "hidden", transform : "rotate(-1.2deg)", margin : "0 -20px", boxShadow : "0 20px 40px -24px rgba(11,34,54,.6)" }}>
+        <div aria-label={L("Մեր սկզբունքները")} style={{ background : "#0B2236", color : "#fff", padding : "22px 0", overflow : "hidden", transform : "rotate(-1.2deg)", margin : "0 -20px", boxShadow : "0 20px 40px -24px rgba(11,34,54,.6)" }}>
           <div className="ticker" style={{ display : "flex", gap : "48px", width : "max-content", alignItems : "center" }}>
             {(V.ticker ?? []).map((w: any, $i6: number) => (
               <React.Fragment key={$i6}>
@@ -155,7 +161,7 @@ export default class About extends DCLogic {
         <section style={{ padding : "72px 24px", background : "#fff" }}>
           <div style={{ maxWidth : "1280px", margin : "0 auto" }}>
             <h2 className="rv h2x" style={{ margin : "0 0 36px", fontSize : "46px", lineHeight : "1.1", letterSpacing : "-0.03em", fontWeight : "800", maxWidth : "720px" }}>
-              {"Մեր արժեքները"}
+              {L("Մեր արժեքները")}
             </h2>
             <div style={{ display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(260px, 1fr))", gap : "20px" }}>
               {(V.values ?? []).map((v: any, $i7: number) => (
@@ -182,10 +188,10 @@ export default class About extends DCLogic {
           <div style={{ maxWidth : "1280px", margin : "0 auto" }}>
             <div className="rv" style={{ maxWidth : "720px", marginBottom : "36px" }}>
               <div style={{ fontSize : "14px", fontWeight : "800", letterSpacing : ".12em", textTransform : "uppercase", color : "#B85A0E", marginBottom : "12px" }}>
-                {"Ինչու ենք մենք այստեղ"}
+                {L("Ինչու ենք մենք այստեղ")}
               </div>
               <h2 className="h2x" style={{ margin : "0", fontSize : "46px", lineHeight : "1.1", letterSpacing : "-0.03em", fontWeight : "800" }}>
-                {"Առաքելություն և տեսլական"}
+                {L("Առաքելություն և տեսլական")}
               </h2>
             </div>
             <div style={{ display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(340px, 1fr))", gap : "20px" }}>
@@ -201,10 +207,10 @@ export default class About extends DCLogic {
                   </svg>
                 </span>
                 <div style={{ fontSize : "14px", fontWeight : "800", letterSpacing : ".12em", textTransform : "uppercase", color : "#F6A75F", margin : "26px 0 12px", position : "relative" }}>
-                  {"Մեր առաքելությունը"}
+                  {L("Մեր առաքելությունը")}
                 </div>
                 <p style={{ margin : "0", fontSize : "24px", lineHeight : "1.45", fontWeight : "700", position : "relative" }}>
-                  {"Ապահովել հարմարավետ և առողջ կլիմա յուրաքանչյուր տանն ու գրասենյակում՝ ազնիվ գնով, մաքուր աշխատանքով և պատասխանատվությամբ։"}
+                  {L("Ապահովել հարմարավետ և առողջ կլիմա յուրաքանչյուր տանն ու գրասենյակում՝ ազնիվ գնով, մաքուր աշխատանքով և պատասխանատվությամբ։")}
                 </p>
               </div>
               <div className="lift rv" style={{ background : "#fff", border : "1px solid #E1ECF5", borderRadius : "32px", padding : "44px", position : "relative", overflow : "hidden" }}>
@@ -218,10 +224,10 @@ export default class About extends DCLogic {
                   </svg>
                 </span>
                 <div style={{ fontSize : "14px", fontWeight : "800", letterSpacing : ".12em", textTransform : "uppercase", color : "#0A6FB0", margin : "26px 0 12px", position : "relative" }}>
-                  {"Մեր տեսլականը"}
+                  {L("Մեր տեսլականը")}
                 </div>
                 <p style={{ margin : "0", fontSize : "24px", lineHeight : "1.45", fontWeight : "700", position : "relative" }}>
-                  {"Դառնալ Երևանում և հարակից մարզերում օդորակիչների սպասարկման ամենավստահելի կենտրոնը, որին դիմում են առանց կասկածի և խորհուրդ են տալիս ընկերներին։"}
+                  {L("Դառնալ Երևանում և հարակից մարզերում օդորակիչների սպասարկման ամենավստահելի կենտրոնը, որին դիմում են առանց կասկածի և խորհուրդ են տալիս ընկերներին։")}
                 </p>
               </div>
             </div>
@@ -232,14 +238,14 @@ export default class About extends DCLogic {
             <div className="rv" style={{ display : "flex", flexWrap : "wrap", justifyContent : "space-between", alignItems : "flex-end", gap : "24px", marginBottom : "36px" }}>
               <div style={{ maxWidth : "640px" }}>
                 <div style={{ fontSize : "14px", fontWeight : "800", letterSpacing : ".12em", textTransform : "uppercase", color : "#B85A0E", marginBottom : "12px" }}>
-                  {"Մեր ստանդարտը"}
+                  {L("Մեր ստանդարտը")}
                 </div>
                 <h2 className="h2x" style={{ margin : "0", fontSize : "46px", lineHeight : "1.1", letterSpacing : "-0.03em", fontWeight : "800" }}>
-                  {"Ինչպես է անցնում յուրաքանչյուր այց"}
+                  {L("Ինչպես է անցնում յուրաքանչյուր այց")}
                 </h2>
               </div>
               <p style={{ margin : "0", color : "#4A5F73", maxWidth : "440px", lineHeight : "1.6" }}>
-                {"Կանոններ, որոնք պահպանում է մեր յուրաքանչյուր վարպետ՝ անկախ աշխատանքի ծավալից։"}
+                {L("Կանոններ, որոնք պահպանում է մեր յուրաքանչյուր վարպետ՝ անկախ աշխատանքի ծավալից։")}
               </p>
             </div>
             <div style={{ display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(260px, 1fr))", gap : "16px" }}>
@@ -273,26 +279,26 @@ export default class About extends DCLogic {
             </span>
             <div style={{ flex : "1 1 460px", position : "relative" }}>
               <div style={{ fontSize : "14px", fontWeight : "800", letterSpacing : ".12em", textTransform : "uppercase", color : "#F6A75F", marginBottom : "12px" }}>
-                {"Որակի երաշխիք"}
+                {L("Որակի երաշխիք")}
               </div>
               <div className="h2x" style={{ fontSize : "42px", lineHeight : "1.1", letterSpacing : "-0.03em", fontWeight : "800", marginBottom : "14px" }}>
-                {"Պատասխանատու ենք մեր յուրաքանչյուր աշխատանքի համար"}
+                {L("Պատասխանատու ենք մեր յուրաքանչյուր աշխատանքի համար")}
               </div>
               <div style={{ color : "#C2D3E2", lineHeight : "1.6", fontSize : "17px" }}>
-                {"Մեր աշխատանքի որակը երաշխավորված է․ եթե երբևէ տեխնիկական հարց առաջանա մեր միջամտության հետ կապված, կայցելենք և կկարգավորենք անվճար։"}
+                {L("Մեր աշխատանքի որակը երաշխավորված է․ եթե երբևէ տեխնիկական հարց առաջանա մեր միջամտության հետ կապված, կայցելենք և կկարգավորենք անվճար։")}
               </div>
             </div>
             <div style={{ display : "flex", flexWrap : "wrap", gap : "12px", position : "relative" }}>
-              <a href="/contacts/" className="btn-o">
-                {"Թողնել հայտ"}
+              <a href={P("/contacts/")} className="btn-o">
+                {L("Թողնել հայտ")}
               </a>
-              <a href="/services/" className="btn-w btn-ghost">
-                {"Ծառայություններ"}
+              <a href={P("/services/")} className="btn-w btn-ghost">
+                {L("Ծառայություններ")}
               </a>
             </div>
           </div>
         </section>
-        <Footer lang="hy" />
+        <Footer lang={this.props.lang ?? 'hy'} />
       </div>
       </>
     );

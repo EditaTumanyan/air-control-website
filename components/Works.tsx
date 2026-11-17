@@ -3,6 +3,8 @@
 // Works — generated from the Air Control design. Edit the texts and layout here.
 import React from 'react';
 import { DCLogic, css, muteVideo } from '../lib/dc';
+import { tr, path } from '../lib/i18n';
+import { RU } from '../lib/ru/Works';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -10,62 +12,66 @@ const STYLES = "body{margin:0}\na{color:#0A6FB0}a:hover{color:#08568A}\n*,*::bef
 
 export default class Works extends DCLogic {
   renderVals() {
+    const L = tr(this.props.lang, RU);
+    const P = (p: string) => path(this.props.lang, p);
     const s = this.state || {};
     const cat = s.cat || 'all';
     const I = {
       install: 'M3 4h18v8H3z M12 21v-6 M9 18l3-3 3 3', clean: 'M12 3c3 4 5 6.5 5 9a5 5 0 0 1-10 0c0-2.5 2-5 5-9z M19 2v4 M17 4h4',
       repair: 'M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z', biz: 'M4 21V5l8-2v18 M12 9h8v12 M2 21h20', ba: 'M12 3v18 M5 8l-3 4 3 4 M19 8l3 4-3 4'
     };
-    const C = { install: ['Տեղադրում', '#0A6FB0'], clean: ['Լվացում', '#13314A'], repair: ['Վերանորոգում', '#0B2236'], biz: ['Բիզնես', '#9A4A12'], ba: ['Առաջ և հետո', '#1F5F8A'] };
+    const C = { install: [L("Տեղադրում"), '#0A6FB0'], clean: [L("Լվացում"), '#13314A'], repair: [L("Վերանորոգում"), '#0B2236'], biz: [L("Բիզնես"), '#9A4A12'], ba: [L("Առաջ և հետո"), '#1F5F8A'] };
     const all = [
-      ['install', 'Մոնտաժել ենք 50 մ խողովակաշար', '0:19', 'Սպլիտ համակարգի պրոֆեսիոնալ մոնտաժ՝ ցանկացած բարդության և ցանկացած ժամի։', '/assets/work1.mp4', '/assets/work1-poster.jpg'],
-      ['clean', 'Լվացում 15 000 ֏ + նվերներ', '0:21', 'Պրոֆեսիոնալ լվացում ընդամենը 15 000 դրամով, իսկ ֆրեոնի լիցքավորումն ու ախտորոշումը՝ նվեր։ Տեսեք արդյունքը՝ առաջ և հետո։', '/assets/work2.mp4', '/assets/work2-poster.jpg'],
-      ['clean', 'Կեղտոտ օդորակիչը վտանգում է առողջությունը', '0:21', 'Ներքին բլոկի խորը լվացում և ախտահանում՝ մաքուր և առողջ օդի համար։', '/assets/work3.mp4', '/assets/work3-poster.jpg'],
-      ['install', 'Վերանորոգում եք տունը՝ մտածեք օդորակիչի մասին', '0:24', 'Խողովակաշարը նախապես թաքցնում ենք պատի մեջ, որ վերանորոգումից հետո ոչինչ չփչացնենք։', '/assets/work4.mp4', '/assets/work4-poster.jpg'],
-      ['install', 'Օդորակիչի բարդ տեղադրում', '0:12', 'Ցանկացած բարդության տեղադրում՝ տանիքներին, բարձրահարկ ճակատներին և դժվարամատչելի տեղերում։', '/assets/work5.mp4', '/assets/work5-poster.jpg'],
-      ['install', 'Տեղադրում առանց փոշու', '0:11', 'Պատը փորում ենք փոշեկուլով, որ ձեր տան մաքրությունը պահպանվի։', '/assets/work6.mp4', '/assets/work6-poster.jpg']
+      ['install', L("Մոնտաժել ենք 50 մ խողովակաշար"), '0:19', L("Սպլիտ համակարգի պրոֆեսիոնալ մոնտաժ՝ ցանկացած բարդության և ցանկացած ժամի։"), '/assets/work1.mp4', '/assets/work1-poster.jpg'],
+      ['clean', L("Լվացում 15 000 ֏ + նվերներ"), '0:21', L("Պրոֆեսիոնալ լվացում ընդամենը 15 000 դրամով, իսկ ֆրեոնի լիցքավորումն ու ախտորոշումը՝ նվեր։ Տեսեք արդյունքը՝ առաջ և հետո։"), '/assets/work2.mp4', '/assets/work2-poster.jpg'],
+      ['clean', L("Կեղտոտ օդորակիչը վտանգում է առողջությունը"), '0:21', L("Ներքին բլոկի խորը լվացում և ախտահանում՝ մաքուր և առողջ օդի համար։"), '/assets/work3.mp4', '/assets/work3-poster.jpg'],
+      ['install', L("Վերանորոգում եք տունը՝ մտածեք օդորակիչի մասին"), '0:24', L("Խողովակաշարը նախապես թաքցնում ենք պատի մեջ, որ վերանորոգումից հետո ոչինչ չփչացնենք։"), '/assets/work4.mp4', '/assets/work4-poster.jpg'],
+      ['install', L("Օդորակիչի բարդ տեղադրում"), '0:12', L("Ցանկացած բարդության տեղադրում՝ տանիքներին, բարձրահարկ ճակատներին և դժվարամատչելի տեղերում։"), '/assets/work5.mp4', '/assets/work5-poster.jpg'],
+      ['install', L("Տեղադրում առանց փոշու"), '0:11', L("Պատը փորում ենք փոշեկուլով, որ ձեր տան մաքրությունը պահպանվի։"), '/assets/work6.mp4', '/assets/work6-poster.jpg']
     ];
     const open = (o) => () => this.setState({ modal: o });
     const videos = all.filter(v => cat === 'all' || v[0] === cat).map(v => { const o = { t: v[1], d: v[2], s: v[3], ic: I[v[0]], cl: C[v[0]][0], bg: C[v[0]][1], ratio: '9 / 16', src: v[4] || '', poster: v[5] || '', hasSrc: !!v[4], noSrc: !v[4] }; return Object.assign({}, o, { open: open(o) }); });
-    const featuredO = { t: 'Լվացում՝ սկզբից մինչև վերջ', d: '2:30', s: 'Տեսեք ամբողջ գործընթացը. ախտորոշում, տան պաշտպանություն, խորը լվացում, ֆրեոնի ստուգում և արդյունք։', ic: I.clean, cl: 'Լվացում', bg: '#0B2236', ratio: '16 / 9', src: '', poster: '', hasSrc: false, noSrc: true };
-    const catDefs = [['all', 'Բոլորը'], ['install', 'Տեղադրում'], ['clean', 'Լվացում'], ['repair', 'Վերանորոգում'], ['biz', 'Բիզնես'], ['ba', 'Առաջ և հետո']];
+    const featuredO = { t: L("Լվացում՝ սկզբից մինչև վերջ"), d: '2:30', s: L("Տեսեք ամբողջ գործընթացը. ախտորոշում, տան պաշտպանություն, խորը լվացում, ֆրեոնի ստուգում և արդյունք։"), ic: I.clean, cl: L("Լվացում"), bg: '#0B2236', ratio: '16 / 9', src: '', poster: '', hasSrc: false, noSrc: true };
+    const catDefs = [['all', L("Բոլորը")], ['install', L("Տեղադրում")], ['clean', L("Լվացում")], ['repair', L("Վերանորոգում")], ['biz', L("Բիզնես")], ['ba', L("Առաջ և հետո")]];
     const cats = catDefs.filter(c => c[0] === 'all' || all.some(v => v[0] === c[0])).map(c => { const on = c[0] === cat; return { label: c[1], count: c[0] === 'all' ? all.length : all.filter(v => v[0] === c[0]).length, on, pick: () => this.setState({ cat: c[0] }), style: 'min-height: 46px; padding: 0 18px; border-radius: 999px; font-family: inherit; font-size: 15px; font-weight: 800; cursor: pointer; ' + (on ? 'background: #0B2236; color: #fff; border: 1.5px solid #0B2236' : 'background: #fff; color: #0B2236; border: 1.5px solid #D5E2EE') }; });
     const cur = s.modal || featuredO;
     return { videos, cats, featured: Object.assign({}, featuredO, { open: open(featuredO) }), modal: !!s.modal, cur, close: () => this.setState({ modal: null }) };
   }
 
   render() {
+    const L = tr(this.props.lang, RU);
+    const P = (p: string) => path(this.props.lang, p);
     const V: any = this.renderVals() || {};
     return (
       <>
         <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       <div style={{ fontFamily : "'Manrope', 'Noto Sans Armenian', system-ui, sans-serif", color : "#0B2236", background : "#F4F8FC", overflowX : "clip" }}>
         <div style={{ position : "sticky", top : "0", zIndex : "60" }}>
-          <Header active="works" lang="hy" />
+          <Header active="works" lang={this.props.lang ?? 'hy'} />
         </div>
         <section style={{ position : "relative", overflow : "hidden", padding : "64px 24px 32px" }}>
           <div aria-hidden="true" className="blob" style={{ position : "absolute", right : "-200px", top : "-260px", width : "700px", height : "700px", borderRadius : "50%", background : "radial-gradient(circle, rgba(169,211,239,.7), rgba(169,211,239,0) 68%)" }} />
           <div style={{ maxWidth : "1280px", margin : "0 auto", position : "relative", display : "flex", flexWrap : "wrap", gap : "24px", alignItems : "flex-end", justifyContent : "space-between" }}>
             <div style={{ maxWidth : "760px" }}>
-              <nav aria-label="Ճանապարհ" className="rise" style={{ fontSize : "14px", color : "#4A5F73", display : "flex", gap : "8px" }}>
-                <a href="/" style={{ textDecoration : "none" }}>
-                  {"Գլխավոր"}
+              <nav aria-label={L("Ճանապարհ")} className="rise" style={{ fontSize : "14px", color : "#4A5F73", display : "flex", gap : "8px" }}>
+                <a href={P("/")} style={{ textDecoration : "none" }}>
+                  {L("Գլխավոր")}
                 </a>
                 <span aria-hidden="true">
                   {"/"}
                 </span>
                 <span>
-                  {"Աշխատանքներ"}
+                  {L("Աշխատանքներ")}
                 </span>
               </nav>
               <h1 className="rise d1 h1x" style={{ margin : "20px 0 16px", fontSize : "62px", lineHeight : "1.05", letterSpacing : "-0.035em", fontWeight : "800" }}>
-                {"Մեր աշխատանքային "}
+                {L("Մեր աշխատանքային ")}
                 <span style={{ color : "#0A6FB0" }}>
-                  {"ընթացքը"}
+                  {L("ընթացքը")}
                 </span>
               </h1>
               <p className="rise d2" style={{ margin : "0", fontSize : "19px", lineHeight : "1.6", color : "#3F566B" }}>
-                {"Կարճ տեսանյութեր մեր առօրյա աշխատանքից՝ տեղադրում, լվացում և վերանորոգում։"}
+                {L("Կարճ տեսանյութեր մեր առօրյա աշխատանքից՝ տեղադրում, լվացում և վերանորոգում։")}
               </p>
             </div>
             <div className="rise d2" style={{ display : "flex", gap : "10px", flexWrap : "wrap" }}>
@@ -99,17 +105,17 @@ export default class Works extends DCLogic {
                   <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M8 5v14l11-7z" />
                   </svg>
-                  {"Գլխավոր տեսանյութ"}
+                  {L("Գլխավոր տեսանյութ")}
                 </span>
                 <div className="h2x" style={{ fontSize : "40px", fontWeight : "800", letterSpacing : "-0.02em", lineHeight : "1.15", margin : "18px 0 14px" }}>
-                  {"Լվացում 15 000 ֏ + նվերներ"}
+                  {L("Լվացում 15 000 ֏ + նվերներ")}
                 </div>
                 <p style={{ margin : "0 0 28px", color : "#C2D3E2", fontSize : "17px", lineHeight : "1.6", maxWidth : "520px" }}>
-                  {"Տեսեք, թե ինչպես ենք լվանում օդորակիչը. ներքին և արտաքին բլոկ, իսկ ֆրեոնի լիցքավորումն ու ախտորոշումը՝ նվեր։ Արդյունքը՝ առաջ և հետո։"}
+                  {L("Տեսեք, թե ինչպես ենք լվանում օդորակիչը. ներքին և արտաքին բլոկ, իսկ ֆրեոնի լիցքավորումն ու ախտորոշումը՝ նվեր։ Արդյունքը՝ առաջ և հետո։")}
                 </p>
                 <div style={{ display : "flex", flexWrap : "wrap", gap : "12px" }}>
-                  <a href="/contacts/#offer" className="btn-o">
-                    {"Պատվիրել լվացում"}
+                  <a href={P("/contacts/#offer")} className="btn-o">
+                    {L("Պատվիրել լվացում")}
                   </a>
                 </div>
               </div>
@@ -129,7 +135,7 @@ export default class Works extends DCLogic {
             <div style={{ display : "grid", gridTemplateColumns : "repeat(auto-fill, minmax(185px, 1fr))", gap : "16px" }}>
               {(V.videos ?? []).map((v: any, $i7: number) => (
                 <React.Fragment key={$i7}>
-                  <button type="button" className="vcard" onClick={v?.open} aria-label={`Դիտել՝ ${v?.t ?? ""}`} style={css(`position: relative; display: block; width: 100%; aspect-ratio: 9 / 16; border: 0; padding: 0; border-radius: 26px; overflow: hidden; cursor: pointer; background: ${v?.bg ?? ""}; text-align: left; font-family: inherit; color: #fff`)}>
+                  <button type="button" className="vcard" onClick={v?.open} aria-label={L("Դիտել՝") + " " + (v?.t ?? "")} style={css(`position: relative; display: block; width: 100%; aspect-ratio: 9 / 16; border: 0; padding: 0; border-radius: 26px; overflow: hidden; cursor: pointer; background: ${v?.bg ?? ""}; text-align: left; font-family: inherit; color: #fff`)}>
                     <div className="vbg" aria-hidden="true" style={{ position : "absolute", inset : "-10%", display : "flex", alignItems : "center", justifyContent : "center", opacity : ".16" }}>
                       <svg width="70%" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
                         <path d={v?.ic} />
@@ -173,18 +179,18 @@ export default class Works extends DCLogic {
           <div className="rv" style={{ maxWidth : "1280px", margin : "0 auto", background : "#0A6FB0", color : "#fff", borderRadius : "36px", padding : "48px 56px", display : "flex", flexWrap : "wrap", gap : "24px", alignItems : "center", justifyContent : "space-between" }}>
             <div style={{ maxWidth : "640px" }}>
               <div style={{ fontSize : "36px", fontWeight : "800", letterSpacing : "-0.02em", lineHeight : "1.15" }}>
-                {"Ուզու՞մ եք նույն արդյունքը ձեր տանը"}
+                {L("Ուզու՞մ եք նույն արդյունքը ձեր տանը")}
               </div>
               <div style={{ color : "#D9EAF7", marginTop : "10px", fontSize : "17px" }}>
-                {"Թողեք հայտ, և կզանգահարենք՝ համաձայնեցնելու այցը։"}
+                {L("Թողեք հայտ, և կզանգահարենք՝ համաձայնեցնելու այցը։")}
               </div>
             </div>
-            <a href="/contacts/" className="btn-o">
-              {"Թողնել հայտ"}
+            <a href={P("/contacts/")} className="btn-o">
+              {L("Թողնել հայտ")}
             </a>
           </div>
         </section>
-        <Footer lang="hy" />
+        <Footer lang={this.props.lang ?? 'hy'} />
         {V.modal ? (
           <>
             <div className="vmodal" role="dialog" aria-modal="true" aria-label={V.cur?.t} style={{ position : "fixed", inset : "0", zIndex : "200", background : "rgba(11,34,54,.82)", backdropFilter : "blur(8px)", WebkitBackdropFilter : "blur(8px)", display : "flex", alignItems : "center", justifyContent : "center", padding : "20px" }}>
@@ -210,7 +216,7 @@ export default class Works extends DCLogic {
                           </svg>
                         </span>
                         <span style={{ fontWeight : "700", color : "#D9EAF7", fontSize : "15px" }}>
-                          {"Այստեղ կլինի ձեր տեսանյութը"}
+                          {L("Այստեղ կլինի ձեր տեսանյութը")}
                         </span>
                       </div>
                       <div style={{ position : "absolute", left : "0", right : "0", bottom : "0", height : "5px", background : "rgba(255,255,255,.2)" }}>
@@ -229,11 +235,11 @@ export default class Works extends DCLogic {
                   <div style={{ color : "#C2D3E2", lineHeight : "1.6", marginBottom : "22px" }}>
                     {V.cur?.s}
                   </div>
-                  <a href="/contacts/" className="btn-o" style={{ padding : "14px 22px", fontSize : "15px" }}>
-                    {"Պատվիրել նույնը"}
+                  <a href={P("/contacts/")} className="btn-o" style={{ padding : "14px 22px", fontSize : "15px" }}>
+                    {L("Պատվիրել նույնը")}
                   </a>
                 </div>
-                <button type="button" onClick={V.close} aria-label="Փակել" style={{ position : "absolute", right : "-6px", top : "-6px", width : "48px", height : "48px", borderRadius : "50%", border : "0", background : "#fff", color : "#0B2236", cursor : "pointer", display : "inline-flex", alignItems : "center", justifyContent : "center", boxShadow : "0 10px 24px -8px rgba(0,0,0,.5)" }}>
+                <button type="button" onClick={V.close} aria-label={L("Փակել")} style={{ position : "absolute", right : "-6px", top : "-6px", width : "48px", height : "48px", borderRadius : "50%", border : "0", background : "#fff", color : "#0B2236", cursor : "pointer", display : "inline-flex", alignItems : "center", justifyContent : "center", boxShadow : "0 10px 24px -8px rgba(0,0,0,.5)" }}>
                   <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round">
                     <path d="M6 6l12 12M18 6L6 18" />
                   </svg>

@@ -1,8 +1,7 @@
-import type { Metadata } from 'next';
-import { OG_IMAGES } from '../../lib/og';
 import Services from '../../components/Services';
+import { pageMeta } from '../../lib/meta';
 
-export const metadata: Metadata = { title: 'Ծառայություններ և գներ', alternates: { canonical: '/services/' }, openGraph: { title: 'Ծառայություններ և գներ — Air Control', url: '/services/', images: OG_IMAGES } };
+export const metadata = pageMeta('services', 'hy');
 
 export default function Page() {
   return <Services />;

@@ -3,7 +3,17 @@ import { SITE_URL } from '../lib/site';
 
 export const dynamic = 'force-static';
 
+const PAGES = ['', 'services/', 'works/', 'business/', 'problems/', 'about/', 'contacts/', 'privacy/'];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const pages = ['', 'services/', 'works/', 'business/', 'problems/', 'about/', 'contacts/', 'privacy/'];
-  return pages.map((p, i) => ({ url: `${SITE_URL}/${p}`, changeFrequency: 'monthly', priority: i === 0 ? 1 : 0.8 }));
+  return PAGES.flatMap((p, i) => {
+    const hy = `${SITE_URL}/${p}`;
+    const ru = `${SITE_URL}/ru/${p}`;
+    const alternates = { languages: { hy, ru } };
+    const priority = i === 0 ? 1 : 0.8;
+    return [
+      { url: hy, changeFrequency: 'monthly' as const, priority, alternates },
+      { url: ru, changeFrequency: 'monthly' as const, priority: priority - 0.1, alternates }
+    ];
+  });
 }

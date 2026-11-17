@@ -1,8 +1,7 @@
-import type { Metadata } from 'next';
-import { OG_IMAGES } from '../../lib/og';
 import Problems from '../../components/Problems';
+import { pageMeta } from '../../lib/meta';
 
-export const metadata: Metadata = { title: 'Խնդիրներ և լուծումներ', alternates: { canonical: '/problems/' }, openGraph: { title: 'Խնդիրներ և լուծումներ — Air Control', url: '/problems/', images: OG_IMAGES } };
+export const metadata = pageMeta('problems', 'hy');
 
 export default function Page() {
   return <Problems />;

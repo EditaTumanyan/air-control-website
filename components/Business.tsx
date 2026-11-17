@@ -3,6 +3,8 @@
 // Business — generated from the Air Control design. Edit the texts and layout here.
 import React from 'react';
 import { DCLogic, css, muteVideo } from '../lib/dc';
+import { tr, path } from '../lib/i18n';
+import { RU } from '../lib/ru/Business';
 import Header from './Header';
 import PhonesCard from './PhonesCard';
 import BookingForm from './BookingForm';
@@ -12,10 +14,12 @@ const STYLES = "body{margin:0}\na{color:#0A6FB0}a:hover{color:#08568A}\n*,*::bef
 
 export default class Business extends DCLogic {
   renderVals() {
+    const L = tr(this.props.lang, RU);
+    const P = (p: string) => path(this.props.lang, p);
     const base = [
-      { name: 'Մեկանգամյա ծավալային աշխատանք', desc: 'Տեղադրում, լվացում կամ վերանորոգում միանգամից մի քանի բլոկի համար։', cta: 'Ստանալ գնահատական', ic: 'M3 4h18v8H3z M12 21v-6 M9 18l3-3 3 3', feats: ['Ամբողջ օբյեկտը՝ նվազագույն այցերով','Ծավալային զեղչ','Աշխատանք ձեզ հարմար օրերին','Անկանխիկ փոխանցում, հաշիվ-ապրանքագիր'] },
-      { name: 'Պլանային սպասարկում', desc: 'Կանոնավոր տեխսպասարկում՝ ըստ համաձայնեցված գրաֆիկի։', cta: 'Կազմել գրաֆիկ', hot: true, ic: 'M3 5h18v16H3z M3 10h18 M8 3v4 M16 3v4 M8 15l2 2 4-4', feats: ['2–4 այց տարեկան','Լվացում, ախտահանում, ֆրեոնի ստուգում','Առաջնահերթություն շտապ դեպքերում','Անձնական մենեջեր'] },
-      { name: 'Ամբողջական սպասարկում', desc: 'Բոլոր համակարգերի պատասխանատվությունը՝ մեզ վրա։', cta: 'Քննարկել պայմանները', ic: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z M9 12l2 2 4-4', feats: ['Պլանային սպասարկում + վերանորոգում','Վերանորոգման արտոնյալ գներ','Առաջնահերթություն շտապ դեպքերում','Մեկ կոնտակտ բոլոր հարցերի համար'] }
+      { name: L("Մեկանգամյա ծավալային աշխատանք"), desc: L("Տեղադրում, լվացում կամ վերանորոգում միանգամից մի քանի բլոկի համար։"), cta: L("Ստանալ գնահատական"), ic: 'M3 4h18v8H3z M12 21v-6 M9 18l3-3 3 3', feats: [L("Ամբողջ օբյեկտը՝ նվազագույն այցերով"),L("Ծավալային զեղչ"),L("Աշխատանք ձեզ հարմար օրերին"),L("Անկանխիկ փոխանցում, հաշիվ-ապրանքագիր")] },
+      { name: L("Պլանային սպասարկում"), desc: L("Կանոնավոր տեխսպասարկում՝ ըստ համաձայնեցված գրաֆիկի։"), cta: L("Կազմել գրաֆիկ"), hot: true, ic: 'M3 5h18v16H3z M3 10h18 M8 3v4 M16 3v4 M8 15l2 2 4-4', feats: [L("2–4 այց տարեկան"),L("Լվացում, ախտահանում, ֆրեոնի ստուգում"),L("Առաջնահերթություն շտապ դեպքերում"),L("Անձնական մենեջեր")] },
+      { name: L("Ամբողջական սպասարկում"), desc: L("Բոլոր համակարգերի պատասխանատվությունը՝ մեզ վրա։"), cta: L("Քննարկել պայմանները"), ic: 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z M9 12l2 2 4-4', feats: [L("Պլանային սպասարկում + վերանորոգում"),L("Վերանորոգման արտոնյալ գներ"),L("Առաջնահերթություն շտապ դեպքերում"),L("Մեկ կոնտակտ բոլոր հարցերի համար")] }
     ];
     const plans = base.map(b => {
       const dark = !!b.hot;
@@ -25,41 +29,43 @@ export default class Business extends DCLogic {
         muted: dark ? 'color: #9FC3E0' : 'color: #4A5F73', line: dark ? 'rgba(255,255,255,.12)' : '#DCE7F0', btn: dark ? 'btn-o' : 'btn-w' };
     });
     return {
-      factors: ['Բլոկների քանակը և տեսակը', 'Այցերի հաճախականությունը', 'Համակարգերի տարիքը և վիճակը', 'Մատչելիությունը (բարձրություն, տանիք)'],
+      factors: [L("Բլոկների քանակը և տեսակը"), L("Այցերի հաճախականությունը"), L("Համակարգերի տարիքը և վիճակը"), L("Մատչելիությունը (բարձրություն, տանիք)")],
       plans,
       sectors: [
-        { t: 'Գրասենյակներ', d: 'Հարմարավետ միկրոկլիմա և աշխատանք առանց աղմուկի', ic: 'M4 21V5l8-2v18 M12 9h8v12 M2 21h20' },
-        { t: 'Ռեստորաններ և սրճարաններ', d: 'Խոհանոցի և սրահի համակարգեր, ճարպից մաքրում', ic: 'M7 3v8 M5 3v4a2 2 0 0 0 4 0V3 M7 11v10 M17 3c-2 2-2 6 0 8v10' },
-        { t: 'Խանութներ և առևտրի կենտրոններ', d: 'Կասետային և կանալային համակարգեր', ic: 'M4 7h16l-1 13H5z M8 7a4 4 0 0 1 8 0' },
-        { t: 'Հյուրանոցներ', d: 'Սպասարկում առանց հյուրերին անհանգստացնելու', ic: 'M3 20V8 M3 14h18v6 M21 20v-8a3 3 0 0 0-3-3h-7v5' },
-        { t: 'Բժշկական կենտրոններ', d: 'Ախտահանում և հիգիենայի նորմերի պահպանում', ic: 'M12 5v14 M5 12h14' },
-        { t: 'Արտադրություն և պահեստներ', d: 'Մեծ հզորության և արդյունաբերական համակարգեր', ic: 'M3 21V10l6 4V10l6 4V6l6 4v11z' },
-        { t: 'Սերվերային սենյակներ', d: 'Ճշգրիտ օդորակում և պլանային ստուգումներ', ic: 'M4 4h16v6H4z M4 14h16v6H4z M8 7h.01 M8 17h.01' },
-        { t: 'Կրթական հաստատություններ', d: 'Դպրոցներ, մանկապարտեզներ, համալսարաններ', ic: 'M2 9l10-5 10 5-10 5z M6 11v5c3 2 9 2 12 0v-5' }
+        { t: L("Գրասենյակներ"), d: L("Հարմարավետ միկրոկլիմա և աշխատանք առանց աղմուկի"), ic: 'M4 21V5l8-2v18 M12 9h8v12 M2 21h20' },
+        { t: L("Ռեստորաններ և սրճարաններ"), d: L("Խոհանոցի և սրահի համակարգեր, ճարպից մաքրում"), ic: 'M7 3v8 M5 3v4a2 2 0 0 0 4 0V3 M7 11v10 M17 3c-2 2-2 6 0 8v10' },
+        { t: L("Խանութներ և առևտրի կենտրոններ"), d: L("Կասետային և կանալային համակարգեր"), ic: 'M4 7h16l-1 13H5z M8 7a4 4 0 0 1 8 0' },
+        { t: L("Հյուրանոցներ"), d: L("Սպասարկում առանց հյուրերին անհանգստացնելու"), ic: 'M3 20V8 M3 14h18v6 M21 20v-8a3 3 0 0 0-3-3h-7v5' },
+        { t: L("Բժշկական կենտրոններ"), d: L("Ախտահանում և հիգիենայի նորմերի պահպանում"), ic: 'M12 5v14 M5 12h14' },
+        { t: L("Արտադրություն և պահեստներ"), d: L("Մեծ հզորության և արդյունաբերական համակարգեր"), ic: 'M3 21V10l6 4V10l6 4V6l6 4v11z' },
+        { t: L("Սերվերային սենյակներ"), d: L("Ճշգրիտ օդորակում և պլանային ստուգումներ"), ic: 'M4 4h16v6H4z M4 14h16v6H4z M8 7h.01 M8 17h.01' },
+        { t: L("Կրթական հաստատություններ"), d: L("Դպրոցներ, մանկապարտեզներ, համալսարաններ"), ic: 'M2 9l10-5 10 5-10 5z M6 11v5c3 2 9 2 12 0v-5' }
       ],
-      systems: ['Սպլիտ', 'Մուլտիսպլիտ', 'Կասետային', 'Կանալային', 'Հատակ-առաստաղային', 'VRF / VRV', 'Ճշգրիտ օդորակիչներ', 'Վարագուրային'],
+      systems: [L("Սպլիտ"), L("Մուլտիսպլիտ"), L("Կասետային"), L("Կանալային"), L("Հատակ-առաստաղային"), 'VRF / VRV', L("Ճշգրիտ օդորակիչներ"), L("Վարագուրային")],
       perks: [
-        { t: 'Ծավալային զեղչ', d: 'Որքան շատ համակարգ, այնքան ձեռնտու գին', ic: 'M19 5L5 19 M6.5 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z M17.5 20a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z' },
-        { t: 'Աշխատանք ձեզ հարմար օրերին', d: 'Այցերը համաձայնեցնում ենք ձեր աշխատանքային գրաֆիկին', ic: 'M4 5h16v16H4z M4 10h16 M9 3v4 M15 3v4 M9 15l2 2 4-4' },
-        { t: 'Անկանխիկ փոխանցում, հաշիվ-ապրանքագիր', d: 'Վճարում բանկային փոխանցումով', ic: 'M3 6h18v12H3z M3 10h18 M7 15h4' },
-        { t: 'Առաջնահերթություն շտապ դեպքերում', d: 'Բիզնես հաճախորդների շտապ կանչերը սպասարկում ենք առաջին հերթին', ic: 'M13 2L4 14h7l-1 8 9-12h-7z' },
-        { t: 'Պրոֆեսիոնալիզմ և փորձ', d: 'Ցանկացած բարդության խնդրի ճշգրիտ ու որակյալ լուծում։', ic: 'M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12z M8.5 14L7 22l5-3 5 3-1.5-8' },
-        { t: 'Անհատական մոտեցում', d: 'Առաջարկում ենք լուծումներ՝ հիմնված հենց ձեր բիզնեսի կարիքների վրա։', ic: 'M12 3l8 4.5v9L12 21l-8-4.5v-9z M12 12l8-4.5 M12 12v9 M12 12L4 7.5' }
+        { t: L("Ծավալային զեղչ"), d: L("Որքան շատ համակարգ, այնքան ձեռնտու գին"), ic: 'M19 5L5 19 M6.5 9a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z M17.5 20a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z' },
+        { t: L("Աշխատանք ձեզ հարմար օրերին"), d: L("Այցերը համաձայնեցնում ենք ձեր աշխատանքային գրաֆիկին"), ic: 'M4 5h16v16H4z M4 10h16 M9 3v4 M15 3v4 M9 15l2 2 4-4' },
+        { t: L("Անկանխիկ փոխանցում, հաշիվ-ապրանքագիր"), d: L("Վճարում բանկային փոխանցումով"), ic: 'M3 6h18v12H3z M3 10h18 M7 15h4' },
+        { t: L("Առաջնահերթություն շտապ դեպքերում"), d: L("Բիզնես հաճախորդների շտապ կանչերը սպասարկում ենք առաջին հերթին"), ic: 'M13 2L4 14h7l-1 8 9-12h-7z' },
+        { t: L("Պրոֆեսիոնալիզմ և փորձ"), d: L("Ցանկացած բարդության խնդրի ճշգրիտ ու որակյալ լուծում։"), ic: 'M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12z M8.5 14L7 22l5-3 5 3-1.5-8' },
+        { t: L("Անհատական մոտեցում"), d: L("Առաջարկում ենք լուծումներ՝ հիմնված հենց ձեր բիզնեսի կարիքների վրա։"), ic: 'M12 3l8 4.5v9L12 21l-8-4.5v-9z M12 12l8-4.5 M12 12v9 M12 12L4 7.5' }
       ],
-      logoLoop: (() => { const l = ['[Հաճախորդի լոգո 1]', '[Հաճախորդի լոգո 2]', '[Հաճախորդի լոգո 3]', '[Հաճախորդի լոգո 4]', '[Հաճախորդի լոգո 5]', '[Հաճախորդի լոգո 6]', '[Հաճախորդի լոգո 7]', '[Հաճախորդի լոգո 8]']; return l.concat(l); })(),
+      logoLoop: (() => { const l = [L("[Հաճախորդի լոգո 1]"), L("[Հաճախորդի լոգո 2]"), L("[Հաճախորդի լոգո 3]"), L("[Հաճախորդի լոգո 4]"), L("[Հաճախորդի լոգո 5]"), L("[Հաճախորդի լոգո 6]"), L("[Հաճախորդի լոգո 7]"), L("[Հաճախորդի լոգո 8]")]; return l.concat(l); })(),
       logoDur: (8 * 5) + 's',
-      steps: [{ n: '1', t: 'Հայտ և զանգ մենեջերից' }, { n: '2', t: 'Ինժեների անվճար այց և աուդիտ' }, { n: '3', t: 'Առաջարկ և համաձայնեցում' }, { n: '4', t: 'Սպասարկում ըստ գրաֆիկի' }]
+      steps: [{ n: '1', t: L("Հայտ և զանգ մենեջերից") }, { n: '2', t: L("Ինժեների անվճար այց և աուդիտ") }, { n: '3', t: L("Առաջարկ և համաձայնեցում") }, { n: '4', t: L("Սպասարկում ըստ գրաֆիկի") }]
     };
   }
 
   render() {
+    const L = tr(this.props.lang, RU);
+    const P = (p: string) => path(this.props.lang, p);
     const V: any = this.renderVals() || {};
     return (
       <>
         <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       <div style={{ fontFamily : "'Manrope', 'Noto Sans Armenian', system-ui, sans-serif", color : "#0B2236", background : "#F4F8FC", overflowX : "clip" }}>
         <div style={{ position : "sticky", top : "0", zIndex : "60" }}>
-          <Header active="business" lang="hy" />
+          <Header active="business" lang={this.props.lang ?? 'hy'} />
         </div>
         <section style={{ background : "#0B2236", color : "#fff", padding : "72px 24px 96px", position : "relative", overflow : "hidden" }}>
           <div aria-hidden="true" style={{ position : "absolute", inset : "0", backgroundImage : "linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px)", backgroundSize : "48px 48px" }} />
@@ -67,20 +73,20 @@ export default class Business extends DCLogic {
             <div style={{ flex : "1 1 540px", minWidth : "0" }}>
               <span className="rise" style={{ display : "inline-flex", alignItems : "center", gap : "10px", background : "rgba(242,138,46,.15)", color : "#F6A75F", borderRadius : "999px", padding : "8px 16px", fontWeight : "800", fontSize : "13px", letterSpacing : ".06em", textTransform : "uppercase" }}>
                 <span className="pulse-dot" style={{ width : "8px", height : "8px", borderRadius : "50%", background : "#F28A2E" }} />
-                {"B2B · Կորպորատիվ սպասարկում"}
+                {L("B2B · Կորպորատիվ սպասարկում")}
               </span>
               <h1 className="rise d1 h1x" style={{ margin : "24px 0 20px", fontSize : "64px", lineHeight : "1.05", letterSpacing : "-0.035em", fontWeight : "800" }}>
-                {"Անխափան օդորակում "}
+                {L("Անխափան օդորակում ")}
                 <span style={{ color : "#F28A2E" }}>
-                  {"ձեր բիզնեսի համար"}
+                  {L("ձեր բիզնեսի համար")}
                 </span>
               </h1>
               <p className="rise d2" style={{ margin : "0 0 34px", fontSize : "19px", lineHeight : "1.6", color : "#C2D3E2", maxWidth : "600px" }}>
-                {"Օդորակիչների սպասարկում գրասենյակների, ռեստորանների, խանութների և այլ բիզնես տարածքների համար՝ ձեզ հարմար օրերին, առաջնահերթ սպասարկմամբ և ճկուն գնային պայմաններով։"}
+                {L("Օդորակիչների սպասարկում գրասենյակների, ռեստորանների, խանութների և այլ բիզնես տարածքների համար՝ ձեզ հարմար օրերին, առաջնահերթ սպասարկմամբ և ճկուն գնային պայմաններով։")}
               </p>
               <div className="rise d3" style={{ display : "flex", flexWrap : "wrap", gap : "14px" }}>
                 <a href="#b2b-form" className="btn-o">
-                  {"Ստանալ առաջարկ"}
+                  {L("Ստանալ առաջարկ")}
                 </a>
               </div>
               <div style={{ display : "grid", gridTemplateColumns : "repeat(3, minmax(0, 1fr))", gap : "16px", marginTop : "48px", maxWidth : "560px" }}>
@@ -89,15 +95,15 @@ export default class Business extends DCLogic {
                     {"120+"}
                   </div>
                   <div style={{ color : "#9FC3E0", fontSize : "14px" }}>
-                    {"բիզնես հաճախորդ"}
+                    {L("բիզնես հաճախորդ")}
                   </div>
                 </div>
                 <div style={{ borderLeft : "2px solid rgba(255,255,255,.18)", paddingLeft : "16px" }}>
                   <div style={{ fontSize : "34px", fontWeight : "800" }}>
-                    {"7 օր"}
+                    {L("7 օր")}
                   </div>
                   <div style={{ color : "#9FC3E0", fontSize : "14px" }}>
-                    {"ճկուն աշխատանքային գրաֆիկ"}
+                    {L("ճկուն աշխատանքային գրաֆիկ")}
                   </div>
                 </div>
                 <div style={{ borderLeft : "2px solid rgba(255,255,255,.18)", paddingLeft : "16px" }}>
@@ -105,13 +111,13 @@ export default class Business extends DCLogic {
                     {"100%"}
                   </div>
                   <div style={{ color : "#9FC3E0", fontSize : "14px" }}>
-                    {"երաշխավորված որակ"}
+                    {L("երաշխավորված որակ")}
                   </div>
                 </div>
               </div>
             </div>
             <div className="rise d2" style={{ flex : "1 1 440px", minWidth : "0", display : "flex", justifyContent : "center" }}>
-              <svg role="img" aria-label="Գրասենյակային շենք օդորակիչներով" viewBox="0 0 440 440" style={{ width : "100%", maxWidth : "460px" }}>
+              <svg role="img" aria-label={L("Գրասենյակային շենք օդորակիչներով")} viewBox="0 0 440 440" style={{ width : "100%", maxWidth : "460px" }}>
                 <rect x="90" y="60" width="200" height="360" rx="14" fill="#13314A" />
                 <rect x="290" y="160" width="110" height="260" rx="12" fill="#183B58" />
                 <g fill="#A9D3EF">
@@ -167,10 +173,10 @@ export default class Business extends DCLogic {
           <div style={{ maxWidth : "1280px", margin : "0 auto" }}>
             <div className="rv" style={{ maxWidth : "720px", marginBottom : "36px" }}>
               <div style={{ fontSize : "14px", fontWeight : "800", letterSpacing : ".12em", textTransform : "uppercase", color : "#B85A0E", marginBottom : "12px" }}>
-                {"Ոլորտներ"}
+                {L("Ոլորտներ")}
               </div>
               <h2 className="h2x" style={{ margin : "0", fontSize : "46px", lineHeight : "1.1", letterSpacing : "-0.03em", fontWeight : "800" }}>
-                {"Ում հետ ենք աշխատում"}
+                {L("Ում հետ ենք աշխատում")}
               </h2>
             </div>
             <div style={{ display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(270px, 1fr))", gap : "16px" }}>
@@ -195,10 +201,10 @@ export default class Business extends DCLogic {
           <div style={{ maxWidth : "1280px", margin : "0 auto" }}>
             <div className="rv" style={{ maxWidth : "720px", marginBottom : "36px" }}>
               <div style={{ fontSize : "14px", fontWeight : "800", letterSpacing : ".12em", textTransform : "uppercase", color : "#B85A0E", marginBottom : "12px" }}>
-                {"Ինչու մենք"}
+                {L("Ինչու մենք")}
               </div>
               <h2 className="h2x" style={{ margin : "0", fontSize : "46px", lineHeight : "1.1", letterSpacing : "-0.03em", fontWeight : "800" }}>
-                {"Մեր առավելությունները"}
+                {L("Մեր առավելությունները")}
               </h2>
             </div>
             <div style={{ display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(min(100%, 360px), 1fr))", gap : "16px" }}>
@@ -227,7 +233,7 @@ export default class Business extends DCLogic {
         <section style={{ padding : "24px 24px 72px" }}>
           <div style={{ maxWidth : "1280px", margin : "0 auto" }}>
             <div className="rv" style={{ textAlign : "center", fontSize : "14px", fontWeight : "800", letterSpacing : ".12em", textTransform : "uppercase", color : "#4A5F73", marginBottom : "20px" }}>
-              {"Մեզ վստահում են"}
+              {L("Մեզ վստահում են")}
             </div>
             <div className="logowrap" style={{ overflow : "hidden", margin : "0 -24px", padding : "8px 0", maskImage : "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)", WebkitMaskImage : "linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)" }}>
               <div className="logomarq" style={css(`display: flex; gap: 16px; width: max-content; animation-duration: ${V.logoDur ?? ""}`)}>
@@ -246,22 +252,22 @@ export default class Business extends DCLogic {
           <div style={{ maxWidth : "1280px", margin : "0 auto", display : "flex", flexWrap : "wrap", gap : "48px", alignItems : "flex-start" }}>
             <div className="rv" style={{ flex : "1 1 380px", minWidth : "0" }}>
               <div style={{ fontSize : "14px", fontWeight : "800", letterSpacing : ".12em", textTransform : "uppercase", color : "#B85A0E", marginBottom : "12px" }}>
-                {"Հայտ"}
+                {L("Հայտ")}
               </div>
               <h2 className="h2x" style={{ margin : "0 0 14px", fontSize : "46px", lineHeight : "1.1", letterSpacing : "-0.03em", fontWeight : "800" }}>
-                {"Անհատական գնառաջարկ և անվճար տեղազննում"}
+                {L("Անհատական գնառաջարկ և անվճար տեղազննում")}
               </h2>
               <p style={{ margin : "0 0 28px", color : "#4A5F73", fontSize : "17px", lineHeight : "1.6" }}>
-                {"Մեր մասնագետը կայցելի, կգնահատի օդորակիչների տեխնիկական վիճակը և կներկայացնի անհատական գնառաջարկ։"}
+                {L("Մեր մասնագետը կայցելի, կգնահատի օդորակիչների տեխնիկական վիճակը և կներկայացնի անհատական գնառաջարկ։")}
               </p>
-              <PhonesCard lang="hy" />
+              <PhonesCard lang={this.props.lang ?? 'hy'} />
             </div>
             <div className="rv" style={{ flex : "1.3 1 560px", minWidth : "0" }}>
-              <BookingForm lang="hy" defaultType="business" />
+              <BookingForm lang={this.props.lang ?? 'hy'} defaultType="business" />
             </div>
           </div>
         </section>
-        <Footer lang="hy" />
+        <Footer lang={this.props.lang ?? 'hy'} />
       </div>
       </>
     );

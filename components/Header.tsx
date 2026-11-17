@@ -4,6 +4,7 @@
 import React from 'react';
 import { DCLogic, css, muteVideo } from '../lib/dc';
 import PhonesCard from './PhonesCard';
+import { path, switchPath } from '../lib/i18n';
 
 
 const STYLES = "body{margin:0}";
@@ -19,18 +20,18 @@ export default class Header extends DCLogic {
       ru: { offerTag: 'Спецпредложение', offerLong: 'Чистка всего за 15 000 ֏ + заправка фреоном и диагностика в ПОДАРОК', offerShort: 'Чистка 15 000 ֏ + подарки', offerMore: 'Подробнее', hours: 'Пн–Вс · 09:00–24:00', area: 'Ереван и прилегающие области', urgent: 'Быстрое обслуживание за 1–2 дня', cta: 'Оставить заявку', menu: 'Меню', navLabel: 'Главное меню', langLabel: 'Язык',
         nav: [['services','Услуги'],['works','Наши работы'],['business','Для бизнеса'],['problems','Проблемы'],['about','О нас'],['contacts','Контакты']] }
     };
-    const files = { works: '/works/', services: '/services/', business: '/business/', problems: '/problems/', about: '/about/', contacts: '/contacts/' };
+    const files = { works: path(lang, '/works/'), services: path(lang, '/services/'), business: path(lang, '/business/'), problems: path(lang, '/problems/'), about: path(lang, '/about/'), contacts: path(lang, '/contacts/') };
     const t = T[lang] || T.hy;
     const pill = (on) => 'min-width: 44px; min-height: 30px; border: 0; border-radius: 999px; font-family: inherit; font-size: 12px; font-weight: 800; cursor: pointer; padding: 0 10px; ' + (on ? 'background: #F28A2E; color: #0B2236' : 'background: transparent; color: #D5E4F2');
     const open = !!s.open;
     return {
-      promoHref: active === 'home' ? '#promo' : '/#promo',
+      promoHref: active === 'home' ? '#promo' : path(lang, '/') + '#promo',
       t, open,
       nav: t.nav.map(n => ({ href: files[n[0]], label: n[1], cls: n[0] === active ? 'on' : '' })),
       isHy: lang === 'hy', isRu: lang === 'ru',
       hyStyle: pill(lang === 'hy'), ruStyle: pill(lang === 'ru'),
-      setHy: () => this.props.onLang ? this.props.onLang('hy') : (window.location.href = '/'),
-      setRu: () => this.props.onLang ? this.props.onLang('ru') : (window.location.href = '/?lang=ru'),
+      setHy: () => { window.location.href = switchPath(window.location.pathname, 'hy') + window.location.hash; },
+      setRu: () => { window.location.href = switchPath(window.location.pathname, 'ru') + window.location.hash; },
       toggle: () => this.setState({ open: !open }),
       burgerPath: open ? 'M6 6l12 12M18 6L6 18' : 'M4 7h16M4 12h16M4 17h16'
     };
@@ -38,6 +39,7 @@ export default class Header extends DCLogic {
 
   render() {
     const V: any = this.renderVals() || {};
+    const P = (p: string) => path(this.props.lang ?? 'hy', p);
     return (
       <>
         <style dangerouslySetInnerHTML={{ __html: STYLES }} />
@@ -111,7 +113,7 @@ export default class Header extends DCLogic {
         </div>
         <div style={{ background : "rgba(255,255,255,.86)", backdropFilter : "saturate(1.6) blur(18px)", WebkitBackdropFilter : "saturate(1.6) blur(18px)", borderBottom : "1px solid rgba(11,34,54,.08)" }}>
           <div style={{ maxWidth : "1280px", margin : "0 auto", padding : "12px 24px", display : "flex", alignItems : "center", gap : "16px" }}>
-            <a href="/" aria-label="Air Control" style={{ display : "flex", alignItems : "center", gap : "12px", textDecoration : "none", flex : "none" }}>
+            <a href={P("/")} aria-label="Air Control" style={{ display : "flex", alignItems : "center", gap : "12px", textDecoration : "none", flex : "none" }}>
               <svg className="hd-mark" aria-hidden="true" width="52" height="52" viewBox="0 0 64 64">
                 <g className="spin">
                   <circle cx="29" cy="12" r="6" fill="none" stroke="#0B7CC4" strokeWidth="4" strokeDasharray="2.4 1.37" />
@@ -154,7 +156,7 @@ export default class Header extends DCLogic {
                   </span>
                 </span>
                 <span className="hd-sub" style={{ fontFamily : "'Noto Sans Armenian', sans-serif", fontSize : "8.5px", letterSpacing : ".12em", color : "#0A6FB0", marginTop : "6px", whiteSpace : "nowrap" }}>
-                  {"ՕԴՈՐԱԿԻՉՆԵՐԻ ՍՊԱՍԱՐԿՄԱՆ ԿԵՆՏՐՈՆ"}
+                  {this.props.lang === "ru" ? "ЦЕНТР ОБСЛУЖИВАНИЯ КОНДИЦИОНЕРОВ" : "ՕԴՈՐԱԿԻՉՆԵՐԻ ՍՊԱՍԱՐԿՄԱՆ ԿԵՆՏՐՈՆ"}
                 </span>
               </span>
             </a>
@@ -175,7 +177,7 @@ export default class Header extends DCLogic {
                 </svg>
               </span>
             </a>
-            <a href="/contacts/" className="hd-cta btn-o" style={{ padding : "13px 22px", fontSize : "15px", flex : "none", whiteSpace : "nowrap" }}>
+            <a href={P("/contacts/")} className="hd-cta btn-o" style={{ padding : "13px 22px", fontSize : "15px", flex : "none", whiteSpace : "nowrap" }}>
               {V.t?.cta}
             </a>
             <button type="button" className="hd-burger" onClick={V.toggle} aria-expanded={V.open} aria-label={V.t?.menu} style={{ width : "46px", height : "46px", borderRadius : "14px", border : "1px solid rgba(11,34,54,.14)", background : "#fff", alignItems : "center", justifyContent : "center", cursor : "pointer", flex : "none" }}>
@@ -197,7 +199,7 @@ export default class Header extends DCLogic {
                     </a>
                   </React.Fragment>
                 ))}
-                <a href="/contacts/" className="btn-o" style={{ marginTop : "18px" }}>
+                <a href={P("/contacts/")} className="btn-o" style={{ marginTop : "18px" }}>
                   {V.t?.cta}
                 </a>
                 <div style={{ marginTop : "18px" }}>

@@ -3,3 +3,7 @@
 export const OG_IMAGES = [
   { url: '/og.jpg', width: 1200, height: 630, alt: 'Air Control — Հատուկ առաջարկ՝ օդորակիչի լվացում 15 000 ֏ + նվերներ' }
 ];
+
+export const OG_IMAGES_RU = [
+  { url: '/og-ru.jpg', width: 1200, height: 630, alt: 'Air Control — Спецпредложение: чистка кондиционера 15 000 ֏ + подарки' }
+];
