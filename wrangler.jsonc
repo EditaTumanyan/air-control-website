@@ -12,5 +12,7 @@
     "not_found_handling": "404-page",
     "run_worker_first": ["/api/*"]
   },
-  "observability": { "enabled": true }
+  "observability": { "enabled": true },
+  // Preview deployments for non-production branches (e.g. dev)
+  "previews": {}
 }
