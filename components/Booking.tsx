@@ -38,9 +38,11 @@ export default class Booking extends DCLogic {
     const pill = (b) => 'border-radius: 999px; padding: 8px 14px; font-weight: 700; font-size: 14px; ' + (b ? 'background: #EAF4FB; color: #0A6FB0' : 'background: #FFF1E4; color: #9A4A12');
     return {
       ...fbExtra,
+      phones: [
+        { n: "+374 41 55 99 10", d: "37441559910" },
+        { n: "+374 91 10 58 87", d: "37491105887" }
+      ],
       contacts: [
-        { label: 'Հեռախոս', value: '+374 41 55 99 10', href: 'tel:+37441559910', bg: '#EAF4FB', fg: '#0A6FB0', ic: 'M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2' },
-        { label: 'WhatsApp / Viber', value: '+374 91 10 58 87', href: 'https://wa.me/37491105887', bg: '#E3F9EC', fg: '#1F7A4D', bg2: '#EFEAFB', fg2: '#5B3FA8', ic2: 'M12 3a8.5 8.5 0 0 0-7.2 13L4 21l5-1.3A8.5 8.5 0 1 0 12 3z M9.5 8.5c.4 2.6 2.4 4.6 5 5 M12.5 7.5a3 3 0 0 1 3 3', ic: 'M3 21l1.7-5A8.5 8.5 0 1 1 8 19.6L3 21z' },
         { label: 'Էլ. փոստ', value: 'air_control_ac_service@mail.ru', href: 'mailto:air_control_ac_service@mail.ru', bg: '#FFF1E4', fg: '#B85A0E', ic: 'M3 5h18v14H3z M3 6l9 7 9-7' }
       ],
       areas: yer.map(n => ({ n, style: pill(true) })).concat(reg.map(n => ({ n, style: pill(false) })))
@@ -72,6 +74,41 @@ export default class Booking extends DCLogic {
                 <BookingForm lang="hy" />
               </div>
               <div style={{ flex : "1 1 380px", minWidth : "0", display : "flex", flexDirection : "column", gap : "14px" }}>
+                <div className="rise d2" style={{ background : "#fff", border : "1px solid #E1ECF5", borderRadius : "22px", padding : "18px 20px", color : "#0B2236" }}>
+                  <div style={{ display : "flex", alignItems : "center", gap : "16px" }}>
+                    <span style={{ width : "50px", height : "50px", borderRadius : "16px", background : "#EAF4FB", color : "#0A6FB0", display : "inline-flex", alignItems : "center", justifyContent : "center", flex : "none" }}>
+                      <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" />
+                      </svg>
+                    </span>
+                    <span style={{ minWidth : "0" }}>
+                      <span style={{ display : "block", fontWeight : "800", fontSize : "17px" }}>
+                        {"Հեռախոս · WhatsApp · Viber"}
+                      </span>
+                      <span style={{ display : "block", fontSize : "13px", color : "#4A5F73", fontWeight : "600", marginTop : "2px" }}>
+                        {"Երկու համարն էլ հասանելի են զանգի և չատի համար"}
+                      </span>
+                    </span>
+                  </div>
+                  {(V.phones ?? []).map((p: any, $i9: number) => (
+                    <div key={$i9} style={{ display : "flex", alignItems : "center", justifyContent : "space-between", flexWrap : "wrap", gap : "10px", marginTop : "14px", paddingTop : "14px", borderTop : "1px solid #E1ECF5" }}>
+                      <a href={"tel:+" + p?.d} style={{ fontWeight : "800", fontSize : "18px", color : "#0B2236", textDecoration : "none", whiteSpace : "nowrap" }}>
+                        {p?.n}
+                      </a>
+                      <span style={{ display : "flex", gap : "6px", flexWrap : "wrap" }}>
+                        <a href={"tel:+" + p?.d} className="chip" style={{ padding : "7px 12px", borderRadius : "999px", background : "#EAF4FB", color : "#0A6FB0", fontWeight : "700", fontSize : "13px", textDecoration : "none" }}>
+                          {"Զանգ"}
+                        </a>
+                        <a href={"https://wa.me/" + p?.d} target="_blank" rel="noopener noreferrer" className="chip" style={{ padding : "7px 12px", borderRadius : "999px", background : "#E3F9EC", color : "#1F7A4D", fontWeight : "700", fontSize : "13px", textDecoration : "none" }}>
+                          {"WhatsApp"}
+                        </a>
+                        <a href={"viber://chat?number=%2B" + p?.d} className="chip" style={{ padding : "7px 12px", borderRadius : "999px", background : "#EFEAFB", color : "#5B3FA8", fontWeight : "700", fontSize : "13px", textDecoration : "none" }}>
+                          {"Viber"}
+                        </a>
+                      </span>
+                    </div>
+                  ))}
+                </div>
                 {(V.contacts ?? []).map((c: any, $i8: number) => (
                   <React.Fragment key={$i8}>
                     <a href={c?.href} className="lift rise d2" style={{ display : "flex", alignItems : "center", gap : "16px", background : "#fff", border : "1px solid #E1ECF5", borderRadius : "22px", padding : "18px 20px", textDecoration : "none", color : "#0B2236" }}>
