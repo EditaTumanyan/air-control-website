@@ -3,6 +3,7 @@
 // Header — generated from the Air Control design. Edit the texts and layout here.
 import React from 'react';
 import { DCLogic, css, muteVideo } from '../lib/dc';
+import PhonesCard from './PhonesCard';
 
 
 const STYLES = "body{margin:0}";
@@ -82,12 +83,16 @@ export default class Header extends DCLogic {
                 {V.t?.area}
               </span>
             </div>
-            <div style={{ display : "flex", gap : "18px", alignItems : "center", marginLeft : "auto" }}>
+            <div className="hd-topbar" style={{ display : "flex", gap : "18px", alignItems : "center", marginLeft : "auto" }}>
+              <style>{"@media (max-width:440px){.hd-topbar{gap:10px !important}.hd-topbar>a{font-size:13px}.hd-topbar>a svg{display:none}}@media (max-width:359px){.hd-tel2{display:none !important}}"}</style>
               <a href="tel:+37441559910" style={{ display : "inline-flex", gap : "8px", alignItems : "center", fontWeight : "800", color : "#fff", textDecoration : "none", whiteSpace : "nowrap" }}>
                 <svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F6A75F" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2" />
                 </svg>
                 {"+374 41 55 99 10"}
+              </a>
+              <a href="tel:+37491105887" className="hd-tel2" style={{ display : "inline-flex", gap : "8px", alignItems : "center", fontWeight : "800", color : "#fff", textDecoration : "none", whiteSpace : "nowrap" }}>
+                {"+374 91 10 58 87"}
               </a>
               <span style={{ display : "inline-flex", gap : "8px", alignItems : "center", fontWeight : "700" }} className="hd-urgent">
                 <span className="pulse-dot" style={{ width : "8px", height : "8px", borderRadius : "50%", background : "#F28A2E" }} />
@@ -195,6 +200,23 @@ export default class Header extends DCLogic {
                 <a href="/contacts/" className="btn-o" style={{ marginTop : "18px" }}>
                   {V.t?.cta}
                 </a>
+                <div style={{ marginTop : "18px" }}>
+                  <PhonesCard lang={V.isRu ? "ru" : "hy"} />
+                </div>
+                <div style={{ display : "flex", flexDirection : "column", gap : "10px", marginTop : "16px", color : "#4A5F73", fontSize : "15px", fontWeight : "600" }}>
+                  <span style={{ display : "inline-flex", gap : "10px", alignItems : "center" }}>
+                    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A6FB0" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>
+                    {V.t?.hours}
+                  </span>
+                  <span style={{ display : "inline-flex", gap : "10px", alignItems : "center" }}>
+                    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A6FB0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z" /><circle cx="12" cy="9.5" r="2.5" /></svg>
+                    {V.t?.area}
+                  </span>
+                  <span style={{ display : "inline-flex", gap : "10px", alignItems : "center", color : "#B85A0E" }}>
+                    <span className="pulse-dot" style={{ width : "8px", height : "8px", borderRadius : "50%", background : "#F28A2E", margin : "0 4px" }} />
+                    {V.t?.urgent}
+                  </span>
+                </div>
               </div>
             </>
           ) : null}
