@@ -6,7 +6,14 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: { default: 'Air Control — Օդորակիչների սպասարկման կենտրոն', template: '%s — Air Control' },
   description: DESCRIPTION,
-  icons: { icon: '/favicon.svg' },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: '16x16 32x32 48x48' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' }
+    ],
+    apple: '/apple-touch-icon.png'
+  },
   openGraph: {
     type: 'website',
     locale: 'hy_AM',
