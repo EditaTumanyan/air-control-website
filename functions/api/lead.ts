@@ -31,7 +31,24 @@ const LABELS: Record<string, string> = {
   page: 'Էջ'
 };
 const SKIP = new Set(['bf-svc', 'kind', 'file', 'website']);
-const MAX_FILE = 20 * 1024 * 1024;
+const MAX_FILE = 45 * 1024 * 1024; // Telegram bots can upload up to 50 MB
+
+async function sendFile(api: string, chatId: string, method: string, field: string, file: File) {
+  const fd = new FormData();
+  fd.set('chat_id', chatId);
+  fd.set(field, file, file.name || 'file');
+  fd.set('caption', 'Հայտին կցված ֆայլ');
+  const res = await fetch(`${api}/${method}`, { method: 'POST', body: fd }).catch(() => null);
+  return !!res && res.ok;
+}
+
+async function sendText(api: string, chatId: string, text: string) {
+  await fetch(`${api}/sendMessage`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ chat_id: chatId, text })
+  }).catch(() => null);
+}
 
 function esc(s: string) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -73,17 +90,20 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   });
   if (!res.ok) return json({ ok: false, error: 'telegram_failed' }, 502);
 
-  const file = form.get('file');
-  if (file && typeof file !== 'string' && file.size > 0 && file.size <= MAX_FILE) {
-    const isVideo = (file.type || '').startsWith('video/');
-    const isImage = (file.type || '').startsWith('image/');
-    const method = isImage ? 'sendPhoto' : isVideo ? 'sendVideo' : 'sendDocument';
-    const field = isImage ? 'photo' : isVideo ? 'video' : 'document';
-    const fd = new FormData();
-    fd.set('chat_id', env.TELEGRAM_CHAT_ID);
-    fd.set(field, file, file.name || 'file');
-    fd.set('caption', 'Հայտին կցված ֆայլ');
-    await fetch(`${api}/${method}`, { method: 'POST', body: fd }).catch(() => null);
+  const file = form.get('file') as unknown as File | string | null;
+  if (file && typeof file !== 'string' && file.size > 0) {
+    if (file.size > MAX_FILE) {
+      await sendText(api, env.TELEGRAM_CHAT_ID, `⚠️ Հաճախորդը կցել էր ֆայլ (${Math.round(file.size / 1048576)} ՄԲ), բայց այն չափազանց մեծ է։ Խնդրեք ուղարկել WhatsApp/Viber-ով։`);
+    } else {
+      const type = file.type || '';
+      // sendPhoto only accepts common formats up to 10 MB; anything else goes as video/document.
+      const isPhoto = /^image\/(jpeg|png|webp|gif)$/.test(type) && file.size <= 10 * 1024 * 1024;
+      const isVideo = type.startsWith('video/');
+      const first = isPhoto ? ['sendPhoto', 'photo'] : isVideo ? ['sendVideo', 'video'] : ['sendDocument', 'document'];
+      let ok = await sendFile(api, env.TELEGRAM_CHAT_ID, first[0], first[1], file);
+      if (!ok && first[0] !== 'sendDocument') ok = await sendFile(api, env.TELEGRAM_CHAT_ID, 'sendDocument', 'document', file);
+      if (!ok) await sendText(api, env.TELEGRAM_CHAT_ID, '⚠️ Հաճախորդի կցած ֆայլը չհաջողվեց ուղարկել։ Խնդրեք ուղարկել WhatsApp/Viber-ով։');
+    }
   }
 
   return json({ ok: true });

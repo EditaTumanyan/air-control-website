@@ -197,7 +197,7 @@ export default class BookingForm extends DCLogic {
                     {V.t?.photoHint}
                   </span>
                 </span>
-                <input type="file" accept="image/*,video/*" onChange={V.onFile} style={{ position : "absolute", width : "1px", height : "1px", opacity : "0" }} />
+                <input type="file" name="file" accept="image/*,video/*" onChange={V.onFile} style={{ position : "absolute", width : "1px", height : "1px", opacity : "0" }} />
               </label>
               {V.isOffer ? (
                 <>

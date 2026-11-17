@@ -4,6 +4,7 @@
 import React from 'react';
 import { DCLogic, css, muteVideo } from '../lib/dc';
 import Header from './Header';
+import PhonesCard from './PhonesCard';
 import BookingForm from './BookingForm';
 import Footer from './Footer';
 
@@ -1168,24 +1169,7 @@ export default class Main extends DCLogic {
                   </div>
                 </React.Fragment>
               ))}
-              <div style={{ display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(170px, 1fr))", gap : "12px", marginTop : "26px" }}>
-                <a href="tel:+37441559910" className="lift" style={{ background : "#fff", border : "1px solid #E1ECF5", borderRadius : "20px", padding : "18px", textDecoration : "none", color : "#0B2236" }}>
-                  <span style={{ display : "block", fontSize : "13px", color : "#4A5F73", fontWeight : "600" }}>
-                    {V.t?.phone}
-                  </span>
-                  <span style={{ display : "block", fontWeight : "800", marginTop : "4px" }}>
-                    {"+374 41 55 99 10"}
-                  </span>
-                </a>
-                <a href="https://wa.me/37491105887" className="lift" style={{ background : "#fff", border : "1px solid #E1ECF5", borderRadius : "20px", padding : "18px", textDecoration : "none", color : "#0B2236" }}>
-                  <span style={{ display : "block", fontSize : "13px", color : "#4A5F73", fontWeight : "600" }}>
-                    {"WhatsApp / Viber"}
-                  </span>
-                  <span style={{ display : "block", fontWeight : "800", marginTop : "4px" }}>
-                    {"+374 91 10 58 87"}
-                  </span>
-                </a>
-              </div>
+              <div style={{ marginTop : "26px" }}><PhonesCard lang={V.lang} /></div>
             </div>
             <div className="rv" style={{ flex : "1.3 1 560px", minWidth : "0" }}>
               <BookingForm lang={V.lang} offer={V.offerPicked} />

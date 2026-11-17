@@ -28,7 +28,7 @@ const jsonLd = {
   telephone: PHONE_MAIN.replace(/\s/g, ''),
   areaServed: ['Երևան', 'Կոտայք', 'Արարատ', 'Արմավիր', 'Արագածոտն'],
   address: { '@type': 'PostalAddress', addressLocality: 'Yerevan', addressCountry: 'AM' },
-  openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '09:00', closes: '22:00' }],
+  openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'], opens: '09:00', closes: '23:59' }],
   priceRange: '֏֏'
 };
 

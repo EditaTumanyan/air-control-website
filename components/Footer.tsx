@@ -30,13 +30,13 @@ export default class Footer extends DCLogic {
         colSvc: 'Ծառայություններ', colCo: 'Ընկերություն', colContact: 'Կոնտակտներ',
         svcLinks: ['Տեղադրում և ապամոնտաժում','Վերանորոգում','Լվացում և ախտահանում','Ֆրեոնի լիցքավորում','Խողովակների զոդում և մոնտաժ','Ակոսների փորում'],
         co: [['Մեր աշխատանքները','/works/'],['Բիզնեսի համար','/business/'],['Խնդիրներ և լուծումներ','/problems/'],['Մեր մասին','/about/'],['Կոնտակտներ','/contacts/'],['Գներ','/services/']],
-        address: 'Երևան և հարակից մարզեր', hours: 'Երկ–Կիր · 09:00–22:00', urgent: 'Արագ սպասարկում՝ 1–2 օրում', rights: 'Բոլոր իրավունքները պաշտպանված են։', privacy: 'Գաղտնիության քաղաքականություն', terms: 'Երաշխիքի պայմաններ' },
+        address: 'Երևան և հարակից մարզեր', hours: 'Երկ–Կիր · 09:00–24:00', urgent: 'Արագ սպասարկում՝ 1–2 օրում', rights: 'Բոլոր իրավունքները պաշտպանված են։', privacy: 'Գաղտնիության քաղաքականություն', terms: 'Երաշխիքի պայմաններ' },
       ru: { fbEyebrow: 'Обратная связь', fbTitle: 'Жалобы и предложения', fbThanks: 'Оставить отзыв', ofTag: 'Спецпредложение', ofTitle: 'Чистка (внутренний и наружный блок)', ofOld: '30 000 ֏', ofPrice: '15 000 ֏', ofG1: 'Заправка фреоном (до 300 г) — в подарок', ofG2: 'Диагностика кондиционера — в подарок', ofCta: 'Заказать сейчас', ofPill: '15 000 ֏ + подарки', ofClose: 'Закрыть', ctaTitle: 'Проблема с кондиционером?', ctaSub: 'Оставьте заявку или позвоните — наш специалист приедет в течение 1–2 дней.', cta: 'Оставить заявку',
         about: 'Установка, ремонт и обслуживание кондиционеров в Ереване и прилегающих областях с 2014 года.',
         colSvc: 'Услуги', colCo: 'Компания', colContact: 'Контакты',
         svcLinks: ['Установка и демонтаж','Ремонт','Чистка и дезинфекция','Заправка фреоном','Пайка и монтаж трассы','Штробление стен'],
         co: [['Наши работы','/works/'],['Для бизнеса','/business/'],['Проблемы и решения','/problems/'],['О нас','/about/'],['Контакты','/contacts/'],['Цены','/services/']],
-        address: 'Ереван и прилегающие области', hours: 'Пн–Вс · 09:00–22:00', urgent: 'Быстрое обслуживание за 1–2 дня', rights: 'Все права защищены.', privacy: 'Политика конфиденциальности', terms: 'Условия гарантии' }
+        address: 'Ереван и прилегающие области', hours: 'Пн–Вс · 09:00–24:00', urgent: 'Быстрое обслуживание за 1–2 дня', rights: 'Все права защищены.', privacy: 'Политика конфиденциальности', terms: 'Условия гарантии' }
     };
     const t = T[lang] || T.hy;
     return {
@@ -153,6 +153,12 @@ export default class Footer extends DCLogic {
               <a href="tel:+37441559910" className="ft-link" style={{ display : "block", color : "#fff", fontWeight : "800", fontSize : "20px", padding : "4px 0" }}>
                 {"+374 41 55 99 10"}
               </a>
+              <a href="tel:+37491105887" className="ft-link" style={{ display : "block", color : "#fff", fontWeight : "800", fontSize : "20px", padding : "4px 0" }}>
+                {"+374 91 10 58 87"}
+              </a>
+              <div style={{ color : "#9FC3E0", fontSize : "13px", fontWeight : "600", padding : "2px 0 6px" }}>
+                {(this.props as any).lang === 'ru' ? "Звонки · WhatsApp · Viber — оба номера" : "Զանգ · WhatsApp · Viber՝ երկու համարով"}
+              </div>
               <a href="mailto:air_control_ac_service@mail.ru" className="ft-link" style={{ display : "block", color : "#C2D3E2", padding : "6px 0", fontSize : "15px" }}>
                 {"air_control_ac_service@mail.ru"}
               </a>
