@@ -53,7 +53,7 @@ export default class Business extends DCLogic {
       ],
       logoLoop: (() => {
         const ru = this.props.lang === 'ru';
-        const real = CLIENTS.map(c => ({ name: ru ? c.nameRu : c.name, logo: c.logo }));
+        const real = CLIENTS.map(c => ({ name: ru ? c.nameRu : c.name, alt: (ru ? c.fullRu : c.full) || (ru ? c.nameRu : c.name), logo: c.logo }));
         const ph = [L("[Հաճախորդի լոգո 1]"), L("[Հաճախորդի լոգո 2]"), L("[Հաճախորդի լոգո 3]"), L("[Հաճախորդի լոգո 4]"), L("[Հաճախորդի լոգո 5]"), L("[Հաճախորդի լոգո 6]"), L("[Հաճախորդի լոգո 7]"), L("[Հաճախորդի լոգո 8]")]
           .slice(real.length, SLOTS).map(t => ({ name: t, logo: '' }));
         const l = real.concat(ph); return l.concat(l);
@@ -248,7 +248,7 @@ export default class Business extends DCLogic {
                   <React.Fragment key={$i8}>
                     {l?.logo ? (
                       <div className="logocard" style={{ flex : "0 0 220px", height : "96px", borderRadius : "20px", background : "#fff", border : "1.5px solid #E1ECF5", display : "flex", flexDirection : "column", alignItems : "center", justifyContent : "center", gap : "6px", padding : "10px 14px" }}>
-                        <img src={l.logo} alt={l.name} style={{ maxHeight : "52px", maxWidth : "160px", objectFit : "contain" }} />
+                        <img src={l.logo} alt={l.alt} style={{ maxHeight : "52px", maxWidth : "160px", objectFit : "contain" }} />
                         <span style={{ fontSize : "12px", fontWeight : "700", color : "#4A5F73", whiteSpace : "nowrap" }}>{l.name}</span>
                       </div>
                     ) : (
