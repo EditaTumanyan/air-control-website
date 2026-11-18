@@ -73,8 +73,8 @@ export default class Main extends DCLogic {
         calcNote: 'Հաշվարկը մոտավոր է։ Վարպետը անվճար կճշտի տեղում՝ հաշվի առնելով պատուհանները, տեխնիկան և հարկը։', calcCta: 'Պատվիրել տեղադրում',
         baEyebrow: 'Առաջ և հետո', baTitle: 'Ի՞նչ է տալիս օդորակիչի լվացումը', baSub: 'Ներքին բլոկի ռադիատորը մինչև և լվացումից հետո։ Քաշեք սահիչը։', before: 'Առաջ', after: 'Հետո', baAria: 'Համեմատել առաջ և հետո',
         baList: [['−30%','էլեկտրաէներգիայի ծախս'],['100%','բորբոսի և հոտի վերացում'],['2×','ավելի ուժեղ օդահոսք']],
-        faqEyebrow: 'Խնդիրներ և լուծումներ', faqTitle: 'Ինչ է պատահել օդորակիչին', faqSub: 'Ընտրեք ձեր խնդիրը՝ կտեսնեք հնարավոր պատճառները և ինչ կարող եք անել հենց հիմա։',
-        faqHelpTitle: 'Չգտա՞ք ձեր խնդիրը', faqHelpText: 'Գրեք կամ զանգահարեք մեզ, և վարպետը կօգնի պարզել խնդիրը և կասի գինը։', faqAll: 'Բոլոր խնդիրները և սխալի կոդերը',
+        faqEyebrow: 'Անսարքություններ և պատճառներ', faqTitle: 'Ինչ է պատահել օդորակիչին', faqSub: 'Ընտրեք ձեր խնդիրը՝ կտեսնեք դրա հնարավոր պատճառները։ Ճշգրիտ պատճառը և գինը վարպետը կասի ախտորոշումից հետո։',
+        faqHelpTitle: 'Չգտա՞ք ձեր խնդիրը', faqHelpText: 'Գրեք կամ զանգահարեք մեզ, և վարպետը կօգնի պարզել խնդիրը և կասի գինը։', faqAll: 'Բոլոր անսարքությունները և սխալի կոդերը',
         causes: 'Հնարավոր պատճառներ', diy: 'Ինչ անել հիմա', callMaster: 'Կանչել վարպետին',
         faq: [
           ['Օդորակիչը չի սառեցնում','Ֆրեոնի արտահոսք, կեղտոտ ֆիլտրեր կամ ռադիատոր, կոմպրեսորի կամ կոնդենսատորի անսարքություն։','Ստուգեք, որ միացված է սառեցման ռեժիմը, և լվացեք ֆիլտրերը։ Եթե 15 րոպեից չի օգնում՝ կանչեք վարպետին։'],
@@ -126,8 +126,8 @@ export default class Main extends DCLogic {
         calcNote: 'Расчёт приблизительный. Мастер бесплатно уточнит на месте с учётом окон, техники и этажа.', calcCta: 'Заказать установку',
         baEyebrow: 'До и после', baTitle: 'Что даёт чистка кондиционера', baSub: 'Радиатор внутреннего блока до и после чистки. Потяните ползунок.', before: 'До', after: 'После', baAria: 'Сравнить до и после',
         baList: [['−30%','расход электроэнергии'],['100%','удаление плесени и запаха'],['2×','более сильный поток воздуха']],
-        faqEyebrow: 'Проблемы и решения', faqTitle: 'Что случилось с кондиционером', faqSub: 'Выберите проблему — увидите возможные причины и что можно сделать прямо сейчас.',
-        faqHelpTitle: 'Не нашли свою проблему?', faqHelpText: 'Напишите или позвоните нам — мастер поможет разобраться в проблеме и назовёт цену.', faqAll: 'Все проблемы и коды ошибок',
+        faqEyebrow: 'Неисправности и причины', faqTitle: 'Что случилось с кондиционером', faqSub: 'Выберите проблему — увидите её возможные причины. Точную причину и цену мастер назовёт после диагностики.',
+        faqHelpTitle: 'Не нашли свою проблему?', faqHelpText: 'Напишите или позвоните нам — мастер поможет разобраться в проблеме и назовёт цену.', faqAll: 'Все неисправности и коды ошибок',
         causes: 'Возможные причины', diy: 'Что сделать сейчас', callMaster: 'Вызвать мастера',
         faq: [
           ['Кондиционер не охлаждает','Утечка фреона, грязные фильтры или радиатор, неисправность компрессора или конденсатора.','Проверьте, что включён режим охлаждения, и промойте фильтры. Если через 15 минут не помогло — вызовите мастера.'],
@@ -986,7 +986,7 @@ export default class Main extends DCLogic {
                     </button>
                     {f?.open ? (
                       <>
-                        <div className="bub faq-body" style={{ padding : "0 22px 22px 84px", display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(220px, 1fr))", gap : "14px" }}>
+                        <div className="bub faq-body" style={{ padding : "0 22px 22px 84px", display : "grid", gridTemplateColumns : "1fr", gap : "14px" }}>
                           <div style={{ background : "#F4F8FC", borderRadius : "16px", padding : "16px 18px" }}>
                             <div style={{ fontSize : "12px", fontWeight : "800", letterSpacing : ".08em", textTransform : "uppercase", color : "#0A6FB0", marginBottom : "8px" }}>
                               {V.t?.causes}
@@ -995,17 +995,11 @@ export default class Main extends DCLogic {
                               {f?.c}
                             </div>
                           </div>
-                          <div style={{ background : "#FFF4EA", borderRadius : "16px", padding : "16px 18px" }}>
-                            <div style={{ fontSize : "12px", fontWeight : "800", letterSpacing : ".08em", textTransform : "uppercase", color : "#B85A0E", marginBottom : "8px" }}>
-                              {V.t?.diy}
-                            </div>
-                            <div style={{ lineHeight : "1.55", color : "#3F566B" }}>
-                              {f?.d}
-                            </div>
+                          <div>
+                            <a href="#booking" className="btn-o" style={{ padding : "13px 22px", fontSize : "15px" }}>
+                              {V.t?.callMaster}
+                            </a>
                           </div>
-                          <a href="#booking" style={{ gridColumn : "1 / -1", fontWeight : "800", textDecoration : "none" }}>
-                            {V.t?.callMaster}{" →"}
-                          </a>
                         </div>
                       </>
                     ) : null}
