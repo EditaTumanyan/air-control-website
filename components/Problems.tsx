@@ -137,17 +137,17 @@ export default class Problems extends DCLogic {
           <div style={{ maxWidth : "900px", margin : "0 auto", textAlign : "center", position : "relative" }}>
             <span className="rise" style={{ display : "inline-flex", alignItems : "center", gap : "10px", background : "#fff", border : "1px solid #DCE8F2", borderRadius : "999px", padding : "8px 16px", fontWeight : "700", fontSize : "14px" }}>
               <span className="pulse-dot" style={{ width : "8px", height : "8px", borderRadius : "50%", background : "#F28A2E" }} />
-              {L("Անսարքություններ և պատճառներ")}
+              {L("Անսարքությունների ախտորոշում")}
             </span>
             <h1 className="rise d1 h1x" style={{ margin : "22px 0 16px", fontSize : "62px", lineHeight : "1.05", letterSpacing : "-0.035em", fontWeight : "800" }}>
               {L("Ինչ է պատահել ")}
               <span style={{ color : "#0A6FB0" }}>
                 {L("օդորակիչին")}
               </span>
-              {"։"}
+              {this.props.lang === 'ru' ? "?" : "։"}
             </h1>
             <p className="rise d2" style={{ margin : "0 auto 34px", fontSize : "19px", lineHeight : "1.6", color : "#3F566B", maxWidth : "640px" }}>
-              {L("Գտեք ձեր խնդիրը և իմացեք դրա հնարավոր պատճառները։ Ճշգրիտ պատճառը վարպետը կպարզի տեղում՝ ախտորոշումից հետո։")}
+              {L("Ընտրեք նկատված նշանները, իմացեք հնարավոր պատճառները և վստահեք լուծումը մեր մասնագետին։")}
             </p>
             <label className="rise d3 search" style={{ display : "flex", alignItems : "center", gap : "14px", background : "#fff", border : "1.5px solid #D5E2EE", borderRadius : "22px", padding : "8px 8px 8px 22px", maxWidth : "680px", margin : "0 auto", boxShadow : "0 24px 48px -28px rgba(11,34,54,.45)", transition : "box-shadow .25s, border-color .25s" }}>
               <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A6FB0" strokeWidth="2.2" strokeLinecap="round">
