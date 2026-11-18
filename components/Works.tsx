@@ -64,7 +64,7 @@ export default class Works extends DCLogic {
                   {"/"}
                 </span>
                 <span>
-                  {L("Աշխատանքներ")}
+                  {L("Տեսանյութեր")}
                 </span>
               </nav>
               <h1 className="rise d1 h1x" style={{ margin : "20px 0 16px", fontSize : "62px", lineHeight : "1.05", letterSpacing : "-0.035em", fontWeight : "800" }}>

@@ -6,7 +6,7 @@ import { DESCRIPTION, DESCRIPTION_RU } from './site';
 export const PAGES: Record<string, { hy: string; ru: string }> = {
   '': { hy: 'Air Control — Օդորակիչների սպասարկման կենտրոն', ru: 'Air Control — Центр обслуживания кондиционеров' },
   services: { hy: 'Ծառայություններ և գներ', ru: 'Услуги и цены' },
-  works: { hy: 'Մեր աշխատանքները', ru: 'Наши работы' },
+  works: { hy: 'Տեսանյութեր', ru: 'Видео' },
   business: { hy: 'Բիզնեսի համար', ru: 'Для бизнеса' },
   problems: { hy: 'Անսարքություններ և պատճառներ', ru: 'Неисправности и причины' },
   about: { hy: 'Մեր մասին', ru: 'О нас' },

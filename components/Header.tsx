@@ -16,9 +16,9 @@ export default class Header extends DCLogic {
     const active = this.props.active ?? 'home';
     const T = {
       hy: { offerTag: 'Հատուկ առաջարկ', offerLong: 'Լվացում ընդամենը 15 000 ֏ + ֆրեոնի լիցքավորում և ախտորոշում՝ ՆՎԵՐ', offerShort: 'Լվացում 15 000 ֏ + նվերներ', offerMore: 'Մանրամասն', hours: 'Երկ–Կիր · 09:00–24:00', area: 'Երևան և հարակից մարզեր', urgent: 'Արագ սպասարկում՝ 1–2 օրում', cta: 'Թողնել հայտ', menu: 'Մենյու', navLabel: 'Հիմնական մենյու', langLabel: 'Լեզու',
-        nav: [['services','Ծառայություններ'],['works','Աշխատանքներ'],['business','Բիզնեսի համար'],['problems','Անսարքություններ'],['about','Մեր մասին'],['contacts','Կոնտակտներ']] },
+        nav: [['services','Ծառայություններ'],['works','Տեսանյութեր'],['business','Բիզնեսի համար'],['problems','Անսարքություններ'],['about','Մեր մասին'],['contacts','Կոնտակտներ']] },
       ru: { offerTag: 'Спецпредложение', offerLong: 'Чистка всего за 15 000 ֏ + заправка фреоном и диагностика в ПОДАРОК', offerShort: 'Чистка 15 000 ֏ + подарки', offerMore: 'Подробнее', hours: 'Пн–Вс · 09:00–24:00', area: 'Ереван и прилегающие области', urgent: 'Быстрое обслуживание за 1–2 дня', cta: 'Оставить заявку', menu: 'Меню', navLabel: 'Главное меню', langLabel: 'Язык',
-        nav: [['services','Услуги'],['works','Наши работы'],['business','Для бизнеса'],['problems','Неисправности'],['about','О нас'],['contacts','Контакты']] }
+        nav: [['services','Услуги'],['works','Видео'],['business','Для бизнеса'],['problems','Неисправности'],['about','О нас'],['contacts','Контакты']] }
     };
     const files = { works: path(lang, '/works/'), services: path(lang, '/services/'), business: path(lang, '/business/'), problems: path(lang, '/problems/'), about: path(lang, '/about/'), contacts: path(lang, '/contacts/') };
     const t = T[lang] || T.hy;
