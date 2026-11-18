@@ -5,6 +5,7 @@ import React from 'react';
 import { DCLogic, css, muteVideo } from '../lib/dc';
 import { tr, path } from '../lib/i18n';
 import { RU } from '../lib/ru/Business';
+import { CLIENTS, SLOTS } from '../lib/clients';
 import Header from './Header';
 import PhonesCard from './PhonesCard';
 import BookingForm from './BookingForm';
@@ -50,7 +51,13 @@ export default class Business extends DCLogic {
         { t: L("Պրոֆեսիոնալիզմ և փորձ"), d: L("Ցանկացած բարդության խնդրի ճշգրիտ ու որակյալ լուծում։"), ic: 'M12 15a6 6 0 1 0 0-12 6 6 0 0 0 0 12z M8.5 14L7 22l5-3 5 3-1.5-8' },
         { t: L("Անհատական մոտեցում"), d: L("Առաջարկում ենք լուծումներ՝ հիմնված հենց ձեր բիզնեսի կարիքների վրա։"), ic: 'M12 3l8 4.5v9L12 21l-8-4.5v-9z M12 12l8-4.5 M12 12v9 M12 12L4 7.5' }
       ],
-      logoLoop: (() => { const l = [L("[Հաճախորդի լոգո 1]"), L("[Հաճախորդի լոգո 2]"), L("[Հաճախորդի լոգո 3]"), L("[Հաճախորդի լոգո 4]"), L("[Հաճախորդի լոգո 5]"), L("[Հաճախորդի լոգո 6]"), L("[Հաճախորդի լոգո 7]"), L("[Հաճախորդի լոգո 8]")]; return l.concat(l); })(),
+      logoLoop: (() => {
+        const ru = this.props.lang === 'ru';
+        const real = CLIENTS.map(c => ({ name: ru ? c.nameRu : c.name, logo: c.logo }));
+        const ph = [L("[Հաճախորդի լոգո 1]"), L("[Հաճախորդի լոգո 2]"), L("[Հաճախորդի լոգո 3]"), L("[Հաճախորդի լոգո 4]"), L("[Հաճախորդի լոգո 5]"), L("[Հաճախորդի լոգո 6]"), L("[Հաճախորդի լոգո 7]"), L("[Հաճախորդի լոգո 8]")]
+          .slice(real.length, SLOTS).map(t => ({ name: t, logo: '' }));
+        const l = real.concat(ph); return l.concat(l);
+      })(),
       logoDur: (8 * 5) + 's',
       steps: [{ n: '1', t: L("Հայտ և զանգ մենեջերից") }, { n: '2', t: L("Ինժեների անվճար այց և աուդիտ") }, { n: '3', t: L("Առաջարկ և համաձայնեցում") }, { n: '4', t: L("Սպասարկում ըստ գրաֆիկի") }]
     };
@@ -239,9 +246,16 @@ export default class Business extends DCLogic {
               <div className="logomarq" style={css(`display: flex; gap: 16px; width: max-content; animation-duration: ${V.logoDur ?? ""}`)}>
                 {(V.logoLoop ?? []).map((l: any, $i8: number) => (
                   <React.Fragment key={$i8}>
-                    <div className="logocard" style={{ flex : "0 0 220px", height : "96px", borderRadius : "20px", background : "#fff", border : "1.5px dashed #C3D6E6", display : "flex", alignItems : "center", justifyContent : "center", color : "#6B7F92", fontWeight : "700", fontSize : "14px" }}>
-                      {l}
+                    {l?.logo ? (
+                      <div className="logocard" style={{ flex : "0 0 220px", height : "96px", borderRadius : "20px", background : "#fff", border : "1.5px solid #E1ECF5", display : "flex", flexDirection : "column", alignItems : "center", justifyContent : "center", gap : "6px", padding : "10px 14px" }}>
+                        <img src={l.logo} alt={l.name} style={{ maxHeight : "52px", maxWidth : "160px", objectFit : "contain" }} />
+                        <span style={{ fontSize : "12px", fontWeight : "700", color : "#4A5F73", whiteSpace : "nowrap" }}>{l.name}</span>
+                      </div>
+                    ) : (
+                      <div className="logocard" style={{ flex : "0 0 220px", height : "96px", borderRadius : "20px", background : "#fff", border : "1.5px dashed #C3D6E6", display : "flex", alignItems : "center", justifyContent : "center", color : "#6B7F92", fontWeight : "700", fontSize : "14px" }}>
+                      {l?.name}
                     </div>
+                    )}
                   </React.Fragment>
                 ))}
               </div>
