@@ -5,6 +5,7 @@ import React from 'react';
 import { DCLogic, css, muteVideo } from '../lib/dc';
 import { tr, path } from '../lib/i18n';
 import { RU } from '../lib/ru/Works';
+import BeforeAfter from './BeforeAfter';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -178,7 +179,8 @@ export default class Works extends DCLogic {
             </div>
           </div>
         </section>
-        <section style={{ padding : "0 24px 96px" }}>
+        <BeforeAfter lang={this.props.lang ?? 'hy'} />
+        <section style={{ padding : "72px 24px 96px" }}>
           <div className="rv" style={{ maxWidth : "1280px", margin : "0 auto", background : "#0A6FB0", color : "#fff", borderRadius : "36px", padding : "48px 56px", display : "flex", flexWrap : "wrap", gap : "24px", alignItems : "center", justifyContent : "space-between" }}>
             <div style={{ maxWidth : "640px" }}>
               <div style={{ fontSize : "36px", fontWeight : "800", letterSpacing : "-0.02em", lineHeight : "1.15" }}>
