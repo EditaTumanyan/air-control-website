@@ -8,6 +8,7 @@ import { RU } from '../lib/ru/About';
 import Header from './Header';
 import Footer from './Footer';
 import { STYLES } from './aboutStyles';
+import ReviewsStrip from './ReviewsStrip';
 
 
 export default class About extends DCLogic {
@@ -265,6 +266,11 @@ export default class About extends DCLogic {
                 </React.Fragment>
               ))}
             </div>
+          </div>
+        </section>
+        <section className="sec" style={{ padding : "72px 24px", background : "#fff" }}>
+          <div className="rv" style={{ maxWidth : "1280px", margin : "0 auto" }}>
+            <ReviewsStrip lang={this.props.lang ?? 'hy'} />
           </div>
         </section>
         <section style={{ padding : "88px 24px" }}>
