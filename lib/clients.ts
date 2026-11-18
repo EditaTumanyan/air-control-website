@@ -23,7 +23,8 @@ export const CLIENTS: { name: string; nameRu: string; logo: string; full?: strin
   { name: 'ՀՀ ԳԱԱ', nameRu: 'НАН РА', logo: '/clients/nas-ra.png',
     full: 'ՀՀ գիտությունների ազգային ակադեմիա', fullRu: 'Национальная академия наук Республики Армения' },
   { name: 'Սեդա Ղազարյանի հիմնադրամ', nameRu: 'Фонд Седы Казарян', logo: '/clients/seda-ghazaryan.png',
-    full: 'Սեդա Ղազարյանի անվան հոգեկան առողջության հիմնադրամ', fullRu: 'Фонд психического здоровья имени Седы Казарян' }
+    full: 'Սեդա Ղազարյանի անվան հոգեկան առողջության հիմնադրամ', fullRu: 'Фонд психического здоровья имени Седы Казарян' },
+  { name: 'Թեոֆարմա', nameRu: 'Теофарма', logo: '/clients/theopharma.png', full: 'Theopharma', fullRu: 'Theopharma' }
 ];
 
 export const SLOTS = 8;

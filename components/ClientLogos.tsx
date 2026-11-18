@@ -46,7 +46,7 @@ export default function ClientLogos({ lang = 'hy', title = true, bleed = true }:
               </div>
             ) : (
               <div key={i} aria-hidden={i >= items.length} style={{ ...card, border: '1.5px solid #E1ECF5' }}>
-                <img src={l.logo} alt={l.alt} style={{ maxHeight: '52px', maxWidth: '160px', objectFit: 'contain', borderRadius: l.framed ? '10px' : undefined }} />
+                <img src={l.logo} alt={l.alt} style={{ maxHeight: '52px', maxWidth: '200px', objectFit: 'contain', borderRadius: l.framed ? '10px' : undefined }} />
                 <span style={{ fontSize: '12px', fontWeight: 700, color: '#4A5F73', whiteSpace: 'nowrap' }}>{l.name}</span>
               </div>
             )
