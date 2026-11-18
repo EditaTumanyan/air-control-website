@@ -51,7 +51,7 @@ export default class Main extends DCLogic {
         sub: 'Օդորակիչների տեղադրումից մինչև լիարժեք սպասարկում՝ մեկ տեղում։ Մեր փորձառու մասնագետները կօգնեն ապահովել ցանկալի ջերմաստիճան և հարմարավետություն ամբողջ տարվա ընթացքում։',
         cta1: 'Թողնել հայտ', cta2: 'Զանգահարել',
         stats: [['10','տարի ոլորտում'],['8 500+','սպասարկված օդորակիչ'],['Երաշխիք','մեր կատարած աշխատանքին'],['Արագ սպասարկում','1–2 օրում']],
-        chipCool: 'Սառեցում · Eco ռեժիմ', chipPayTitle: 'Վճարում՝ աշխատանքից հետո', chipPaySub: 'Գինը հայտնի է նախքան աշխատանքը', chipWarranty: 'Որակի երաշխիք',
+        chipCool: 'Կատարյալ կլիմա Ձեր տանը', chipPayTitle: 'Վճարում՝ աշխատանքից հետո', chipPaySub: 'Գինը հայտնի է նախքան աշխատանքը', chipWarranty: 'Որակի երաշխիք',
         brandsLabel: 'Սպասարկում ենք բոլոր բրենդները',
         audEyebrow: 'Երկու ուղղություն', audTitle: 'Ում ենք սպասարկում',
         privTitle: 'Անհատ հաճախորդներ', privText: 'Օդորակիչների տեղադրում, լվացում և սպասարկում բնակարաններում, առանձնատներում ու ամառանոցներում։',
@@ -111,7 +111,7 @@ export default class Main extends DCLogic {
         sub: 'От установки кондиционеров до полного обслуживания — в одном месте. Наши опытные специалисты помогут поддерживать нужную температуру и комфорт круглый год.',
         cta1: 'Оставить заявку', cta2: 'Позвонить',
         stats: [['10','лет в сфере'],['8 500+','обслуженных кондиционеров'],['Гарантия','на выполненную работу'],['Быстрое обслуживание','за 1–2 дня']],
-        chipCool: 'Охлаждение · Eco режим', chipPayTitle: 'Оплата после работы', chipPaySub: 'Цена известна до начала работ', chipWarranty: 'Гарантия качества',
+        chipCool: 'Идеальный климат в вашем доме', chipPayTitle: 'Оплата после работы', chipPaySub: 'Цена известна до начала работ', chipWarranty: 'Гарантия качества',
         brandsLabel: 'Обслуживаем все бренды',
         audEyebrow: 'Два направления', audTitle: 'Кого мы обслуживаем',
         privTitle: 'Частным клиентам', privText: 'Установка, чистка и обслуживание кондиционеров в квартирах, частных домах и на дачах.',
@@ -368,23 +368,6 @@ export default class Main extends DCLogic {
                     {V.t?.chipCool}
                   </span>
                 </span>
-              </div>
-              <div className="floaty2" style={{ position : "absolute", right : "0", bottom : "70px", width : "250px", background : "#fff", borderRadius : "20px", padding : "16px", boxShadow : "0 24px 48px -22px rgba(11,34,54,.5)" }}>
-                <div style={{ display : "flex", alignItems : "center", gap : "12px" }}>
-                  <span style={{ width : "40px", height : "40px", borderRadius : "12px", background : "#FFF1E4", display : "inline-flex", alignItems : "center", justifyContent : "center", flex : "none" }}>
-                    <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#B85A0E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M3 6h18v12H3z M3 10h18 M7 15h3" />
-                    </svg>
-                  </span>
-                  <span style={{ flex : "1" }}>
-                    <span style={{ display : "block", fontWeight : "800", fontSize : "15px" }}>
-                      {V.t?.chipPayTitle}
-                    </span>
-                    <span style={{ display : "block", fontSize : "13px", color : "#4A5F73" }}>
-                      {V.t?.chipPaySub}
-                    </span>
-                  </span>
-                </div>
               </div>
               <div className="floaty" style={{ position : "absolute", left : "30px", bottom : "30px", background : "#0B2236", color : "#fff", borderRadius : "999px", padding : "10px 18px", display : "flex", alignItems : "center", gap : "8px", fontWeight : "700", fontSize : "14px", animationDelay : "-3s", boxShadow : "0 20px 40px -20px rgba(11,34,54,.7)" }}>
                 <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F28A2E" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
