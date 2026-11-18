@@ -135,16 +135,11 @@ export default class Problems extends DCLogic {
         <section style={{ padding : "64px 24px 40px", position : "relative", overflow : "hidden" }}>
           <div aria-hidden="true" style={{ position : "absolute", inset : "0", backgroundImage : "radial-gradient(rgba(11,34,54,.09) 1.2px, transparent 1.2px)", backgroundSize : "26px 26px", maskImage : "linear-gradient(180deg, #000, transparent 90%)", WebkitMaskImage : "linear-gradient(180deg, #000, transparent 90%)" }} />
           <div style={{ maxWidth : "900px", margin : "0 auto", textAlign : "center", position : "relative" }}>
-            <span className="rise" style={{ display : "inline-flex", alignItems : "center", gap : "10px", background : "#fff", border : "1px solid #DCE8F2", borderRadius : "999px", padding : "8px 16px", fontWeight : "700", fontSize : "14px" }}>
-              <span className="pulse-dot" style={{ width : "8px", height : "8px", borderRadius : "50%", background : "#F28A2E" }} />
-              {L("Անսարքությունների ախտորոշում")}
-            </span>
-            <h1 className="rise d1 h1x" style={{ margin : "22px 0 16px", fontSize : "62px", lineHeight : "1.05", letterSpacing : "-0.035em", fontWeight : "800" }}>
-              {L("Ինչ է պատահել ")}
+            <h1 className="rise d1 h1x" style={{ margin : "0 0 16px", fontSize : "62px", lineHeight : "1.05", letterSpacing : "-0.035em", fontWeight : "800" }}>
+              {L("Անսարքությունների ")}
               <span style={{ color : "#0A6FB0" }}>
-                {L("օդորակիչին")}
+                {L("ախտորոշում")}
               </span>
-              {this.props.lang === 'ru' ? "?" : "։"}
             </h1>
             <p className="rise d2" style={{ margin : "0 auto 34px", fontSize : "19px", lineHeight : "1.6", color : "#3F566B", maxWidth : "640px" }}>
               {L("Ընտրեք նկատված նշանները, իմացեք հնարավոր պատճառները և վստահեք լուծումը մեր մասնագետին։")}
