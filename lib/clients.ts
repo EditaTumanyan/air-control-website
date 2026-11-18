@@ -12,7 +12,9 @@ export const CLIENTS: { name: string; nameRu: string; logo: string; full?: strin
     full: 'Հայաստանի պետական մանկավարժական համալսարան', fullRu: 'Армянский государственный педагогический университет' },
   { name: 'Աջափնյակ բժշկական կենտրոն', nameRu: 'Медцентр «Аджапняк»', logo: '/clients/ajapnyak-medical.png',
     fullRu: 'Медицинский центр «Аджапняк»' },
-  { name: 'Գազպրոմ Արմենիա', nameRu: 'Газпром Армения', logo: '/clients/gazprom-armenia.png' }
+  { name: 'Գազպրոմ Արմենիա', nameRu: 'Газпром Армения', logo: '/clients/gazprom-armenia.png' },
+  { name: 'Սոչի Փալաս հյուրանոց', nameRu: 'Отель «Сочи Палас»', logo: '/clients/sochi-palace.png' },
+  { name: 'Վեոլիա Ջուր', nameRu: 'Веолия Джур', logo: '/clients/veolia.png' }
 ];
 
 export const SLOTS = 8;
