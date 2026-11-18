@@ -247,12 +247,12 @@ export default class Business extends DCLogic {
                 {(V.logoLoop ?? []).map((l: any, $i8: number) => (
                   <React.Fragment key={$i8}>
                     {l?.logo ? (
-                      <div className="logocard" style={{ flex : "0 0 220px", height : "96px", borderRadius : "20px", background : "#fff", border : "1.5px solid #E1ECF5", display : "flex", flexDirection : "column", alignItems : "center", justifyContent : "center", gap : "6px", padding : "10px 14px" }}>
+                      <div className="logocard" style={{ flex : "0 0 240px", height : "96px", borderRadius : "20px", background : "#fff", border : "1.5px solid #E1ECF5", display : "flex", flexDirection : "column", alignItems : "center", justifyContent : "center", gap : "6px", padding : "10px 14px" }}>
                         <img src={l.logo} alt={l.alt} style={{ maxHeight : "52px", maxWidth : "160px", objectFit : "contain" }} />
                         <span style={{ fontSize : "12px", fontWeight : "700", color : "#4A5F73", whiteSpace : "nowrap" }}>{l.name}</span>
                       </div>
                     ) : (
-                      <div className="logocard" style={{ flex : "0 0 220px", height : "96px", borderRadius : "20px", background : "#fff", border : "1.5px dashed #C3D6E6", display : "flex", alignItems : "center", justifyContent : "center", color : "#6B7F92", fontWeight : "700", fontSize : "14px" }}>
+                      <div className="logocard" style={{ flex : "0 0 240px", height : "96px", borderRadius : "20px", background : "#fff", border : "1.5px dashed #C3D6E6", display : "flex", alignItems : "center", justifyContent : "center", color : "#6B7F92", fontWeight : "700", fontSize : "14px" }}>
                       {l?.name}
                     </div>
                     )}

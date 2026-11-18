@@ -9,7 +9,10 @@ export const CLIENTS: { name: string; nameRu: string; logo: string; full?: strin
   { name: 'Զովք սուպերմարկետ', nameRu: 'Супермаркет «Зовк»', logo: '/clients/zovq.png' },
   // Short caption under the logo; full name goes to the image alt text
   { name: 'ՀՊՄՀ', nameRu: 'АГПУ', logo: '/clients/hpmh.png',
-    full: 'Հայաստանի պետական մանկավարժական համալսարան', fullRu: 'Армянский государственный педагогический университет' }
+    full: 'Հայաստանի պետական մանկավարժական համալսարան', fullRu: 'Армянский государственный педагогический университет' },
+  { name: 'Աջափնյակ բժշկական կենտրոն', nameRu: 'Медцентр «Аджапняк»', logo: '/clients/ajapnyak-medical.png',
+    fullRu: 'Медицинский центр «Аджапняк»' },
+  { name: 'Գազպրոմ Արմենիա', nameRu: 'Газпром Армения', logo: '/clients/gazprom-armenia.png' }
 ];
 
 export const SLOTS = 8;
