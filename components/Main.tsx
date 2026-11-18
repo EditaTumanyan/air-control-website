@@ -957,57 +957,34 @@ export default class Main extends DCLogic {
                   </a>
                 </div>
               </div>
-              <a href={P("/problems/")} style={{ display : "inline-block", marginTop : "22px", fontWeight : "800", textDecoration : "none" }}>
-                {V.t?.faqAll}{" →"}
-              </a>
             </div>
-            <div style={{ flex : "2 1 600px", minWidth : "0", display : "flex", flexDirection : "column", gap : "12px" }}>
-              {(V.faq ?? []).map((f: any, $i7: number) => (
-                <React.Fragment key={$i7}>
-                  <div className="rv" style={css(`background: #fff; border: 1px solid ${f?.border ?? ""}; border-radius: 22px; overflow: hidden; transition: border-color .3s`)}>
-                    <button type="button" className="faq-q" onClick={f?.toggle} aria-expanded={f?.open} style={{ width : "100%", display : "flex", alignItems : "center", gap : "16px", padding : "20px 22px", background : "#fff", border : "0", cursor : "pointer", textAlign : "left", fontFamily : "inherit", color : "#0B2236" }}>
-                      <span style={css(`width: 46px; height: 46px; border-radius: 14px; background: ${f?.icBg ?? ""}; color: ${f?.icFg ?? ""}; display: inline-flex; align-items: center; justify-content: center; flex: none; transition: background .3s`)}>
-                        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <path d={f?.ic} />
-                        </svg>
-                      </span>
-                      <span style={{ flex : "1", fontSize : "18px", fontWeight : "800" }}>
-                        {f?.q}
-                      </span>
-                      <svg className="chev" aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A6FB0" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={css(`transform: ${f?.rot ?? ""}`)}>
-                        <path d="M6 9l6 6 6-6" />
+            <div className="rv" style={{ flex : "2 1 560px", minWidth : "0" }}>
+              {/* Compact list: the full questions & answers live on /problems/ */}
+              <div style={{ display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(min(100%, 340px), 1fr))", gap : "12px" }}>
+                {[0, 1, 3, 5, 7, 9].map(k => (V.faq ?? [])[k]).filter(Boolean).map((f: any, $i7: number) => (
+                  <a key={$i7} href={P("/problems/")} className="lift" style={{ display : "flex", alignItems : "center", gap : "14px", background : "#fff", border : "1px solid #E1ECF5", borderRadius : "18px", padding : "16px 18px", textDecoration : "none", color : "#0B2236" }}>
+                    <span style={{ width : "42px", height : "42px", borderRadius : "13px", background : "#EAF4FB", color : "#0A6FB0", display : "inline-flex", alignItems : "center", justifyContent : "center", flex : "none" }}>
+                      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d={f?.ic} />
                       </svg>
-                    </button>
-                    {f?.open ? (
-                      <>
-                        <div className="bub faq-body" style={{ padding : "0 22px 22px 84px", display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(220px, 1fr))", gap : "14px" }}>
-                          <div style={{ background : "#F4F8FC", borderRadius : "16px", padding : "16px 18px" }}>
-                            <div style={{ fontSize : "12px", fontWeight : "800", letterSpacing : ".08em", textTransform : "uppercase", color : "#0A6FB0", marginBottom : "8px" }}>
-                              {V.t?.causes}
-                            </div>
-                            <div style={{ lineHeight : "1.55", color : "#3F566B" }}>
-                              {f?.c}
-                            </div>
-                          </div>
-                          <div style={{ background : "#FFF4EA", borderRadius : "16px", padding : "16px 18px" }}>
-                            <div style={{ fontSize : "12px", fontWeight : "800", letterSpacing : ".08em", textTransform : "uppercase", color : "#B85A0E", marginBottom : "8px" }}>
-                              {V.t?.diy}
-                            </div>
-                            <div style={{ lineHeight : "1.55", color : "#3F566B" }}>
-                              {f?.d}
-                            </div>
-                          </div>
-                          <div style={{ gridColumn : "1 / -1" }}>
-                            <a href="#booking" className="btn-o" style={{ padding : "13px 22px", fontSize : "15px" }}>
-                              {V.t?.callMaster}
-                            </a>
-                          </div>
-                        </div>
-                      </>
-                    ) : null}
-                  </div>
-                </React.Fragment>
-              ))}
+                    </span>
+                    <span style={{ flex : "1", minWidth : "0", fontWeight : "800", fontSize : "16px", lineHeight : "1.3" }}>
+                      {f?.q}
+                    </span>
+                    <span aria-hidden="true" style={{ color : "#0A6FB0", fontWeight : "800" }}>
+                      {"→"}
+                    </span>
+                  </a>
+                ))}
+              </div>
+              <div style={{ marginTop : "24px" }}>
+                <a href={P("/problems/")} className="btn-o">
+                  {V.t?.faqAll}{" "}
+                  <span aria-hidden="true">
+                    {"→"}
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
         </section>
