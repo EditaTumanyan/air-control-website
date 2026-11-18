@@ -19,7 +19,11 @@ export const CLIENTS: { name: string; nameRu: string; logo: string; full?: strin
   // Photo-style logo (grey background): shown with rounded corners
   { name: 'Պետրոսյան բժշկական կենտրոն', nameRu: 'Медцентр «Петросян»', logo: '/clients/petrosyan.png', framed: true,
     fullRu: 'Медицинский центр «Петросян»' },
-  { name: 'Փինկ Բերրի', nameRu: 'Pink Berry', logo: '/clients/pink-berry.png' }
+  { name: 'Փինկ Բերրի', nameRu: 'Pink Berry', logo: '/clients/pink-berry.png' },
+  { name: 'ՀՀ ԳԱԱ', nameRu: 'НАН РА', logo: '/clients/nas-ra.png',
+    full: 'ՀՀ գիտությունների ազգային ակադեմիա', fullRu: 'Национальная академия наук Республики Армения' },
+  { name: 'Սեդա Ղազարյանի հիմնադրամ', nameRu: 'Фонд Седы Казарян', logo: '/clients/seda-ghazaryan.png',
+    full: 'Սեդա Ղազարյանի անվան հոգեկան առողջության հիմնադրամ', fullRu: 'Фонд психического здоровья имени Седы Казарян' }
 ];
 
 export const SLOTS = 8;
