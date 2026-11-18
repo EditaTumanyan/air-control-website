@@ -168,7 +168,7 @@ export default class Main extends DCLogic {
     const SV = D.S[season] || D.S.special;
     const promo = { tag: P[0], short: P[1], title: P[2], text: P[3], until: P[4], note: P[5] || L.promoNote, rc: P[7] || null, hasGifts: !!P[7], noGifts: !P[7], titleHl: P[8] || '', icon: SV.icon, pct: SV.pct, size: SV.size || '168px', bg: SV.bg, accent: SV.accent };
 
-    const area = s.area ?? 25, ceil = s.ceil ?? 2.7, sunny = !!s.sunny, people = s.people ?? 2;
+    const area = s.area ?? 25, ceil = s.ceil ?? 2.7, sunny = !!s.sunny, people = 2; // typical household; no longer asked in the form
     const kwNum = area * ceil * (sunny ? 40 : 33) / 1000 + Math.max(0, people - 1) * 0.1;
     const classes = [['7 000', 2.1, 20, '7k'], ['9 000', 2.6, 26, '9k'], ['12 000', 3.5, 35, '12k'], ['18 000', 5.3, 52, '18k'], ['24 000', 7.0, 70, '24k'], ['30 000', 8.8, 90, '30k'], ['36 000+', 99, 0, '36k+']];
     let idx = classes.findIndex(c => kwNum <= c[1]); if (idx < 0) idx = classes.length - 1;
@@ -212,8 +212,6 @@ export default class Main extends DCLogic {
       sunLabel: sunny ? L.yes : L.no,
       sunTrack: 'position: relative; width: 60px; height: 34px; border-radius: 999px; transition: background .25s; background: ' + (sunny ? '#F28A2E' : '#D5E2EE'),
       sunKnob: 'position: absolute; top: 4px; left: ' + (sunny ? '30px' : '4px') + '; width: 26px; height: 26px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(11,34,54,.3); transition: left .25s cubic-bezier(.2,.8,.2,1)',
-      peopleUp: () => this.setState({ people: Math.min(10, people + 1) }),
-      peopleDown: () => this.setState({ people: Math.max(1, people - 1) }),
       pos, clipR: 100 - pos,
       onPos: (e) => this.setState({ pos: +e.target.value })
     };
@@ -875,22 +873,6 @@ export default class Main extends DCLogic {
                       </span>
                       {V.sunLabel}{"\n"}
                     </button>
-                  </div>
-                  <div style={{ flex : "1 1 220px" }}>
-                    <div style={{ fontWeight : "800", fontSize : "17px", marginBottom : "14px" }}>
-                      {V.t?.calcPeople}
-                    </div>
-                    <div style={{ display : "inline-flex", alignItems : "center", gap : "6px", background : "#F2F7FB", borderRadius : "999px", padding : "5px" }}>
-                      <button type="button" aria-label="−1" onClick={V.peopleDown} style={{ width : "44px", height : "44px", borderRadius : "50%", border : "0", background : "#fff", fontSize : "22px", fontWeight : "700", cursor : "pointer", color : "#0B2236" }}>
-                        {"−"}
-                      </button>
-                      <span style={{ minWidth : "44px", textAlign : "center", fontSize : "20px", fontWeight : "800" }}>
-                        {V.people}
-                      </span>
-                      <button type="button" aria-label="+1" onClick={V.peopleUp} style={{ width : "44px", height : "44px", borderRadius : "50%", border : "0", background : "#fff", fontSize : "22px", fontWeight : "700", cursor : "pointer", color : "#0B2236" }}>
-                        {"+"}
-                      </button>
-                    </div>
                   </div>
                 </div>
               </div>
