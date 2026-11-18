@@ -199,7 +199,9 @@ export default class Main extends DCLogic {
     const openFaq = s.openFaq ?? 0;
     const faq = L.faq.map((f, i) => ({ q: f[0], c: f[1], d: f[2], ic: D.F[D.faqIc[i]], open: i === openFaq, rot: i === openFaq ? 'rotate(180deg)' : 'rotate(0deg)', border: i === openFaq ? '#9FC3E0' : '#E1ECF5', icBg: i === openFaq ? '#0A6FB0' : '#EAF4FB', icFg: i === openFaq ? '#fff' : '#0A6FB0', toggle: () => this.setState({ openFaq: openFaq === i ? -1 : i }) }));
 
-    const svcs = D.prices.map((p, i) => ({ from: p[0] === 'clean' ? '\u00a0' : L.from, icon: D.I[p[0]], title: L.svc[i][0], desc: L.svc[i][1], price: p[1], unit: (p[0] === 'pipes' || p[0] === 'chase') ? L.unitM : L.unit, promo: p[0] === 'clean' }));
+    // Home page shows only the 4 main services; the full list is on /services/
+    const HOME_SVCS = ['install', 'repair', 'clean', 'freon'];
+    const svcs = D.prices.map((p, i) => ({ key: p[0], from: p[0] === 'clean' ? '\u00a0' : L.from, icon: D.I[p[0]], title: L.svc[i][0], desc: L.svc[i][1], price: p[1], unit: (p[0] === 'pipes' || p[0] === 'chase') ? L.unitM : L.unit, promo: p[0] === 'clean' })).filter(x => HOME_SVCS.includes(x.key));
     const b = ['Daikin', 'Mitsubishi Electric', 'LG', 'Samsung', 'Gree', 'Midea', 'Haier', 'Toshiba', 'Panasonic', 'Hisense', 'AUX', 'Ballu'];
 
     const t = Object.assign({}, L, {
@@ -676,13 +678,13 @@ export default class Main extends DCLogic {
             <div style={{ display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(270px, 1fr))", gap : "20px" }}>
               {(V.svcs ?? []).map((s: any, $i7: number) => (
                 <React.Fragment key={$i7}>
-                  <a href={P("/contacts/")} className="svc lift rv" style={{ display : "flex", flexDirection : "column", textDecoration : "none", color : "#0B2236", background : "#fff", border : "1px solid #E1ECF5", borderRadius : "26px", padding : "28px" }}>
-                    <span className="svc-ic" style={{ width : "58px", height : "58px", borderRadius : "18px", background : "#EAF4FB", color : "#0A6FB0", display : "inline-flex", alignItems : "center", justifyContent : "center" }}>
+                  <a href={P("/contacts/")} className="svc lift rv" style={{ display : "flex", flexDirection : "column", textDecoration : "none", color : "#0B2236", background : "#fff", border : "1px solid #E1ECF5", borderRadius : "26px", padding : "22px 24px" }}>
+                    <span className="svc-ic" style={{ width : "48px", height : "48px", borderRadius : "15px", background : "#EAF4FB", color : "#0A6FB0", display : "inline-flex", alignItems : "center", justifyContent : "center" }}>
                       <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                         <path d={s?.icon} />
                       </svg>
                     </span>
-                    <span style={{ display : "flex", alignItems : "center", gap : "8px", flexWrap : "wrap", margin : "22px 0 8px" }}>
+                    <span style={{ display : "flex", alignItems : "center", gap : "8px", flexWrap : "wrap", margin : "16px 0 6px" }}>
                       <span style={{ fontSize : "20px", fontWeight : "800", letterSpacing : "-0.01em" }}>
                         {s?.title}
                       </span>
@@ -697,7 +699,7 @@ export default class Main extends DCLogic {
                     <span style={{ fontSize : "15px", lineHeight : "1.55", color : "#4A5F73", flex : "1" }}>
                       {s?.desc}
                     </span>
-                    <span style={{ display : "flex", alignItems : "center", justifyContent : "space-between", borderTop : "1px dashed #D5E2EE", marginTop : "22px", paddingTop : "18px" }}>
+                    <span style={{ display : "flex", alignItems : "center", justifyContent : "space-between", borderTop : "1px dashed #D5E2EE", marginTop : "16px", paddingTop : "14px" }}>
                       <span>
                         <span style={{ display : "block", fontSize : "12px", color : "#4A5F73", fontWeight : "600" }}>
                           {s?.from}
@@ -719,6 +721,14 @@ export default class Main extends DCLogic {
                   </a>
                 </React.Fragment>
               ))}
+            </div>
+            <div style={{ display : "flex", justifyContent : "center", marginTop : "32px" }}>
+              <a href={P("/services/")} className="btn-o">
+                {V.t?.svcAll}{" "}
+                <span aria-hidden="true">
+                  {"→"}
+                </span>
+              </a>
             </div>
           </div>
         </section>
