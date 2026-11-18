@@ -147,7 +147,7 @@ export default class Problems extends DCLogic {
               {"։"}
             </h1>
             <p className="rise d2" style={{ margin : "0 auto 34px", fontSize : "19px", lineHeight : "1.6", color : "#3F566B", maxWidth : "640px" }}>
-              {L("Գտեք ձեր խնդիրը և իմացեք դրա հնարավոր պատճառները։ Վարպետը կախտորոշի օդորակիչը և տեղում կասի ճշգրիտ գինը։")}
+              {L("Գտեք ձեր խնդիրը և իմացեք դրա հնարավոր պատճառները։ Ճշգրիտ պատճառը վարպետը կպարզի տեղում՝ ախտորոշումից հետո։")}
             </p>
             <label className="rise d3 search" style={{ display : "flex", alignItems : "center", gap : "14px", background : "#fff", border : "1.5px solid #D5E2EE", borderRadius : "22px", padding : "8px 8px 8px 22px", maxWidth : "680px", margin : "0 auto", boxShadow : "0 24px 48px -28px rgba(11,34,54,.45)", transition : "box-shadow .25s, border-color .25s" }}>
               <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0A6FB0" strokeWidth="2.2" strokeLinecap="round">
