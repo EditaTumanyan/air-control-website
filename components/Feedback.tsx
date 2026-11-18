@@ -2,6 +2,7 @@
 'use client';
 // Feedback — generated from the Air Control design. Edit the texts and layout here.
 import React from 'react';
+import PhoneInput from './PhoneInput';
 import { DCLogic, css, muteVideo } from '../lib/dc';
 import { tr, path } from '../lib/i18n';
 import { RU } from '../lib/ru/Feedback';
@@ -130,7 +131,7 @@ export default class Feedback extends DCLogic {
                       <label htmlFor="fb-phone" style={{ display : "block", fontWeight : "700", fontSize : "14px", marginBottom : "8px" }}>
                         {L("Հեռախոս *")}
                       </label>
-                      <input id="fb-phone" required type="tel" autoComplete="tel" placeholder="+374 __ __ __ __" style={{ width : "100%", height : "54px", border : "1.5px solid #D5E2EE", borderRadius : "14px", padding : "0 16px", fontFamily : "inherit", fontSize : "16px", background : "#fff", color : "#0B2236" }} />
+                      <PhoneInput id="fb-phone" lang={this.props.lang ?? 'hy'} required />
                     </div>
                     <div style={{ gridColumn : "1 / -1" }}>
                       <label htmlFor="fb-when" style={{ display : "block", fontWeight : "700", fontSize : "14px", marginBottom : "8px" }}>
@@ -162,7 +163,7 @@ export default class Feedback extends DCLogic {
                       <label htmlFor="fb-phone" style={{ display : "block", fontWeight : "700", fontSize : "14px", marginBottom : "8px" }}>
                         {L("Հեռախոս")}
                       </label>
-                      <input id="fb-phone" type="tel" autoComplete="tel" placeholder="+374 __ __ __ __" style={{ width : "100%", height : "54px", border : "1.5px solid #D5E2EE", borderRadius : "14px", padding : "0 16px", fontFamily : "inherit", fontSize : "16px", background : "#fff", color : "#0B2236" }} />
+                      <PhoneInput id="fb-phone" lang={this.props.lang ?? 'hy'} />
                     </div>
                     <div style={{ gridColumn : "1 / -1" }}>
                       <label htmlFor="fb-when" style={{ display : "block", fontWeight : "700", fontSize : "14px", marginBottom : "8px" }}>

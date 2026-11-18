@@ -30,7 +30,7 @@ const LABELS: Record<string, string> = {
   anonymous: 'Անանուն',
   page: 'Էջ'
 };
-const SKIP = new Set(['bf-svc', 'kind', 'file', 'website']);
+const SKIP = new Set(['bf-svc', 'kind', 'file', 'website', 'bf-phone-cc', 'fb-phone-cc']);
 const MAX_FILE = 45 * 1024 * 1024; // Telegram bots can upload up to 50 MB
 
 async function sendFile(api: string, chatId: string, method: string, field: string, file: File) {
@@ -69,6 +69,12 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
   // Honeypot against bots: a hidden "website" field must stay empty.
   if (String(form.get('website') || '').trim()) return json({ ok: true });
 
+  // Phone fields come as country ("🇦🇲 Armenia (+374)") + national number: join them.
+  for (const f of ['bf-phone', 'fb-phone']) {
+    const num = String(form.get(f) || '').trim();
+    const cc = (String(form.get(f + '-cc') || '').match(/\+\d+/) || [''])[0];
+    if (num && cc && !/^(\+|00)/.test(num)) form.set(f, cc + ' ' + num.replace(/^0+/, ''));
+  }
   const kind = String(form.get('kind') || 'booking');
   const isBiz = String(form.get('type') || '') === 'business';
   if (form.get('type')) form.set('type', isBiz ? 'Բիզնես' : 'Անհատ');

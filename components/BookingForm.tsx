@@ -3,6 +3,7 @@
 // BookingForm — generated from the Air Control design. Edit the texts and layout here.
 import React from 'react';
 import { DCLogic, css, muteVideo } from '../lib/dc';
+import PhoneInput from './PhoneInput';
 import { sendForm, sendErrorText } from '../lib/lead';
 
 
@@ -130,7 +131,7 @@ export default class BookingForm extends DCLogic {
                   <label htmlFor="bf-phone" style={{ display : "block", fontWeight : "700", fontSize : "14px", marginBottom : "8px" }}>
                     {V.t?.phone}{" *"}
                   </label>
-                  <input id="bf-phone" type="tel" required autoComplete="tel" placeholder="+374 __ ___ ___" style={{ width : "100%", height : "54px", border : "1.5px solid #D5E2EE", borderRadius : "14px", padding : "0 16px", fontFamily : "inherit", fontSize : "16px", background : "#F7FAFD", color : "#0B2236" }} />
+                  <PhoneInput id="bf-phone" lang={this.props.lang ?? 'hy'} required />
                 </div>
               </div>
               {V.isBiz ? (
