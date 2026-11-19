@@ -168,11 +168,6 @@ export default class Works extends DCLogic {
                         </svg>
                       </span>
                     </span>
-                    <span style={{ position : "absolute", left : "0", right : "0", bottom : "0", padding : "60px 18px 18px", background : "linear-gradient(transparent, rgba(11,34,54,.92))" }}>
-                      <span style={{ display : "block", fontSize : "15px", fontWeight : "800", lineHeight : "1.3" }}>
-                        {v?.t}
-                      </span>
-                    </span>
                   </button>
                 </React.Fragment>
               ))}
@@ -234,11 +229,15 @@ export default class Works extends DCLogic {
                   <span style={{ display : "inline-flex", background : "#F28A2E", color : "#0B2236", borderRadius : "999px", padding : "5px 12px", fontSize : "13px", fontWeight : "800" }}>
                     {V.cur?.d}
                   </span>
-                  <div style={{ fontSize : "28px", fontWeight : "800", letterSpacing : "-0.02em", lineHeight : "1.2", margin : "14px 0 10px" }}>
-                    {V.cur?.t}
-                  </div>
-                  <div style={{ color : "#C2D3E2", lineHeight : "1.6", marginBottom : "22px", whiteSpace : "pre-line" }}>
-                    {V.cur?.s}
+                  <div style={{ color : "#fff", fontSize : "18px", fontWeight : "600", lineHeight : "1.6", margin : "16px 0 24px", whiteSpace : "pre-line" }}>
+                    {String(V.cur?.s ?? "").split("\n").map((ln: string, k: number) => ln.startsWith("✔️") ? (
+                      <span key={k} style={{ display : "flex", gap : "10px", alignItems : "baseline" }}>
+                        <span aria-hidden="true" style={{ color : "#F28A2E", fontWeight : "800" }}>{"✓"}</span>
+                        <span>{ln.replace("✔️", "").trim()}</span>
+                      </span>
+                    ) : (
+                      <React.Fragment key={k}>{ln}{"\n"}</React.Fragment>
+                    ))}
                   </div>
                   <a href={P("/contacts/")} className="btn-o" style={{ padding : "14px 22px", fontSize : "15px" }}>
                     {L("Պատվիրել նույնը")}
