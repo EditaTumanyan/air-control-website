@@ -68,6 +68,7 @@ export default class Footer extends DCLogic {
       <>
         <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       <footer style={{ width : "100%", fontFamily : "'Manrope', 'Noto Sans Armenian', system-ui, sans-serif", color : "#C2D3E2", background : "#0B2236", padding : "0 24px", position : "relative", overflow : "hidden" }}>
+        <style dangerouslySetInnerHTML={{ __html: ".ft-soc{transition:background .25s,border-color .25s,color .25s,transform .25s}.ft-soc:hover,.ft-soc:focus-visible{background:#F28A2E !important;border-color:#F28A2E !important;color:#0B2236 !important;transform:translateY(-2px)}" }} />
         <div style={{ maxWidth : "1280px", margin : "0 auto", position : "relative", top : "0", paddingTop : "72px" }}>
           <div className="ft-cta" style={{ background : "#0A6FB0", borderRadius : "36px", padding : "48px 56px", display : "flex", flexWrap : "wrap", gap : "28px", alignItems : "center", justifyContent : "space-between", position : "relative", overflow : "hidden" }}>
             <svg aria-hidden="true" viewBox="0 0 24 24" className="spin" style={{ position : "absolute", right : "26%", top : "-60px", width : "260px", height : "260px", opacity : ".14", animationDuration : "60s" }} fill="none" stroke="#fff" strokeWidth="1" strokeLinecap="round">
@@ -112,7 +113,7 @@ export default class Footer extends DCLogic {
               <div style={{ display : "flex", gap : "10px" }}>
                 {(V.socials ?? []).map((so: any, $i8: number) => (
                   <React.Fragment key={$i8}>
-                    <a href={so?.href} aria-label={so?.name} target={so?.href?.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" style={{ width : "44px", height : "44px", borderRadius : "14px", background : "rgba(255,255,255,.07)", border : "1px solid rgba(255,255,255,.1)", display : "inline-flex", alignItems : "center", justifyContent : "center", color : "#fff" }}>
+                    <a href={so?.href} aria-label={so?.name} target={so?.href?.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="ft-soc" style={{ width : "44px", height : "44px", borderRadius : "14px", background : "rgba(255,255,255,.07)", border : "1px solid rgba(255,255,255,.1)", display : "inline-flex", alignItems : "center", justifyContent : "center", color : "#fff" }}>
                       <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                         <path d={so?.d} />
                       </svg>
