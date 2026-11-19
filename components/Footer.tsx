@@ -45,10 +45,12 @@ export default class Footer extends DCLogic {
       fbTitle: st.fbType === 'thanks' ? t.fbThanks : t.fbTitle,
       fbClose: () => this.setState({ fbOpen: false }),
       openComplaint: () => this.setState({ fbOpen: true, fbType: 'complaint' }),
-      showCard: shown && !min && !mobile,
-      showPill: shown && (min || mobile),
-      minimize: () => { try { sessionStorage.setItem('ac_offer_min', '1'); } catch (e) {} this.setState({ min: true }); },
-      pillClick: (e) => { if (!mobile) { e.preventDefault(); try { sessionStorage.removeItem('ac_offer_min'); } catch (er) {} this.setState({ min: false }); } },
+      // Mobile: the pill opens the full offer card (same as desktop) instead of jumping to the form
+      mOpen: mobile && !!st.mOpen,
+      showCard: shown && (mobile ? !!st.mOpen : !min),
+      showPill: shown && (mobile ? !st.mOpen : min),
+      minimize: () => { if (mobile) { this.setState({ mOpen: false }); return; } try { sessionStorage.setItem('ac_offer_min', '1'); } catch (e) {} this.setState({ min: true }); },
+      pillClick: (e) => { e.preventDefault(); if (mobile) { this.setState({ mOpen: true }); return; } {  try { sessionStorage.removeItem('ac_offer_min'); } catch (er) {} this.setState({ min: false }); } },
       t,
       coLinks: t.co.map(c => ({ label: c[0], href: path(lang, c[1]) })),
       socials: [
@@ -190,7 +192,10 @@ export default class Footer extends DCLogic {
         </div>
         {V.showCard ? (
           <>
-            <div className="ofc" role="complementary" aria-label={V.t?.ofTag} style={{ position : "fixed", left : "24px", bottom : "24px", zIndex : "80", width : "330px", maxWidth : "calc(100vw - 48px)", background : "#fff", color : "#0B2236", borderRadius : "24px", padding : "22px", boxShadow : "0 30px 60px -20px rgba(11,34,54,.55)", borderTop : "5px solid #F28A2E", textAlign : "left" }}>
+            {V.mOpen ? (
+              <div aria-hidden="true" onClick={V.minimize} style={{ position : "fixed", inset : "0", zIndex : "205", background : "rgba(11,34,54,.55)" }} />
+            ) : null}
+            <div className="ofc" role="complementary" aria-label={V.t?.ofTag} style={{ position : "fixed", left : "24px", bottom : "24px", zIndex : "80", width : "330px", maxWidth : "calc(100vw - 48px)", background : "#fff", color : "#0B2236", borderRadius : "24px", padding : "22px", boxShadow : "0 30px 60px -20px rgba(11,34,54,.55)", borderTop : "5px solid #F28A2E", textAlign : "left" , ...(V.mOpen ? { left : "12px", right : "12px", bottom : "16px", width : "auto", maxWidth : "none", zIndex : "210" } : {})}}>
               <button type="button" onClick={V.minimize} aria-label={V.t?.ofClose} style={{ position : "absolute", right : "10px", top : "10px", width : "36px", height : "36px", borderRadius : "50%", border : "0", background : "#F2F7FB", color : "#4A5F73", cursor : "pointer", display : "inline-flex", alignItems : "center", justifyContent : "center" }}>
                 <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round">
                   <path d="M6 6l12 12M18 6L6 18" />
