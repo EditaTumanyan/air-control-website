@@ -23,7 +23,7 @@ export default class Works extends DCLogic {
     };
     const C = { install: [L("Տեղադրում"), '#0A6FB0'], clean: [L("Լվացում"), '#13314A'], repair: [L("Վերանորոգում"), '#0B2236'], biz: [L("Բիզնես"), '#9A4A12'], ba: [L("Առաջ և հետո"), '#1F5F8A'] };
     const all = [
-      ['install', L("Մոնտաժել ենք 50 մ խողովակաշար"), '0:19', L("Սպլիտ համակարգի պրոֆեսիոնալ մոնտաժ՝ ցանկացած բարդության և ցանկացած ժամի։"), '/assets/work1.mp4', '/assets/work1-poster.jpg'],
+      ['install', L("Մոնտաժել ենք 50 մ խողովակաշար"), '0:19', L("🛠️ Վերանորոգո՞ւմ եք անում։ Բաց մի թողեք օդորակիչի փուլային տեղադրումը։\n\n🏢 Այս տարածքում մեր թիմը կատարել է ավելի քան 50 մ խողովակաշարի նախնական մոնտաժ։ Խողովակները պատի մեջ են, ինտերիերը՝ մաքուր, առանց լարերի և տգեղ խողովակների։\n\n❌ Մի՛ սպասեք վերանորոգման ավարտին, որ չստիպվեք քանդել թարմ ներկված պատերը։\n\n✔️ Փորձառու մասնագետներ\n✔️ Նորագույն սարքավորումներ\n✔️ Արագ և որակյալ աշխատանք"), '/assets/work1.mp4', '/assets/work1-poster.jpg'],
       ['clean', L("Լվացում 15 000 ֏ + նվերներ"), '0:21', L("Պրոֆեսիոնալ լվացում ընդամենը 15 000 դրամով, իսկ ֆրեոնի լիցքավորումն ու ախտորոշումը՝ նվեր։ Տեսեք արդյունքը՝ առաջ և հետո։"), '/assets/work2.mp4', '/assets/work2-poster.jpg'],
       ['clean', L("Կեղտոտ օդորակիչը վտանգում է առողջությունը"), '0:21', L("Ներքին բլոկի խորը լվացում և ախտահանում՝ մաքուր և առողջ օդի համար։"), '/assets/work3.mp4', '/assets/work3-poster.jpg'],
       ['install', L("Վերանորոգում եք տունը՝ մտածեք օդորակիչի մասին"), '0:24', L("Խողովակաշարը նախապես թաքցնում ենք պատի մեջ, որ վերանորոգումից հետո ոչինչ չփչացնենք։"), '/assets/work4.mp4', '/assets/work4-poster.jpg'],
@@ -237,7 +237,7 @@ export default class Works extends DCLogic {
                   <div style={{ fontSize : "28px", fontWeight : "800", letterSpacing : "-0.02em", lineHeight : "1.2", margin : "14px 0 10px" }}>
                     {V.cur?.t}
                   </div>
-                  <div style={{ color : "#C2D3E2", lineHeight : "1.6", marginBottom : "22px" }}>
+                  <div style={{ color : "#C2D3E2", lineHeight : "1.6", marginBottom : "22px", whiteSpace : "pre-line" }}>
                     {V.cur?.s}
                   </div>
                   <a href={P("/contacts/")} className="btn-o" style={{ padding : "14px 22px", fontSize : "15px" }}>
