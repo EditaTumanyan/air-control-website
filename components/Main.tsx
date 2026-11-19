@@ -380,21 +380,8 @@ export default class Main extends DCLogic {
             </div>
           </div>
         </section>
-        <section aria-label={V.t?.brandsLabel} style={{ padding : "8px 0 40px" }}>
-          <p style={{ textAlign : "center", margin : "0 0 18px", fontSize : "13px", fontWeight : "700", letterSpacing : ".12em", textTransform : "uppercase", color : "#4A5F73" }}>
-            {V.t?.brandsLabel}
-          </p>
-          <div style={{ overflow : "hidden", maskImage : "linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)", WebkitMaskImage : "linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)" }}>
-            <div className="marq" style={{ display : "flex", gap : "64px", width : "max-content", padding : "6px 0" }}>
-              {(V.brands ?? []).map((b: any, $i7: number) => (
-                <React.Fragment key={$i7}>
-                  <span style={{ fontSize : "24px", fontWeight : "800", letterSpacing : "-0.02em", color : "#5E768C", whiteSpace : "nowrap" }}>
-                    {b}
-                  </span>
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
+        <section aria-label={V.lang === 'ru' ? 'Нам доверяют' : 'Մեզ վստահում են'} style={{ padding : "8px 0 40px" }}>
+          <ClientLogos lang={V.lang} bleed={false} />
         </section>
         <section id="promo" className="sec" style={{ padding : "48px 24px" }}>
           <div className="rv padm" style={css(`max-width: 1280px; margin: 0 auto; background: ${V.promo?.bg ?? ""}; border-radius: 40px; padding: 56px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center; position: relative; overflow: hidden`)}>
@@ -649,8 +636,21 @@ export default class Main extends DCLogic {
                 </div>
               </a>
             </div>
-            <div className="rv" style={{ marginTop : "48px" }}>
-              <ClientLogos lang={V.lang} />
+          </div>
+        </section>
+        <section aria-label={V.t?.brandsLabel} style={{ padding : "0 0 24px" }}>
+          <p style={{ textAlign : "center", margin : "0 0 18px", fontSize : "13px", fontWeight : "700", letterSpacing : ".12em", textTransform : "uppercase", color : "#4A5F73" }}>
+            {V.t?.brandsLabel}
+          </p>
+          <div style={{ overflow : "hidden", maskImage : "linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)", WebkitMaskImage : "linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)" }}>
+            <div className="marq" style={{ display : "flex", gap : "64px", width : "max-content", padding : "6px 0" }}>
+              {(V.brands ?? []).map((b: any, $i7: number) => (
+                <React.Fragment key={$i7}>
+                  <span style={{ fontSize : "24px", fontWeight : "800", letterSpacing : "-0.02em", color : "#5E768C", whiteSpace : "nowrap" }}>
+                    {b}
+                  </span>
+                </React.Fragment>
+              ))}
             </div>
           </div>
         </section>
