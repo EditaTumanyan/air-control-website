@@ -9,7 +9,7 @@ import { RU } from '../lib/ru/Feedback';
 import { sendForm, sendErrorText } from '../lib/lead';
 
 
-const STYLES = "body{margin:0}";
+const STYLES = "body{margin:0}\n@media (max-width:560px){.fb{padding-left:18px !important;padding-right:18px !important}}";
 
 export default class Feedback extends DCLogic {
   renderVals() {
@@ -120,7 +120,7 @@ export default class Feedback extends DCLogic {
               </div>
               {V.isComplaint ? (
                 <>
-                  <div className="fb-in" style={{ display : "grid", gridTemplateColumns : "repeat(2, minmax(0, 1fr))", gap : "16px" }}>
+                  <div className="fb-in" style={{ display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(220px, 1fr))", gap : "16px" }}>
                     <div>
                       <label htmlFor="fb-name" style={{ display : "block", fontWeight : "700", fontSize : "14px", marginBottom : "8px" }}>
                         {L("Անուն *")}
@@ -152,7 +152,7 @@ export default class Feedback extends DCLogic {
               ) : null}
               {V.showOpt ? (
                 <>
-                  <div className="fb-in" style={{ display : "grid", gridTemplateColumns : "repeat(2, minmax(0, 1fr))", gap : "16px" }}>
+                  <div className="fb-in" style={{ display : "grid", gridTemplateColumns : "repeat(auto-fit, minmax(220px, 1fr))", gap : "16px" }}>
                     <div>
                       <label htmlFor="fb-name" style={{ display : "block", fontWeight : "700", fontSize : "14px", marginBottom : "8px" }}>
                         {L("Անուն")}
